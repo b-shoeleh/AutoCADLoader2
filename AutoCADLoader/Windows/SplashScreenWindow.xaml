@@ -1,0 +1,24 @@
+﻿<Window x:Class="AutoCADLoader.Windows.SplashScreenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCADLoader.Windows"
+        mc:Ignorable="d"
+        Title="AutoCAD Loader" Height="450" Width="300"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.075*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="/Resources/Images/LogoArcadis.png"/>
+        <Image Grid.Row="1" Source="/Resources/Images/LogoAutoCADLoader.png"/>
+        <TextBlock Grid.Row="2" Text="{Binding Version}"/>
+        <TextBlock Grid.Row="3" Text="{Binding LoadingStatus}"/>
+    </Grid>
+</Window>
