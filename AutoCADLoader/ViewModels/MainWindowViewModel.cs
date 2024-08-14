@@ -19,8 +19,8 @@ namespace AutoCADLoader.ViewModels
 
         public ObservableCollection<string> AvailablePackages { get; set; } = ["Package 1", "Package 2", "Package 3"];
 
-        private ObservableCollection<AvailableUpdateViewModel> _availableUpdates = [];
-        public ObservableCollection<AvailableUpdateViewModel> AvailableUpdates
+        private AvailableUpdatesViewModel _availableUpdates = new();
+        public AvailableUpdatesViewModel AvailableUpdates
         {
             get
             {

@@ -8,8 +8,8 @@ namespace AutoCADLoader.Utility
 {
     public class FileUpdaterLoader
     {
+        public string UpdateLoaderFromPath { get; set; } = @"I:";
         public string UpdateLoaderFromPathLocal { get; } = @$"{Environment.SpecialFolder.CommonPrograms}\Arcadis\AutoCAD Loader\Configuration";
-        public string UpdateLoaderFromPath { get; set; } = @$"\\anf-scus-03ce.arcadis-nl.local\proddata501\AIBI_TECHSTND_NA\_TechSTND";
         public List<FileItem> AllFiles { get; set; } = [];
         private bool isProcessRunning { get; set; }
         public Office RememberedOffice { get; set; }
@@ -28,7 +28,7 @@ namespace AutoCADLoader.Utility
                 return "Update standards folder not found!";
             }
 
-            try // To guard against issues with acces permissions
+            try // To guard against issues with access permissions
             {
                 ComparePackages();
                 CompareXML();

@@ -39,20 +39,25 @@ namespace AutoCADLoader
             update = true; //TODO:!
 #endif
             MainWindowViewModel mainWindowViewModel = new();
+            MainWindow mainWindow = new(mainWindowViewModel);
+            mainWindow.Show();
 
-            FileUpdaterLoader fileUpdater;
-            if (update)
+            splashScreenWindow.Close();
+
+            FileUpdater fileUpdater;
+            if(update)
             {
+                mainWindowViewModel.AvailableUpdates.Packages.FileStatus = "Loading...";
+                mainWindowViewModel.AvailableUpdates.Settings.FileStatus = "Loading...";
+                mainWindowViewModel.AvailableUpdates.SupportFiles.FileStatus = "Loading...";
                 fileUpdater = await Task.Run(CheckForUpdates);
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Packages", FileStatus = fileUpdater.FileCount(ResourceType.Package) });
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Settings", FileStatus = fileUpdater.FileCount(ResourceType.Setting) });
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Support files", FileStatus = fileUpdater.FileCount(ResourceType.Support) });
-            }
+                mainWindowViewModel.AvailableUpdates.Packages.FileStatus = fileUpdater.FileCount(ResourceType.Package);
+                mainWindowViewModel.AvailableUpdates.Settings.FileStatus = fileUpdater.FileCount(ResourceType.Setting);
+                mainWindowViewModel.AvailableUpdates.SupportFiles.FileStatus = fileUpdater.FileCount(ResourceType.Support);
+          }
             else
             {
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Packages" });
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Settings" });
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Support files" });
+                //
             }
 
             MainWindow mainWindow = new(mainWindowViewModel, UserRegistryInfo);
