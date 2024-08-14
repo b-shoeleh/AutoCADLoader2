@@ -15,7 +15,7 @@ namespace AutoCADLoader.Utility
 {
     public class FileUpdater(Office rememberedOffice)
     {
-        public string UpdateFromPath { get; set; } = @"";
+        public string UpdateFromPath { get; set; } = @"I:";
         public List<FileItem> AllFiles { get; set; } = [];
         private bool isProcessRunning { get; set; }
         public Office RememberedOffice { get; set; } = rememberedOffice;
@@ -28,7 +28,7 @@ namespace AutoCADLoader.Utility
                 return "Update standards folder not found!";
             }
 
-            try // To guard against issues with acces permissions
+            try // To guard against issues with access permissions
             {
                 ComparePackages();
                 CompareXML();

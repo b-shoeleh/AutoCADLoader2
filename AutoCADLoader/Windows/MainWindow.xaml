@@ -96,7 +96,7 @@
                     <GroupBox.Header>
                         <Label>Available Updates</Label>
                     </GroupBox.Header>
-                    <ListView ItemsSource="{Binding AvailableUpdates}">
+                    <ListView ItemsSource="{Binding AvailableUpdates.GetAll}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding Path=Title}"/>
