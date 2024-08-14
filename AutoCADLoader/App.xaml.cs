@@ -1,5 +1,4 @@
-﻿using AutoCADLoader.Models.Applications;
-using AutoCADLoader.Models;
+﻿using AutoCADLoader.Models;
 using AutoCADLoader.Models.Offices;
 using AutoCADLoader.Utility;
 using AutoCADLoader.ViewModels;
@@ -7,7 +6,6 @@ using AutoCADLoader.Windows;
 using System.Data;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace AutoCADLoader
 {
@@ -26,16 +24,24 @@ namespace AutoCADLoader
 
             splashScreenViewModel.LoadingStatus = "Setting up offices...";
             SetUpOffices();
-            
+
+            splashScreenViewModel.LoadingStatus = "Setting up user info...";
+            UserInfo userInfo = new();
+
+            splashScreenViewModel.LoadingStatus = "Setting up registry info...";
+            RegistryInfo UserRegistryInfo = new(userInfo.Office.OfficeCode);
+            var usersOffice = OfficesCollection.GetOfficeByMachineCodeOrDefault(UserRegistryInfo.ActiveOffice);
+            OfficesCollection.SetUserOffice(usersOffice, userInfo);
+
             splashScreenViewModel.LoadingStatus = "Checking for updates...";
             bool update = true;
 #if DEBUG
-            update = false; //TODO:!
+            update = true; //TODO:!
 #endif
             MainWindowViewModel mainWindowViewModel = new();
 
-            FileUpdater fileUpdater;
-            if(update)
+            FileUpdaterLoader fileUpdater;
+            if (update)
             {
                 fileUpdater = await Task.Run(CheckForUpdates);
                 mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Packages", FileStatus = fileUpdater.FileCount(ResourceType.Package) });
@@ -46,10 +52,10 @@ namespace AutoCADLoader
             {
                 mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Packages" });
                 mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Settings" });
-                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Support files"});
+                mainWindowViewModel.AvailableUpdates.Add(new() { Title = "Support files" });
             }
 
-            MainWindow mainWindow = new(mainWindowViewModel);
+            MainWindow mainWindow = new(mainWindowViewModel, UserRegistryInfo);
             mainWindow.Show();
 
             splashScreenWindow.Close();
@@ -73,9 +79,9 @@ namespace AutoCADLoader
             EventLogger.Log(officesStatus, EventLogEntryType.Information);
         }
 
-        private FileUpdater CheckForUpdates()
+        private FileUpdaterLoader CheckForUpdates()
         {
-            FileUpdater fileUpdater = new(OfficesCollection.GetRememberedOfficeOrDefault());
+            FileUpdaterLoader fileUpdater = new(OfficesCollection.GetRememberedOfficeOrDefault());
             fileUpdater.CompareAll();
 
             var filesToBeUpdated = fileUpdater.AllFiles.Where(f => f.Status != Status.Existing);

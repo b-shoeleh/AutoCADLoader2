@@ -1,28 +1,28 @@
-﻿using AutoCADLoader.Models.Applications;
+﻿using AutoCADLoader.Models;
+using AutoCADLoader.Models.Applications;
 using AutoCADLoader.Models.Offices;
-using AutoCADLoader.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Linq.Expressions;
 
 namespace AutoCADLoader.Utility
 {
-    public class FileUpdater(Office rememberedOffice)
+    public class FileUpdaterLoader
     {
-        public string UpdateFromPath { get; set; } = @"";
+        public string UpdateLoaderFromPathLocal { get; } = @$"{Environment.SpecialFolder.CommonPrograms}\Arcadis\AutoCAD Loader\Configuration";
+        public string UpdateLoaderFromPath { get; set; } = @$"\\anf-scus-03ce.arcadis-nl.local\proddata501\AIBI_TECHSTND_NA\_TechSTND";
         public List<FileItem> AllFiles { get; set; } = [];
         private bool isProcessRunning { get; set; }
-        public Office RememberedOffice { get; set; } = rememberedOffice;
+        public Office RememberedOffice { get; set; }
+
+        public FileUpdaterLoader(Office rememberedOffice)
+        {
+            RememberedOffice = rememberedOffice;
+            // TODO: Work out how user's office will affect the update path
+        }
 
         public string CompareAll()
         {
-            if (!Directory.Exists(UpdateFromPath))
+            if (!Directory.Exists(UpdateLoaderFromPath))
             {
                 //abort update
                 return "Update standards folder not found!";
@@ -42,16 +42,16 @@ namespace AutoCADLoader.Utility
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
 
-                return $"Error updating from: {UpdateFromPath}";
+                return $"Error updating from: {UpdateLoaderFromPath}";
             }
 
-            return $"Successfully updated from: {UpdateFromPath}";
+            return $"Successfully updated from: {UpdateLoaderFromPath}";
         }
 
 
         public bool ComparePackages()
         {
-            var source = new DirectoryInfo(Utils.NetPackageFolder(UpdateFromPath));
+            var source = new DirectoryInfo(Utils.NetPackageFolder(UpdateLoaderFromPath));
             var target = new DirectoryInfo(UserInfo.LocalAppDataFolder("Packages"));
 
             return CompareFolder(source, target, ResourceType.Package);
@@ -60,7 +60,7 @@ namespace AutoCADLoader.Utility
 
         public void CompareXML()
         {
-            var source = new DirectoryInfo(Utils.NetXMLFolder(UpdateFromPath));
+            var source = new DirectoryInfo(Utils.NetXMLFolder(UpdateLoaderFromPath));
             var target = new DirectoryInfo(UserInfo.LocalAppDataFolder("Settings"));
 
             //compare all source xml files
@@ -68,7 +68,7 @@ namespace AutoCADLoader.Utility
 
             //compare office.csv file
             string officeCode = "OfficeCodes.csv";
-            var officeSrc = new FileInfo(Path.Combine(Utils.NetRefFolder(UpdateFromPath), officeCode));
+            var officeSrc = new FileInfo(Path.Combine(Utils.NetRefFolder(UpdateLoaderFromPath), officeCode));
             var officeDest = Path.Combine(UserInfo.LocalAppDataFolder("Settings"), officeCode);
             CompareFile(officeSrc, officeDest, ResourceType.Support);
 
@@ -76,7 +76,7 @@ namespace AutoCADLoader.Utility
 
         public void CompareSupport()
         {
-            var source = new DirectoryInfo(Utils.NetSupportFolder(UpdateFromPath));
+            var source = new DirectoryInfo(Utils.NetSupportFolder(UpdateLoaderFromPath));
             var target = new DirectoryInfo(Utils.SrcSupportLocation());
 
             CompareFolder(source, target, ResourceType.Support);

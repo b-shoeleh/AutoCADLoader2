@@ -143,5 +143,10 @@ namespace AutoCADLoader.Models.Offices
                 return Path.Combine(@"\\", Region + ".ibigroup.com\\j\\", OfficeCode);
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Region.ToUpper()} - {Name} ({OfficeCode})";
+        }
     }
 }

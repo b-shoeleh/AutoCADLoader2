@@ -55,13 +55,7 @@
                         <TextBlock>Application</TextBlock>
                         <ComboBox x:Name="cbApplications" MinWidth="150"
                                   ItemsSource="{Binding Path=InstalledApplications}" 
-                                  Text="--Select application--" IsReadOnly="True" IsEditable="True">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Title}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                                  Text="--Select application--" IsReadOnly="True" IsEditable="True"/>
                     </StackPanel>
                 </GroupBox>
 
@@ -128,9 +122,11 @@
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding UserName}"/>
 
                     <TextBlock Grid.Row="1" Grid.Column="0">Working office</TextBlock>
-                    <ComboBox Grid.Row="1" Grid.Column="1" 
+                    <ComboBox x:Name="cbOffices" Grid.Row="1" Grid.Column="1" 
                               ItemsSource="{Binding Path=Offices}"
-                              DisplayMemberPath="Name" Text="--Select office--" IsEditable="True" IsReadOnly="True">
+                              Text="--Select office--" IsEditable="True" IsReadOnly="True"
+                              SelectedValuePath="IsUsersOffice"
+                              SelectedValue="true">
                     </ComboBox>
                 </Grid>
             </GroupBox>
@@ -142,6 +138,7 @@
                 <Button MinHeight="50" Click="Button_Click">Start application</Button>
             </GroupBox>
 
+            <!--Possibly not going to be needed in this implementation of the loader-->
             <!--<GroupBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                 <GroupBox.Header>
                     <Label>Design Technology Notices</Label>

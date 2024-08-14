@@ -38,9 +38,12 @@ namespace AutoCADLoader.ViewModels
 
         public string UserName { get; } = UserInfo.UserName();
 
+
         public MainWindowViewModel()
         {
+            SetUpInstalledApplications();
 
+            var rememberedOffice = OfficesCollection.GetRememberedOfficeOrDefault();
         }
 
         private void SetUpInstalledApplications()
@@ -76,8 +79,6 @@ namespace AutoCADLoader.ViewModels
                     }
                 }
             }
-
-
         }
     }
 }

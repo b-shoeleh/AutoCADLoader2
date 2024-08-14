@@ -28,7 +28,12 @@ namespace AutoCADLoader.Models
         //App specific registry
         // Computer\HKEY_CURRENT_USER\SOFTWARE\IBI Group\AcadLoader\Title_Version_Plugin
         public List<string> Packages { get; set; }
+
+        /// <summary>
+        /// Office code for the working office saved to registry when the user last started an application
+        /// </summary>
         public string ActiveOffice { get; set; }
+
         //public string HomeRegion { get; set; }
         public string ActiveRegion { get; set; }
         public string Hardware { get; set; }

@@ -13,7 +13,17 @@ namespace AutoCADLoader.Models
 {
     public class UserInfo
     {
-        public Office Office { get; set; }
+        private Office _office;
+        public Office Office
+        {
+            get
+            { return _office; }
+            set
+            {
+                _office = value;
+                _office.IsUsersOffice = true;
+            }
+        }
 
         public UserInfo()
         {

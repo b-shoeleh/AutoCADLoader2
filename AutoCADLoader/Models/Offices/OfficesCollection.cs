@@ -34,8 +34,6 @@ namespace AutoCADLoader.Models.Offices
                 EventLogger.Log(status, EventLogEntryType.Information);
             }
 
-
-
             // Fallback methods of loading office data in event of server outage
 
             if (!officeDataSet) // Attempt to load office data from a local file
@@ -135,6 +133,18 @@ namespace AutoCADLoader.Models.Offices
             }
 
             return false;
+        }
+
+        public static void SetUserOffice(Office userOffice, UserInfo userInfo)
+        {
+            var currentUserOffice = Data.Where(o => o.IsUsersOffice).FirstOrDefault();
+            if(currentUserOffice is not null)
+            {
+                currentUserOffice.IsUsersOffice = false;
+            }
+
+            userOffice.IsUsersOffice = true;
+            userInfo.Office = userOffice;
         }
 
         public static Office GetOfficeByName(string officeName, string officeRegion)
