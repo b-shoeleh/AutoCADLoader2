@@ -1,15 +1,33 @@
-﻿using AutoCADLoader.Models;
+﻿using AutoCADLoader.Commands;
+using AutoCADLoader.Models;
 using AutoCADLoader.Models.Applications;
 using AutoCADLoader.Models.Offices;
+using AutoCADLoader.Models.Packages;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace AutoCADLoader.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<AutodeskApplication> Applications { get; set; } = new ObservableCollection<AutodeskApplication>(InfoCollector.AppCollector().Apps);
+        public ObservableCollection<InstalledAutodeskApplication> ApplicationsInstalled { get; set; } = [];
 
-        public ObservableCollection<InstalledAutodeskApplication> InstalledApplications { get; set; } = [];
+        private InstalledAutodeskApplication? _applicationInstalledSelected;
+        public InstalledAutodeskApplication? ApplicationInstalledSelected
+        {
+            get
+            {
+                return _applicationInstalledSelected;
+            }
+            set
+            {
+                if (value != _applicationInstalledSelected)
+                {
+                    _applicationInstalledSelected = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public ObservableCollection<Tuple<string, int>> SystemHealth { get; set; } = [
             new Tuple<string, int>("Windows", 0),
@@ -17,45 +35,92 @@ namespace AutoCADLoader.ViewModels
             new Tuple<string, int>("User Temp", 0)
         ];
 
-        public ObservableCollection<string> AvailablePackages { get; set; } = ["Package 1", "Package 2", "Package 3"];
-
-        private AvailableUpdatesViewModel _availableUpdates = new();
-        public AvailableUpdatesViewModel AvailableUpdates
+        private ObservableCollection<BundleViewModel> _bundlesAvailable = [];
+        public ObservableCollection<BundleViewModel> BundlesAvailable
         {
             get
             {
-                return _availableUpdates;
+                return _bundlesAvailable;
             }
             set
             {
-                _availableUpdates = value;
+                _bundlesAvailable = value;
+            }
+        }
+
+        private AvailableUpdatesViewModel _updatesAvailable = new();
+        public AvailableUpdatesViewModel UpdatesAvailable
+        {
+            get
+            {
+                return _updatesAvailable;
+            }
+            set
+            {
+                _updatesAvailable = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<Office> Offices { get; set; } = new ObservableCollection<Office>(OfficesCollection.Data);
-        //public ObservableCollection<string> Notices { get; set; } = ["Notice 1", "Notice 2", "Notice 3"];
-
         public string UserName { get; } = UserInfo.UserName();
+
+        public ObservableCollection<Office> Offices { get; set; } = new ObservableCollection<Office>(Models.Offices.Offices.Data);
+
+        private Office? _officeSelected;
+        public Office? OfficeSelected
+        {
+            get
+            {
+                return _officeSelected;
+            }
+            set
+            {
+                if (value != _officeSelected)
+                {
+                    _officeSelected = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool ResetAllSettingsIsChecked { get; set; } = false;
+
+        public bool HardwareAccelerationIsChecked { get; set; } = false;
+
+        public bool Clear { get; set; }
+
+        // Commands
+        private readonly ICommand _syncOfficeStandardsCommand = new SyncOfficeStandardsCommand();
+        public ICommand SyncOfficeStandardsCommand => _syncOfficeStandardsCommand;
+
+        private readonly LaunchApplicationRelayCommand _lauchApplicationCommand;
+        public LaunchApplicationRelayCommand LaunchApplicationCommand => _lauchApplicationCommand;
 
 
         public MainWindowViewModel()
         {
-            SetUpInstalledApplications();
+            _lauchApplicationCommand = new(
+                param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected!, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked),
+                param => LaunchApplicationCommand.CanExecute(ApplicationInstalledSelected, OfficeSelected)
+            );
 
-            var rememberedOffice = OfficesCollection.GetRememberedOfficeOrDefault();
+            // TODO: Improve
+            SetUpInstalledApplications();
+            SetUpAvailableBundles();
+            var rememberedOffice = Models.Offices.Offices.GetSavedOfficeOrDefault();
         }
+
 
         private void SetUpInstalledApplications()
         {
-            var allApplications = InfoCollector.AppCollector().Apps;
+            var allApplications = InfoCollector.AutodeskApplicationsCollection.Apps;
             foreach (var app in allApplications)
             {
                 foreach (var appVersion in app.AppVersions)
                 {
                     if (appVersion.Installed)
                     {
-                        InstalledApplications.Add(new()
+                        ApplicationsInstalled.Add(new()
                         {
                             AutodeskApplication = app,
                             AppVersion = appVersion
@@ -67,7 +132,7 @@ namespace AutoCADLoader.ViewModels
                             {
                                 if (plugin.Installed == true)
                                 {
-                                    InstalledApplications.Add(new()
+                                    ApplicationsInstalled.Add(new()
                                     {
                                         AutodeskApplication = app,
                                         AppVersion = appVersion,
@@ -79,6 +144,17 @@ namespace AutoCADLoader.ViewModels
                     }
                 }
             }
+        }
+
+        private void SetUpAvailableBundles()
+        {
+            ObservableCollection<BundleViewModel> bundlesAvailable = [];
+            foreach(Bundle bundle in InfoCollector.BundleCollection.Packages)
+            {
+                bundlesAvailable.Add(new(bundle));
+            }
+
+            BundlesAvailable = bundlesAvailable;
         }
     }
 }

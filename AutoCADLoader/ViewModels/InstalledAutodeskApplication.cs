@@ -8,6 +8,7 @@ namespace AutoCADLoader.ViewModels
         public required AppVersion AppVersion { get; set; }
         public Plugin? Plugin { get; set; }
 
+
         public override string ToString()
         {
             string result = $"{AutodeskApplication.Title} {AppVersion.Number}";

@@ -6,9 +6,18 @@
         xmlns:local="clr-namespace:AutoCADLoader.Windows"
         mc:Ignorable="d"
         Title="AutoCAD Loader" Height="450" Width="300"
+        AllowsTransparency="True" WindowStyle="None"
         WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="10">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.5" Color="White"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="Image">
+            <Setter Property="Opacity" Value="0.7" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.075*"/>
             <RowDefinition Height="0.25*"/>
@@ -17,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <Image Grid.Row="0" Source="/Resources/Images/LogoArcadis.png"/>
-        <Image Grid.Row="1" Source="/Resources/Images/LogoAutoCADLoader.png"/>
+        <Image Grid.Row="1" Source="/Resources/Images/LogoAutoCADTransparent.png"/>
         <TextBlock Grid.Row="2" Text="{Binding Version}"/>
         <TextBlock Grid.Row="3" Text="{Binding LoadingStatus}"/>
     </Grid>

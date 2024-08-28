@@ -1,550 +1,161 @@
 [
     {
-        "machineCode": "AB",
-        "serverCode": "AB",
-        "office": "Abu Dhabi",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Calgary"
     },
     {
-        "machineCode": "DB",
-        "serverCode": "DB",
-        "office": "Dubai",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Edmonton"
     },
     {
-        "machineCode": "AL",
-        "serverCode": "AL",
-        "office": "Alexandria",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "FortMcMurray",
+        "displayName" : "Fort McMurray"
     },
     {
-        "machineCode": "BU",
-        "serverCode": "BU",
-        "office": "Burnaby",
-        "region": "CanWest",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Hamilton"
     },
     {
-        "machineCode": "MS",
-        "serverCode": "HM",
-        "office": "Hamilton",
-        "region": "CanEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "LondonON",
+        "displayName" : "London Ontario"
     },
     {
-        "machineCode": "TA",
-        "serverCode": "TA",
-        "office": "Tel Aviv",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Mississauga"
     },
     {
-        "machineCode": "KN",
-        "serverCode": "KN",
-        "office": "Kingston",
-        "region": "CanEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Ottawa"
     },
     {
-        "machineCode": "FM",
-        "serverCode": "FM",
-        "office": "Fort McMurray",
-        "region": "CanWest",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "RichmondHill",
+        "displayName" : "Richmond Hill"
     },
     {
-        "machineCode": "PB",
-        "serverCode": "BC",
-        "office": "Pompano Beach",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Toronto55",
+        "displayName" : "Toronto 55"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Orlando",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Toronto95",
+        "displayName" : "Toronto 95"
     },
     {
-        "machineCode": "KX",
-        "serverCode": "KX",
-        "office": "Knoxville",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "TorontoWest",
+        "displayName" : "Toronto West"
     },
     {
-        "machineCode": "CM",
-        "serverCode": "WS",
-        "office": "Columbus",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Vancouver"
     },
     {
-        "machineCode": "CI",
-        "serverCode": "CI",
-        "office": "Cincinnati",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "ACA",
+        "officeDir": "Waterloo"
     },
     {
-        "machineCode": "CN",
-        "serverCode": "CN",
-        "office": "Canton",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Alexandria"
     },
     {
-        "machineCode": "NL",
-        "serverCode": "NL",
-        "office": "New Lexington",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Binghamton"
     },
     {
-        "machineCode": "BR",
-        "serverCode": "BR",
-        "office": "Birmingham",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Canton"
     },
     {
-        "machineCode": "NW",
-        "serverCode": "NW",
-        "office": "Newark",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Cincinnati"
     },
     {
-        "machineCode": "DL",
-        "serverCode": "DL",
-        "office": "Dublin",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Denver"
     },
     {
-        "machineCode": "AT",
-        "serverCode": "MR",
-        "office": "Athens",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Houston"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Montenegro",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Irvine"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Hong Kong",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Knoxville"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "New Delhi",
-        "region": "ASIA",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "LosAngeles",
+        "displayName": "Los Angeles"
     },
     {
-        "machineCode": "RC",
-        "serverCode": "LD",
-        "office": "Rochdale",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Maitland"
     },
     {
-        "machineCode": "MN",
-        "serverCode": "LD",
-        "office": "Manchester",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "NewLexington",
+        "displayName": "New Lexington"
     },
     {
-        "machineCode": "GL",
-        "serverCode": "GL",
-        "office": "Glasgow",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "NewYorkCity",
+        "displayName": "New York City"
     },
     {
-        "machineCode": "CD",
-        "serverCode": "LD",
-        "office": "Cardiff",
-        "region": "Europe",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "PampanoBeach",
+        "displayName": "Pompano Beach"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Salt Lake City",
-        "region": "USAWest",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Portland"
     },
     {
-        "machineCode": "SE",
-        "serverCode": "SE",
-        "office": "Seattle",
-        "region": "USAWest",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Raleigh"
     },
     {
-        "machineCode": "PR",
-        "serverCode": "PR",
-        "office": "Portland",
-        "region": "USAWest",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "SaltLakeCity",
+        "displayName": "Salt Lake City"
     },
     {
-        "machineCode": "BO",
-        "serverCode": "BO",
-        "office": "Boston",
-        "region": "USAEast",
-        "pointCloud": null,
-        "jOverride": "arcadis-nl.local\\dfs\\AIBI_PJ\\Boston",
-        "secureProjects": "usaeast.ibigroup.com\\j\\BO"
+        "regionDir": "AUS",
+        "officeDir": "SanDiego",
+        "displayName": "San Diego"
     },
     {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Boston  (CRJA)",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "SanDiego",
+        "displayName": "San Diego"
     },
     {
-        "machineCode": "BN",
-        "serverCode": "BN",
-        "office": "Binghamton",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "SanFrancisco",
+        "displayName": "San Francisco"
     },
     {
-        "machineCode": "RL",
-        "serverCode": "RL",
-        "office": "Raleigh",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "SanLuisObispo",
+        "displayName": "San Luis Obispo"
     },
     {
-        "machineCode": "ST",
-        "serverCode": "ST",
-        "office": "Southfield",
-        "region": "USAEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Seattle"
     },
     {
-        "machineCode": "BK",
-        "serverCode": "BK",
-        "office": "Bakersfield",
-        "region": "USAWest",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Southville"
     },
     {
-        "machineCode": "HS",
-        "serverCode": "HS",
-        "office": "Houston",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "IR",
-        "serverCode": "IR",
-        "office": "Irvine",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "SD",
-        "serverCode": "SD",
-        "office": "San Diego",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Trinidad",
-        "region": "ASIA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "SJ",
-        "serverCode": "SJ",
-        "office": "San Jose",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "TO",
-        "serverCode": "TO",
-        "office": "Toronto",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "VN",
-        "serverCode": "VN",
-        "office": "Vancouver",
-        "region": "CanWest",
-        "pointCloud": "10.120.64.56\\PointCloud"
-    },
-    {
-        "machineCode": "CA",
-        "serverCode": "CA",
-        "office": "Calgary",
-        "region": "CanWest",
-        "pointCloud": "10.120.80.90\\Point_Clouds"
-    },
-    {
-        "machineCode": "ED",
-        "serverCode": "ED",
-        "office": "Edmonton",
-        "region": "CanWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "HL",
-        "serverCode": "HL",
-        "office": "Halifax",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "RH",
-        "serverCode": "MK",
-        "office": "Markham",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "OT",
-        "serverCode": "OT",
-        "office": "Ottawa",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "WT",
-        "serverCode": "WT",
-        "office": "Waterloo",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "KL",
-        "serverCode": "VN",
-        "office": "Kelowna",
-        "region": "CanWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": "LO",
-        "office": "London",
-        "region": "Europe",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "BG",
-        "serverCode": "LD",
-        "office": "Brighton",
-        "region": "Europe",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "SN",
-        "serverCode": "SN",
-        "office": "San Luis Obispo",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Riyadh",
-        "region": "ASIA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "LA",
-        "serverCode": "LA",
-        "office": "Los Angeles",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Hamilton",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Markham West",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Liverpool",
-        "region": "Europe",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Montreal",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Richmond Hill (Mobile)",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Central\u00A0Product\u00A0Development",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Boston (KCUS)",
-        "region": "USAEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Germany",
-        "region": "ASIA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Bogota",
-        "region": "ASIA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "USA\u00A0Corporate",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Denver",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Brantford",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Mississauga",
-        "region": "CanWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "TW",
-        "serverCode": "TW",
-        "office": "Toronto West",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Oakville",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "New Brunswick",
-        "region": "CanEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Washington D.C. (Virginia)",
-        "region": "USAEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "NY",
-        "serverCode": "NY",
-        "office": "New York (GS)",
-        "region": "USAEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "BC",
-        "serverCode": "BC",
-        "office": "Boca Raton",
-        "region": "USAEast",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Portland - DOWA",
-        "region": "USAWest",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "LO",
-        "serverCode": "LD",
-        "office": "London (UK)",
-        "region": "Europe",
-        "pointCloud": null
-    },
-    {
-        "machineCode": null,
-        "serverCode": null,
-        "office": "Delhi",
-        "region": "CASAA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "MC",
-        "serverCode": "MC",
-        "office": "Mexico",
-        "region": "ASIA",
-        "pointCloud": null
-    },
-    {
-        "machineCode": "HM",
-        "serverCode": "HM",
-        "office": "Hamilton",
-        "region": "CanEast",
-        "pointCloud": null
+        "regionDir": "AUS",
+        "officeDir": "Westerville"
     }
 ]

@@ -1,0 +1,50 @@
+﻿<Window x:Class="AutoCADLoader.Windows.UnitSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCADLoader.Windows"
+        mc:Ignorable="d"
+        Title="Select default units" 
+        Height="200" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20, 20, 20, 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" 
+                   Margin="5"
+                   TextWrapping="Wrap">
+            Please allow AutoCAD/Civil 3D to completely load to create user settings, close AutoCAD/Civil 3D, and try again!
+        </TextBlock>
+        <StackPanel Grid.Row="1" 
+                    Margin="0, 10, 0, 10"
+                    Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" 
+                       VerticalAlignment="Bottom"
+                       Margin="0, 0, 20, 0">
+            Please select the Default Units prior to starting:
+            </TextBlock>
+            <StackPanel HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+                <RadioButton 
+                    Name="rbUnitsImperial"
+                    Margin="5, 0, 0, 0"
+                    IsChecked="True">
+                    Imperial
+                </RadioButton>
+                <RadioButton 
+                    Name="rbUnitsMetric"
+                    Margin="5, 0, 0, 0">
+                    Metric
+                </RadioButton>
+            </StackPanel>
+        </StackPanel>
+        <Button HorizontalAlignment="Right" Grid.Row="2" Click="Button_Click">
+            Continue
+        </Button>
+    </Grid>
+</Window>

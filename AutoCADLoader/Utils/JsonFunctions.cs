@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoCADLoader.Utility
 {
     public static class JSONFunctions
     {
-        private const int _timeoutSeconds = 5;
+        private const int _timeoutSeconds = 20;
 
         private static HttpClient _httpClient = new HttpClient();
 
-        public static string GetJsonFromServer(string url, int timeoutSeconds = _timeoutSeconds)
+        public static string? GetJsonFromServer(string url, int timeoutSeconds = _timeoutSeconds)
         {
             EventLogger.Log("Getting Json from server: " + url, EventLogEntryType.Information);
-
 
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -27,7 +21,7 @@ namespace AutoCADLoader.Utility
 
             CancellationTokenSource cts = new CancellationTokenSource();
             cts.CancelAfter(TimeSpan.FromSeconds(timeoutSeconds));
-            Task<HttpResponseMessage> getResponse = null;
+            Task<HttpResponseMessage> getResponse;
             try
             {
                 getResponse = Task.Run(() => _httpClient.GetAsync(url, cts.Token));
@@ -75,7 +69,7 @@ namespace AutoCADLoader.Utility
             return null;
         }
 
-        public static string GetJsonFromLocalFile(string jsonFilePath)
+        public static string? GetJsonFromLocalFile(string jsonFilePath)
         {
             try
             {

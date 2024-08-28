@@ -6,31 +6,10 @@
       <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\IBI Group\IBI Group - AutoCAD Loader</Value>
     </Setting>
     <Setting Name="RegistryKeyOfficesApi" Type="System.String" Scope="User">
-      <Value Profile="(Default)">URLOfficeAPI</Value>
+      <Value Profile="(Default)">URLAPIOffices</Value>
     </Setting>
     <Setting Name="RegistryKeyInstallPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Path</Value>
-    </Setting>
-    <Setting Name="NetXMLFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">_Applications\Ref\AutoCADLoader\</Value>
-    </Setting>
-    <Setting Name="NetSupportFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">_DesignCenter\Support</Value>
-    </Setting>
-    <Setting Name="NetRefFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">_Applications\Ref\</Value>
-    </Setting>
-    <Setting Name="NetPackageFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">_Applications\_PackageUpdates\</Value>
-    </Setting>
-    <Setting Name="DstSupportFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\IBI\IBIACad</Value>
-    </Setting>
-    <Setting Name="CompanyFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Arcadis</Value>
-    </Setting>
-    <Setting Name="AppName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">AutoCAD Loader</Value>
     </Setting>
   </Settings>
 </SettingsFile>

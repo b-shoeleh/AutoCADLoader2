@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<PackageCollection>
+	<Packages>
+		<Package>
+			<Title>IBI-Default</Title>
+			<Autocad>true</Autocad>
+			<Civil3d>true</Civil3d>
+		</Package>
+		
+		<Package>
+			<Title>IBI-AcadFramework</Title>
+			<Autocad>true</Autocad>
+			<Civil3d>false</Civil3d>
+		</Package>
+		
+		<Package>
+			<Title>IBI-ArchDESKTOP</Title>
+			<Autocad>true</Autocad>
+			<Civil3d>false</Civil3d>
+		</Package>
+		
+		<Package>
+			<Title>IBI-Civil3D</Title>
+			<Autocad>false</Autocad>
+			<Civil3d>true</Civil3d>
+		</Package>
+	
+		<Package>
+			<Title>IBI-QCBatchCheck</Title>
+			<Autocad>true</Autocad>
+			<Civil3d>false</Civil3d>
+		</Package>	
+		
+		
+		<Package>
+			<Title>IBI-Geomatics</Title>	
+			<Autocad>false</Autocad>
+			<Civil3d>true</Civil3d>
+		</Package>
+		
+		<Package>
+			<Title>IBI-LandFX</Title>
+			<Autocad>true</Autocad>
+			<Civil3d>true</Civil3d>
+		</Package>
+	</Packages>
+ </PackageCollection>

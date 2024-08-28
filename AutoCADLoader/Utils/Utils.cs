@@ -121,46 +121,5 @@ namespace AutoCADLoader.Utility
 
             return path;
         }
-
-
-        public static string SrcSupportLocation()
-        {
-            string path = Properties.Settings.Default.DstSupportFolder;
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            return path;
-        }
-
-
-        /// <summary>
-        /// returns location of reference folder for OfficeCodes.csv
-        /// </summary>
-        /// <param name="networkPath"></param>
-        /// <returns></returns>
-        public static string NetRefFolder(string networkPath)
-        {
-            return Path.Combine(networkPath, Properties.Settings.Default.NetRefFolder);
-        }
-
-        public static string NetXMLFolder(string networkPath)
-        {
-            return Path.Combine(networkPath, Properties.Settings.Default.NetXMLFolder);
-        }
-
-        public static string NetPackageFolder(string networkPath)
-        {
-            return Path.Combine(networkPath, Properties.Settings.Default.NetPackageFolder);
-        }
-
-        public static string NetSupportFolder(string networkPath)
-        {
-            return Path.Combine(networkPath, Properties.Settings.Default.NetSupportFolder);
-        }
-
-
     }
 }

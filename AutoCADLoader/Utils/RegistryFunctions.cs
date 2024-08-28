@@ -11,10 +11,10 @@ namespace AutoCADLoader.Utility
     {
         // Default registry locations, will be overridden by application settings if they exist
 
-        private static readonly string _registryPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\IBI Group\IBI Group - AutoCAD Loader";
+        private static readonly string _registryPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Arcadis\AutoCAD Loader";
 
         private static readonly string _installPathKey = "Path";
-        private static readonly string _urlOfficeApiKey = "URLOfficeAPI";
+        private static readonly string _urlApiOfficesKey = "UrlApiOffices";
 
 
         static RegistryFunctions()
@@ -26,7 +26,7 @@ namespace AutoCADLoader.Utility
                 _installPathKey = Properties.Settings.Default.RegistryKeyInstallPath;
 
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.RegistryKeyOfficesApi))
-                _urlOfficeApiKey = Properties.Settings.Default.RegistryKeyOfficesApi;
+                _urlApiOfficesKey = Properties.Settings.Default.RegistryKeyOfficesApi;
         }
 
         public static string GetInstallPath()
@@ -36,7 +36,7 @@ namespace AutoCADLoader.Utility
 
         public static string GetOfficeApiUrl()
         {
-            return GetString(_urlOfficeApiKey);
+            return GetString(_urlApiOfficesKey);
         }
 
 

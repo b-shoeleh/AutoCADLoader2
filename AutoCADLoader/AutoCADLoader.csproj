@@ -6,14 +6,28 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Images\IconAutoCADLoader.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\IconAutoCADLoader.ico" />
     <None Remove="Resources\Images\LogoArcadis.png" />
     <None Remove="Resources\Images\LogoAutoCADLoader.png" />
+    <None Remove="Resources\Images\LogoAutoCADTransparent.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Images\IconAutoCADLoader.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\IconAutoCADLoader.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\LogoAutoCADTransparent.png" />
     <Resource Include="Resources\Images\LogoArcadis.png" />
     <Resource Include="Resources\Images\LogoAutoCADLoader.png" />
   </ItemGroup>
@@ -23,11 +37,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

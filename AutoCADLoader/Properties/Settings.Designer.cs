@@ -12,7 +12,7 @@ namespace AutoCADLoader.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -37,7 +37,7 @@ namespace AutoCADLoader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("URLOfficeAPI")]
+        [global::System.Configuration.DefaultSettingValueAttribute("URLAPIOffices")]
         public string RegistryKeyOfficesApi {
             get {
                 return ((string)(this["RegistryKeyOfficesApi"]));
@@ -56,90 +56,6 @@ namespace AutoCADLoader.Properties {
             }
             set {
                 this["RegistryKeyInstallPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("_Applications\\Ref\\AutoCADLoader\\")]
-        public string NetXMLFolder {
-            get {
-                return ((string)(this["NetXMLFolder"]));
-            }
-            set {
-                this["NetXMLFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("_DesignCenter\\Support")]
-        public string NetSupportFolder {
-            get {
-                return ((string)(this["NetSupportFolder"]));
-            }
-            set {
-                this["NetSupportFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("_Applications\\Ref\\")]
-        public string NetRefFolder {
-            get {
-                return ((string)(this["NetRefFolder"]));
-            }
-            set {
-                this["NetRefFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("_Applications\\_PackageUpdates\\")]
-        public string NetPackageFolder {
-            get {
-                return ((string)(this["NetPackageFolder"]));
-            }
-            set {
-                this["NetPackageFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\IBI\\IBIACad")]
-        public string DstSupportFolder {
-            get {
-                return ((string)(this["DstSupportFolder"]));
-            }
-            set {
-                this["DstSupportFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Arcadis")]
-        public string CompanyFolder {
-            get {
-                return ((string)(this["CompanyFolder"]));
-            }
-            set {
-                this["CompanyFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AutoCAD Loader")]
-        public string AppName {
-            get {
-                return ((string)(this["AppName"]));
-            }
-            set {
-                this["AppName"] = value;
             }
         }
     }

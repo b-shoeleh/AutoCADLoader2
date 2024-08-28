@@ -24,22 +24,11 @@ namespace AutoCADLoader.ViewModels
             }
         }
 
-        private AvailableUpdateViewModel _supportFiles = new AvailableUpdateViewModel() { Title = "Support Files" };
-        public AvailableUpdateViewModel SupportFiles
-        {
-            get { return _supportFiles; }
-            set
-            {
-                _supportFiles = value;
-                OnPropertyChanged();
-            }
-        }
-
         public ObservableCollection<AvailableUpdateViewModel> GetAll
         {
             get
             {
-                ObservableCollection<AvailableUpdateViewModel> list = [Packages, Settings, SupportFiles];
+                ObservableCollection<AvailableUpdateViewModel> list = [Packages, Settings];
                 return list;
             }
         }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace AutoCADLoader.Utility
 {
@@ -14,20 +9,18 @@ namespace AutoCADLoader.Utility
         private static string _eventLogName = "Arcadis-IBI";
         private static string _eventLogSourceName = "AutoCAD Loader";
 
-        internal static void Initialize(bool logInfo)
+        public static void Initialize(bool logInfo)
         {
             _logInfo = logInfo;
-
-#if DEBUG
-            _logInfo = true;
-#endif
         }
 
 
         public static void Log(string message, EventLogEntryType entryType)
         {
-            if (_logInfo == false && entryType == EventLogEntryType.Information)
+            if (!_logInfo && entryType == EventLogEntryType.Information)
+            {
                 return;
+            }
 
             try
             {

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AutoCADLoader": {
+      "commandName": "Project",
+      "commandLineArgs": "log"
+    }
+  }
+}

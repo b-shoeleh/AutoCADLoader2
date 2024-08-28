@@ -5,10 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCADLoader"
         xmlns:vms="clr-namespace:AutoCADLoader.ViewModels"
+        xmlns:ie="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="AutoCAD/Civil 3D Loader" Height="600" Width="450"
         SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/Resources/Images/IconAutoCADLoader.ico">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+
     <Grid Margin="10, 0, 10, 10">
         <Grid.RowDefinitions>
             <!--Menu-->
@@ -29,10 +36,12 @@
 
         <!-- Menu -->
         <DockPanel Grid.Row="0">
+            <ToggleButton x:Name="VisibilityToggle">
+                Advanced
+            </ToggleButton>
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Advanced"/>
-                <MenuItem Header="_Drive Cleaner"/>
-                <MenuItem Header="_Help"/>
+                <!--<MenuItem Header="_Drive Cleaner"/>
+                <MenuItem Header="_Help"/>-->
             </Menu>
         </DockPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical">
@@ -54,8 +63,9 @@
                     <StackPanel Orientation="Vertical">
                         <TextBlock>Application</TextBlock>
                         <ComboBox x:Name="cbApplications" MinWidth="150"
-                                  ItemsSource="{Binding Path=InstalledApplications}" 
-                                  Text="--Select application--" IsReadOnly="True" IsEditable="True"/>
+                                  ItemsSource="{Binding Path=ApplicationsInstalled}"
+                                  SelectedItem="{Binding ApplicationInstalledSelected, Mode=TwoWay}"
+                                  Text="--Select application--" IsReadOnly="True" IsEditable="True" SelectionChanged="cbApplications_SelectionChanged"/>
                     </StackPanel>
                 </GroupBox>
 
@@ -77,10 +87,17 @@
                     <GroupBox.Header>
                         <Label>Available Packages</Label>
                     </GroupBox.Header>
-                    <ListBox ItemsSource="{Binding AvailablePackages}">
+                    <ListBox Name="lstPackages"
+                        ItemsSource="{Binding BundlesAvailable}"
+                        HorizontalContentAlignment="Stretch"
+                        MinWidth="200"
+                        MinHeight="120"
+                        MaxHeight="150" Initialized="lstPackages_Initialized">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="False" Content="{Binding}" />
+                                <CheckBox 
+                                    Content="{Binding Path=Name}" 
+                                    IsChecked="{Binding Path=Active, Mode=TwoWay}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -90,7 +107,7 @@
                     <GroupBox.Header>
                         <Label>Available Updates</Label>
                     </GroupBox.Header>
-                    <ListView ItemsSource="{Binding AvailableUpdates.GetAll}">
+                    <ListView ItemsSource="{Binding UpdatesAvailable.GetAll}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding Path=Title}"/>
@@ -124,42 +141,47 @@
                     <TextBlock Grid.Row="1" Grid.Column="0">Working office</TextBlock>
                     <ComboBox x:Name="cbOffices" Grid.Row="1" Grid.Column="1" 
                               ItemsSource="{Binding Path=Offices}"
+                              SelectedItem="{Binding OfficeSelected, Mode=TwoWay}"
                               Text="--Select office--" IsEditable="True" IsReadOnly="True"
-                              SelectedValuePath="IsUsersOffice"
+                              SelectedValuePath="IsSavedOffice"
                               SelectedValue="true">
+                        <!--<ie:Interaction.Triggers>
+                            <ie:EventTrigger EventName="SelectionChanged">
+                                <ie:InvokeCommandAction Command="{Binding SyncOfficeStandardsCommand}"  CommandParameter="{Binding ElementName=cbOffices, Path=SelectedItem}"/>
+                            </ie:EventTrigger>
+                        </ie:Interaction.Triggers>-->
                     </ComboBox>
                 </Grid>
+            </GroupBox>
+
+            <GroupBox Visibility="{Binding IsChecked, ElementName=VisibilityToggle, Converter={StaticResource BoolToVisibility}}">
+                <GroupBox.Header>
+                    <Label>Options</Label>
+                </GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Margin="5,5,20,5"
+                              IsChecked="{Binding ResetAllSettingsIsChecked}">
+                        Reset all settings
+                    </CheckBox>
+                    <CheckBox Margin="20,5,5,5"
+                              IsChecked="{Binding HardwareAccelerationIsChecked}">
+                        Hardware acceleration
+                    </CheckBox>
+                </StackPanel>
             </GroupBox>
 
             <GroupBox>
                 <GroupBox.Header>
                     <Label></Label>
                 </GroupBox.Header>
-                <Button MinHeight="50" Click="Button_Click">Start application</Button>
+                <Button MinHeight="50" 
+                        Command="{Binding LaunchApplicationCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Start "/>
+                        <TextBlock Text="{Binding ApplicationInstalledSelected}"/>
+                    </StackPanel>
+                </Button>
             </GroupBox>
-
-            <!--Possibly not going to be needed in this implementation of the loader-->
-            <!--<GroupBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                <GroupBox.Header>
-                    <Label>Design Technology Notices</Label>
-                </GroupBox.Header>
-                <ListView>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Icon" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                            <GridViewColumn Header="Notice" Width="110" DisplayMemberBinding="{Binding Path=Notices}">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock></TextBlock>
-                                        <CheckBox IsChecked="{Binding IsSelected}"
-                                      Content="{Binding DisplayName}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </GroupBox>-->
         </StackPanel>
     </Grid>
 </Window>

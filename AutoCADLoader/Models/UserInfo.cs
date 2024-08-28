@@ -1,56 +1,39 @@
 ﻿using AutoCADLoader.Models.Offices;
-using AutoCADLoader.Utility;
+using AutoCADLoader.Properties;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoCADLoader.Models
 {
-    public class UserInfo
+    // TODO: Could be better using DI rather than static class
+    public static class UserInfo
     {
-        private Office _office;
-        public Office Office
+        private static Office? _savedOffice = null;
+        public static Office? SavedOffice
         {
             get
-            { return _office; }
+            { return _savedOffice; }
             set
             {
-                _office = value;
-                _office.IsUsersOffice = true;
+                _savedOffice = value;
+                if(_savedOffice is not null)
+                {
+                    _savedOffice.IsSavedOffice = true;
+                }
             }
         }
 
-        public UserInfo()
+        static UserInfo()
         {
-            // Set up the office and server code based on the office data
-            Office userOffice = OfficesCollection.GetUsersLocalOfficeOrDefault();
+            SavedOffice = Offices.Offices.GetSavedOfficeOrDefault();
+        }
 
-#if DEBUG
-            // For testing a specific office/region
-            //Office = "Markham";
-            //Region = "CanEast";
-#endif
+        /// <summary>
+        /// Dummy method to force constructor call.
+        /// </summary>
+        public static void Initialize()
+        {
 
-            //userOffice = OfficesCollection.GetOfficeByADNameOrDefault(Office, Region);
-
-            // Fallback values in case all else fails
-            userOffice ??= OfficesCollection.GetOfficeByName("Toronto", "CanEast");
-            userOffice ??= OfficesCollection.GetFallbackOffice();
-
-            // Add this default information in case the JSON data is incomplete
-            if (string.IsNullOrWhiteSpace(userOffice?.Name))
-                userOffice.Name = "Toronto";
-            if (string.IsNullOrWhiteSpace(userOffice?.OfficeCode))
-                userOffice.OfficeCode = "TO";
-            if (string.IsNullOrWhiteSpace(userOffice?.ServerCode))
-                userOffice.ServerCode = "TO";
-
-            Office = userOffice;
         }
 
         /// <summary>
@@ -64,21 +47,6 @@ namespace AutoCADLoader.Models
         public static string UserName()
         {
             return Environment.UserName;
-        }
-
-        public static string MachineName()
-        {
-            return System.Environment.MachineName;
-
-        }
-
-        //string machineName = System.Environment.MachineName;
-        ////get the 2nd and 3rd characters which are the office code for the machine
-        //return machineName.Substring(1, 2);
-
-        public static string DocumentFolder()
-        {
-            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
 
         public static string AppDataFolder(string subfolder = "")
@@ -97,11 +65,9 @@ namespace AutoCADLoader.Models
 
         public static string LocalAppDataFolder(string subfolder = "")
         {
-            var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), LoaderSettings.CompanyFolder, LoaderSettings.ApplicationName);
 
-            appData = $@"{appData}\{Properties.Settings.Default["CompanyFolder"]}\{Properties.Settings.Default["AppName"]}";
-
-            if (subfolder != "")
+            if (!string.IsNullOrWhiteSpace(subfolder))
             {
                 appData = Path.Combine(appData, subfolder);
             }
@@ -111,7 +77,7 @@ namespace AutoCADLoader.Models
 
         public static string CompanyLocalAppDataFolder()
         {
-            return $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{Properties.Settings.Default["CompanyFolder"].ToString()}";
+            return $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{Properties.Settings.Default["CompanyFolder"]}";
         }
 
 
