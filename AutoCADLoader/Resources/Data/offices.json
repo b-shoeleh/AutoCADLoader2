@@ -1,161 +1,324 @@
 [
-    {
-        "regionDir": "ACA",
-        "officeDir": "Calgary"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Edmonton"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "FortMcMurray",
-        "displayName" : "Fort McMurray"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Hamilton"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "LondonON",
-        "displayName" : "London Ontario"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Mississauga"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Ottawa"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "RichmondHill",
-        "displayName" : "Richmond Hill"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Toronto55",
-        "displayName" : "Toronto 55"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Toronto95",
-        "displayName" : "Toronto 95"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "TorontoWest",
-        "displayName" : "Toronto West"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Vancouver"
-    },
-    {
-        "regionDir": "ACA",
-        "officeDir": "Waterloo"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Alexandria"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Binghamton"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Canton"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Cincinnati"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Denver"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Houston"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Irvine"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Knoxville"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "LosAngeles",
-        "displayName": "Los Angeles"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Maitland"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "NewLexington",
-        "displayName": "New Lexington"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "NewYorkCity",
-        "displayName": "New York City"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "PampanoBeach",
-        "displayName": "Pompano Beach"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Portland"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Raleigh"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "SaltLakeCity",
-        "displayName": "Salt Lake City"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "SanDiego",
-        "displayName": "San Diego"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "SanDiego",
-        "displayName": "San Diego"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "SanFrancisco",
-        "displayName": "San Francisco"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "SanLuisObispo",
-        "displayName": "San Luis Obispo"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Seattle"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Southville"
-    },
-    {
-        "regionDir": "AUS",
-        "officeDir": "Westerville"
-    }
+  {
+    "RegionDir": "AAE",
+    "OfficeDir": "AbuDhabi",
+    "DisplayName": "Abu Dhabi"
+  },
+  {
+    "RegionDir": "AAE",
+    "OfficeDir": "Dubai"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Alexandria"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Burnaby"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "TelAviv",
+    "DisplayName": "Tel Aviv"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Kingston"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "FortMcMurray",
+    "DisplayName": "Fort McMurray"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "PompanoBeach",
+    "DisplayName": "Pompano Beach"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Orlando"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Knoxville"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Columbus"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Cincinnati"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Canton"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "NewLexington",
+    "DisplayName": "New Lexington"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Birmingham"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Newark"
+  },
+  {
+    "RegionDir": "AIE",
+    "OfficeDir": "Dublin"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Athens"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Montenegro"
+  },
+  {
+    "RegionDir": "AHK",
+    "OfficeDir": "Hong Kong"
+  },
+  {
+    "RegionDir": "AIN",
+    "OfficeDir": "New Delhi"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Rochdale"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Manchester"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Glasgow"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Cardiff"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "SaltLakeCity",
+    "DisplayName": "Salt Lake City"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Seattle"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Portland"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Boston"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Boston",
+    "DisplayName": "Boston  (CRJA)"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Binghamton"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Raleigh"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Southfield"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Bakersfield"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Houston"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Irvine"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "SanDiego",
+    "DisplayName": "San Diego"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Trinidad"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "SanJose",
+    "DisplayName": "San Jose"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Toronto"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Vancouver"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Calgary"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Edmonton"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Halifax"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Markham"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Ottawa"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Waterloo"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Kelowna"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "London"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Brighton"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "SanLuisObispo",
+    "DisplayName": "San Luis Obispo"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Riyadh"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "LosAngeles",
+    "DisplayName": "Los Angeles"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Hamilton"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "MarkhamWest",
+    "DisplayName": "Markham West"
+  },
+  {
+    "RegionDir": "AGB",
+    "OfficeDir": "Liverpool"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Montreal"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "RichmondHill",
+    "DisplayName": "Richmond Hill (Mobile)"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "CentralProductDev",
+    "DisplayName": "Central Product Development"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "Boston",
+    "DisplayName": "Boston (KCUS)"
+  },
+  {
+    "RegionDir": "AES",
+    "OfficeDir": "Germany"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Bogota"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Brantford"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Mississauga"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "TorontoWest",
+    "DisplayName": "Toronto West"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Oakville"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "NewBrunswick",
+    "DisplayName": "New Brunswick"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "WashingtonDC",
+    "DisplayName": "Washington D.C. (Virginia)"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "NewYork",
+    "DisplayName": "New York (GS)"
+  },
+  {
+    "RegionDir": "AUS",
+    "OfficeDir": "BocaRaton",
+    "DisplayName": "Boca Raton"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "London",
+    "DisplayName": "London (UK)"
+  },
+  {
+    "RegionDir": "",
+    "OfficeDir": "Delhi"
+  },
+  {
+    "RegionDir": "AMX",
+    "OfficeDir": "Mexico"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "Hamilton"
+  },
+  {
+    "RegionDir": "ACA",
+    "OfficeDir": "London",
+    "DisplayName": "London Ontario"
+  }
 ]

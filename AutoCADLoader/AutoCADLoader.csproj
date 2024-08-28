@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+    <Page Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Images\IconAutoCADLoader.ico" />
     <None Remove="Resources\Images\LogoArcadis.png" />
     <None Remove="Resources\Images\LogoAutoCADLoader.png" />
@@ -30,10 +37,6 @@
     <Resource Include="Resources\Images\LogoAutoCADTransparent.png" />
     <Resource Include="Resources\Images\LogoArcadis.png" />
     <Resource Include="Resources\Images\LogoAutoCADLoader.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>

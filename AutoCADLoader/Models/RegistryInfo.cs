@@ -3,12 +3,7 @@ using AutoCADLoader.Models.Packages;
 using AutoCADLoader.Utility;
 using AutoCADLoader.ViewModels;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AutoCADLoader.Models
@@ -46,13 +41,13 @@ namespace AutoCADLoader.Models
         static RegistryInfo()
         {
             ProfileRegistryKey = Registry.CurrentUser;
-            KeyLocation = "IBI Group\\AcadLoader";
+            KeyLocation = "Arcadis\\AutoCAD Loader";
             Bundles = [];
             IsLoaded = false;
             ActiveOffice = UserInfo.SavedOffice.OfficeCode;
             LoadBaseRegistry();
         }
-        
+
         /// <summary>
         /// Dummy method to force constructor call.
         /// </summary>
@@ -432,19 +427,19 @@ namespace AutoCADLoader.Models
         }
 
         public static void UpdateUserRegistry(
-            string title, 
-            string version, 
-            string? plugin, 
-            IEnumerable<Bundle>? bundles, 
-            string activeOffice, 
+            string title,
+            string version,
+            string? plugin,
+            IEnumerable<Bundle>? bundles,
+            string activeOffice,
             bool hardwareAccelerationEnabled)
         {
             Title = title;
             Version = version;
             Plugin = plugin ?? string.Empty;
-            Bundles = [..bundles?.Select(b => b.Title)];
+            Bundles = [.. bundles?.Select(b => b.Title)];
             ActiveOffice = activeOffice;
-            Hardware = hardwareAccelerationEnabled ? "true": "false";
+            Hardware = hardwareAccelerationEnabled ? "true" : "false";
 
             SaveUserRegistry();
         }

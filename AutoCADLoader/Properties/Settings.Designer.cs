@@ -25,7 +25,7 @@ namespace AutoCADLoader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\IBI Group\\IBI Group - AutoCAD Loader")]
+        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\Arcadis\\AutoCAD Loader")]
         public string RegistryPath {
             get {
                 return ((string)(this["RegistryPath"]));
@@ -37,7 +37,7 @@ namespace AutoCADLoader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("URLAPIOffices")]
+        [global::System.Configuration.DefaultSettingValueAttribute("UrlApiOffices")]
         public string RegistryKeyOfficesApi {
             get {
                 return ((string)(this["RegistryKeyOfficesApi"]));

@@ -1,9 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoCADLoader.Utility
 {
@@ -40,11 +35,11 @@ namespace AutoCADLoader.Utility
         }
 
 
-        public static string GetString(string regName, string regPath = null)
+        public static string? GetString(string regName, string regPath = null)
         {
             regPath ??= _registryPath;
 
-            string regValue = null;
+            string regValue;
             try
             {
                 regValue = (string)Registry.GetValue(regPath, regName, null);

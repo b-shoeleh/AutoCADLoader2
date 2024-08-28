@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="RegistryPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\IBI Group\IBI Group - AutoCAD Loader</Value>
+      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\Arcadis\AutoCAD Loader</Value>
     </Setting>
     <Setting Name="RegistryKeyOfficesApi" Type="System.String" Scope="User">
-      <Value Profile="(Default)">URLAPIOffices</Value>
+      <Value Profile="(Default)">UrlApiOffices</Value>
     </Setting>
     <Setting Name="RegistryKeyInstallPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Path</Value>
