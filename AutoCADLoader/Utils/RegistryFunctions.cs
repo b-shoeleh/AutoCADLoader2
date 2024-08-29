@@ -51,5 +51,118 @@ namespace AutoCADLoader.Utility
 
             return regValue;
         }
+
+        // TODO: Improve these registry methods for future use
+
+        public static string? GetStringWithOptions(string regName, string regPath = "", RegistryValueOptions options = RegistryValueOptions.None)
+        {
+            if(string.IsNullOrWhiteSpace(regPath))
+            {
+                regPath = _registryPath;
+            }
+
+            bool hklm = false;
+            if (regPath.StartsWith("HKEY_LOCAL_MACHINE"))
+            {
+                hklm = true;
+                regPath = regPath.Replace("HKEY_LOCAL_MACHINE\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKLM"))
+            {
+                hklm = true;
+                regPath = regPath.Replace("HKLM\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKEY_CURRENT_USER"))
+            {
+                hklm = false;
+                regPath = regPath.Replace("HKEY_CURRENT_USER\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKCU"))
+            {
+                hklm = false;
+                regPath = regPath.Replace("HKCU\\", string.Empty);
+            }
+            else
+            {
+                EventLogger.Log($"Attempting to access registry key outside HKLM or HKCU: {regPath}", System.Diagnostics.EventLogEntryType.Error);
+                return null;
+            }
+
+            try
+            {
+                using (RegistryKey? registryKey = hklm ? Registry.LocalMachine.OpenSubKey(regPath) : Registry.CurrentUser.OpenSubKey(regPath))
+                {
+                    if (registryKey is null)
+                    {
+                        return null;
+                    }
+
+                    regPath ??= _registryPath;
+
+                    string? regValue = registryKey.GetValue(regName, null, options) as string;
+                    return regValue;
+                }
+            }
+            catch
+            {
+                EventLogger.Log($"Error attempting to access registry key: {(hklm ? "HKLM" : "HKCU")}\\{regPath}", System.Diagnostics.EventLogEntryType.Error);
+                return null;
+            }
+        }
+
+        // TODO: Look at genericising this
+        public static bool Set(string regName, string regValue, string regPath = "", RegistryValueKind registryValueType = RegistryValueKind.String)
+        {
+            if (string.IsNullOrWhiteSpace(regPath))
+            {
+                regPath = _registryPath;
+            }
+
+            bool hklm = false;
+            if (regPath.StartsWith("HKEY_LOCAL_MACHINE"))
+            {
+                hklm = true;
+                regPath = regPath.Replace("HKEY_LOCAL_MACHINE\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKLM"))
+            {
+                hklm = true;
+                regPath = regPath.Replace("HKLM\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKEY_CURRENT_USER"))
+            {
+                hklm = false;
+                regPath = regPath.Replace("HKEY_CURRENT_USER\\", string.Empty);
+            }
+            else if (regPath.StartsWith("HKCU"))
+            {
+                hklm = false;
+                regPath = regPath.Replace("HKCU\\", string.Empty);
+            }
+            else
+            {
+                EventLogger.Log($"Attempting to access registry key outside HKLM or HKCU: {regPath}", System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+
+            try
+            {
+                using (RegistryKey? registryKey = hklm ? Registry.LocalMachine.OpenSubKey(regPath, true) : Registry.CurrentUser.OpenSubKey(regPath, true))
+                {
+                    if (registryKey is null)
+                    {
+                        return false;
+                    }
+
+                    registryKey.SetValue(regName, regValue, registryValueType);
+                    return true;
+                }
+            }
+            catch
+            {
+                EventLogger.Log($"Error attempting to access registry key: {(hklm ? "HKLM" : "HKCU")}\\{regPath}", System.Diagnostics.EventLogEntryType.Error);
+                return false;
+            }
+        }
     }
 }

@@ -371,8 +371,11 @@ namespace AutoCADLoader.Utility
                 //import the registry into the profile
                 RegistryInfo.ImportRegistry(dstPath);
 
-                // TODO:! Add font/pat to support paths
-                string supportPaths = RegistryFunctions.GetString("ACAD", @$"HKEY_CURRENT_USER\SOFTWARE\{runVersion.RegKey}\{CurrentProfileName}\General");
+                // Handle the Fonts/Pats directories
+                if(!string.IsNullOrWhiteSpace(CurrentProfileName))
+                {
+                    RegistryInfo.InjectSupportPaths(runVersion.RegKey, CurrentProfileName);
+                }
             }
 
             return null;

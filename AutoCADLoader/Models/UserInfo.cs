@@ -63,9 +63,17 @@ namespace AutoCADLoader.Models
             return appData;
         }
 
-        public static string LocalAppDataFolder(string subfolder = "")
+        public static string LocalAppDataFolder(string subfolder = "", bool expanded = true)
         {
-            var appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), LoaderSettings.CompanyFolder, LoaderSettings.ApplicationName);
+            string appData;
+            if(expanded)
+            {
+                appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), LoaderSettings.CompanyFolder, LoaderSettings.ApplicationName);
+            }
+            else
+            {
+                appData = Path.Combine("%localappdata%", LoaderSettings.CompanyFolder, LoaderSettings.ApplicationName);
+            }
 
             if (!string.IsNullOrWhiteSpace(subfolder))
             {

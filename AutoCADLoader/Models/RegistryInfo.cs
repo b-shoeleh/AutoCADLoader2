@@ -16,8 +16,6 @@ namespace AutoCADLoader.Models
         public static bool IsLoaded { get; set; }
         //public string ProductVersion { get; set; }
 
-        //MAIN AREA OF REGISTRY
-        // Computer\HKEY_CURRENT_USER\SOFTWARE\IBI Group\AcadLoader\
         public static string Title { get; set; }
         public static string Version { get; set; }
         public static string Plugin { get; set; }
@@ -56,10 +54,17 @@ namespace AutoCADLoader.Models
 
         }
 
-        /// <returns>Name of the registry subkey where Loader values for the most recently launched CAD application are - e.g. "AutoCAD_2022_".</returns>
+        /// <returns>Name of the registry subkey where Loader values for the most recently launched CAD application are - e.g. "AutoCAD_2022".</returns>
         public static string GetAppEntryLocation()
         {
-            return $"{Title}_{Version}_{Plugin}";
+            string regPath = $"{Title}_{Version}";
+
+            if(!string.IsNullOrWhiteSpace(Plugin))
+            {
+                regPath = $"{regPath}_{Plugin}";
+            }
+
+            return regPath;
         }
 
 
@@ -403,7 +408,6 @@ namespace AutoCADLoader.Models
                 MessageBox.Show("Error saving user settings.");
             }
 
-            // TODO: Look at this, this may be causing the underscore reg key
             //update the version key info
             string VersionKeyLocation = $@"{KeyLocation}\{GetAppEntryLocation()}";
             SubRKCU = RKCU.OpenSubKey(VersionKeyLocation, true);
@@ -570,10 +574,40 @@ namespace AutoCADLoader.Models
         /// Update the plotter file for registry import
         /// </summary>
         /// <returns>Civil 3D unit selection (if found)</returns>
-        public static string UpdateProfilePlotters(InstalledAutodeskApplication selectedApplication, Office selectedOffice)
+        public static string? UpdateProfilePlotters(InstalledAutodeskApplication selectedApplication, Office selectedOffice)
         {
             string units = FileUpdaterLoader.UpdateRegistryFile(selectedOffice, selectedApplication.AppVersion, selectedApplication.AutodeskApplication.Title);
             return units;
+        }
+
+        // TODO: Consider moving this out into an application class
+        public static void InjectSupportPaths(string versionId, string profileName)
+        {
+            string registryPath = @$"HKEY_CURRENT_USER\SOFTWARE\{versionId}\Profiles\{profileName}\General";
+            string registryValueName = "ACAD";
+
+            // Support path types to add
+            string[] pathTypesToAdd = ["Fonts", "Pats"];
+
+            // Get the current support paths within the current AutoCAD profile
+            string? supportPaths = RegistryFunctions.GetStringWithOptions(registryValueName, registryPath, RegistryValueOptions.DoNotExpandEnvironmentNames);
+
+            // Check if the support path already exists, and if not add it
+            if (!string.IsNullOrWhiteSpace(supportPaths))
+            {
+                foreach (string pathType in pathTypesToAdd)
+                {
+                    string expandedPath = UserInfo.LocalAppDataFolder(pathType);
+                    string nonExpandedPath = UserInfo.LocalAppDataFolder(pathType, false);
+                    // AutoCAD will re-save non-expanded paths to this format, so this is what needs to be searched for to ensure no duplicates
+                    nonExpandedPath = nonExpandedPath.Replace("%localappdata%", @"%UserProfile%\AppData\Local", StringComparison.InvariantCultureIgnoreCase);
+
+                    if (!supportPaths.Contains(expandedPath, StringComparison.InvariantCultureIgnoreCase) && !supportPaths.Contains(nonExpandedPath, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        supportPaths = string.Concat(supportPaths, nonExpandedPath, ";");
+                    }
+                }
+            }
         }
     }
 }
