@@ -1,8 +1,6 @@
 ﻿using AutoCADLoader.Models;
-using AutoCADLoader.Models.Applications;
 using AutoCADLoader.Models.Offices;
 using AutoCADLoader.Models.Packages;
-using AutoCADLoader.Utility;
 using AutoCADLoader.ViewModels;
 using System.Diagnostics;
 using System.IO;

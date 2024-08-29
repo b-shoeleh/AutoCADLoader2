@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace AutoCADLoader.Utility
+namespace AutoCADLoader.Utils
 {
     public static class IOUtils
     {

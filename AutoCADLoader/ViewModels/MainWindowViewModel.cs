@@ -29,11 +29,7 @@ namespace AutoCADLoader.ViewModels
             }
         }
 
-        public ObservableCollection<Tuple<string, int>> SystemHealth { get; set; } = [
-            new Tuple<string, int>("Windows", 0),
-            new Tuple<string, int>("HDD Space", 0),
-            new Tuple<string, int>("User Temp", 0)
-        ];
+        public ObservableCollection<Tuple<string, int>> SystemHealth { get; set; } = [];
 
         private ObservableCollection<BundleViewModel> _bundlesAvailable = [];
         public ObservableCollection<BundleViewModel> BundlesAvailable
@@ -97,7 +93,7 @@ namespace AutoCADLoader.ViewModels
         public LaunchApplicationRelayCommand LaunchApplicationCommand => _lauchApplicationCommand;
 
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEnumerable<Tuple<string, int>> systemHealth)
         {
             _lauchApplicationCommand = new(
                 param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected!, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked),
@@ -106,6 +102,10 @@ namespace AutoCADLoader.ViewModels
 
             // TODO: Improve
             SetUpInstalledApplications();
+            foreach(var item in systemHealth)
+            {
+                SystemHealth.Add(item);
+            }
             SetUpAvailableBundles();
             var rememberedOffice = Models.Offices.Offices.GetSavedOfficeOrDefault();
         }

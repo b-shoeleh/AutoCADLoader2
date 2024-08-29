@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace AutoCADLoader.Utility
+namespace AutoCADLoader.Utils
 {
     public static class RegistryFunctions
     {

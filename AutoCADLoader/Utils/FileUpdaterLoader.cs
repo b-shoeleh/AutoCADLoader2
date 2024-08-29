@@ -7,7 +7,7 @@ using AutoCADLoader.Windows;
 using System.IO;
 using System.Windows;
 
-namespace AutoCADLoader.Utility
+namespace AutoCADLoader.Utils
 {
     public class FileUpdaterLoader(Office rememberedOffice)
     {

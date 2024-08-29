@@ -1,7 +1,7 @@
 ﻿using AutoCADLoader.Models;
 using AutoCADLoader.Models.Applications;
 using AutoCADLoader.Models.Offices;
-using AutoCADLoader.Utility;
+using AutoCADLoader.Utils;
 using AutoCADLoader.ViewModels;
 using AutoCADLoader.Windows;
 using System.Diagnostics;
@@ -63,12 +63,16 @@ namespace AutoCADLoader
             splashScreenViewModel.LoadingStatus = "Detecting packages...";
             InfoCollector.PopulateBundlesData();
 
+            splashScreenViewModel.LoadingStatus = "Checking system health...";
+            SystemHealth systemHealth = new();
+            var systemHealthValues = systemHealth.Get();
+
             splashScreenViewModel.LoadingStatus = "Checking for updates...";
             bool update = true;
 #if DEBUG
             update = true; //TODO:!
 #endif
-            MainWindowViewModel mainWindowViewModel = new();
+            MainWindowViewModel mainWindowViewModel = new(systemHealthValues);
             MainWindow mainWindow = new(mainWindowViewModel);
             mainWindow.Show();
             splashScreenWindow.Close();

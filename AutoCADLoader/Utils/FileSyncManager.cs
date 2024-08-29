@@ -3,7 +3,7 @@ using AutoCADLoader.Models.Offices;
 using AutoCADLoader.Properties;
 using System.IO;
 
-namespace AutoCADLoader.Utility
+namespace AutoCADLoader.Utils
 {
     public static class FileSyncManager
     {

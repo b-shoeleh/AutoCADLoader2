@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Http;
 
-namespace AutoCADLoader.Utility
+namespace AutoCADLoader.Utils
 {
     public static class JSONFunctions
     {

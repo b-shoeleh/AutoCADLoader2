@@ -1,6 +1,6 @@
 ﻿using AutoCADLoader.Models.Packages;
 using AutoCADLoader.Properties;
-using AutoCADLoader.Utility;
+using AutoCADLoader.Utils;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;

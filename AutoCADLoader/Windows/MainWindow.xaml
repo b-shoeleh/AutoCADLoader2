@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCADLoader"
         xmlns:vms="clr-namespace:AutoCADLoader.ViewModels"
+        xmlns:converters="clr-namespace:AutoCADLoader.ViewModels.Converters"
         xmlns:ie="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="AutoCAD/Civil 3D Loader" Height="600" Width="450"
@@ -14,6 +15,7 @@
         Icon="/Resources/Images/IconAutoCADLoader.ico">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <converters:PercentToProgressBarColor x:Key="PercentToProgressBarColor"/>
     </Window.Resources>
 
     <Grid Margin="10, 0, 10, 10">
@@ -73,13 +75,22 @@
                     <GroupBox.Header>
                         <Label>System Health</Label>
                     </GroupBox.Header>
-                    <ListView ItemsSource="{Binding SystemHealth}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Folder" Width="auto" DisplayMemberBinding="{Binding Item1}"/>
-                                <GridViewColumn Header="Status" Width="110" DisplayMemberBinding="{Binding Item2}" />
-                            </GridView>
-                        </ListView.View>
+                    <ListView ItemsSource="{Binding SystemHealth}"
+                              HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Item1}"/>
+                                    <ProgressBar Minimum="0" 
+                                             Maximum="100"
+                                             Value="{Binding Item2, Mode=OneWay}"
+                                             Height="15"
+                                             HorizontalAlignment="Stretch"
+                                                Foreground="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value, Converter={StaticResource PercentToProgressBarColor}}">
+                                    </ProgressBar>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListView>
                 </GroupBox>
 
