@@ -82,8 +82,8 @@ namespace AutoCADLoader
                 mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Loading...";
                 mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Loading...";
                 fileUpdater = await Task.Run(() => CheckForUpdates(mainWindowViewModel));
-                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = fileUpdater.FileCount(ResourceType.Package);
-                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = fileUpdater.FileCount(ResourceType.Setting);
+                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Up to date";
+                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Up to date";
             }
         }
 
@@ -110,17 +110,12 @@ namespace AutoCADLoader
             fileUpdater.CompareAll();
             if (fileUpdater.UpdatesAvailable)
             {
-                MessageBoxResult result = MessageBox.Show("Updates Available, would you like to update your system?", "Updates Available", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                if (result == MessageBoxResult.Yes)
-                {
-                    mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Updating...";
-                    mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Updating...";
-                    fileUpdater.Update();
-                }
+                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Updating...";
+                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Updating...";
+                fileUpdater.Update();
             }
 
             return fileUpdater;
-
         }
     }
 }

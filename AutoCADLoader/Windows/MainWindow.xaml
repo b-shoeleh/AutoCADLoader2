@@ -118,11 +118,14 @@
                     <GroupBox.Header>
                         <Label>Available Updates</Label>
                     </GroupBox.Header>
-                    <ListView ItemsSource="{Binding UpdatesAvailable.GetAll}">
+                    <ListView ItemsSource="{Binding UpdatesAvailable.GetAll}"
+                              MinWidth="150">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding Path=Title}"/>
-                                <GridViewColumn Header="Status" Width="auto" DisplayMemberBinding="{Binding Path=FileStatus}"/>
+                                <GridViewColumn Header="Status" 
+                                                DisplayMemberBinding="{Binding Path=FileStatus}"
+                                                Width="100"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
