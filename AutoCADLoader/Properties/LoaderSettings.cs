@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using AutoCADLoader.Utils;
+using System.IO;
 
 namespace AutoCADLoader.Properties
 {
@@ -7,13 +8,48 @@ namespace AutoCADLoader.Properties
         public static string CompanyFolder { get; } = "Arcadis";
         public static string ApplicationName { get; } = "AutoCAD Loader";
 
-        private static string _centralFolder { get; } = @"I:";
-        private static string _centralLoaderSubfolder = @"_Arcadis\AutoCAD";
+        public static int DirectoryAccessTimeout { get; } = 20;
+        public static string LocationsCentralDirectory { get; }
+        
+        private const string _centralDirectoryLocationFallback = @"I:\_TechSTND\_Arcadis\AutoCAD";
 
 
-        public static string GetCentralFolderPath(string subfolder = "")
+        static LoaderSettings()
         {
-            string path = Path.Combine(_centralFolder, _centralLoaderSubfolder);
+            DirectoryAccessTimeout = RegistryFunctions.GetIntFromDword("DirectoryAccessTimeout") ?? DirectoryAccessTimeout;
+            
+            string centralDirectoryLocationsStr = RegistryFunctions.GetString("LocationsCentral") ?? _centralDirectoryLocationFallback;
+            string[] centralDirectoryLocations = centralDirectoryLocationsStr.Split(';');
+            foreach(string centralDirectoryLocation in centralDirectoryLocations)
+            {
+                bool isAccessible = IOUtils.IsDirectoryAccessible(centralDirectoryLocation);
+                if (isAccessible)
+                {
+                    EventLogger.Log($"Setting central directory path to: {centralDirectoryLocation}", System.Diagnostics.EventLogEntryType.Information);
+                    LocationsCentralDirectory = centralDirectoryLocation;
+                    return;
+                }
+                else
+                {
+                    EventLogger.Log($"Central directory path is not accessible: {centralDirectoryLocation}", System.Diagnostics.EventLogEntryType.Warning);
+                }
+            }
+
+            EventLogger.Log($"No central directory path found/accessible, defaulting to: {_centralDirectoryLocationFallback}", System.Diagnostics.EventLogEntryType.Warning);
+            LocationsCentralDirectory = _centralDirectoryLocationFallback;
+        }
+
+        /// <summary>
+        /// Dummy method which can be used to force the constructor to call.
+        /// </summary>
+        public static void Initialize()
+        {
+
+        }
+
+        public static string GetCentralDirectoryPath(string subfolder = "")
+        {
+            string path = LocationsCentralDirectory;
 
             if (!string.IsNullOrWhiteSpace(subfolder))
             {

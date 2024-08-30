@@ -58,5 +58,17 @@ namespace AutoCADLoader.Properties {
                 this["RegistryKeyInstallPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("I:")]
+        public string CentralLocation {
+            get {
+                return ((string)(this["CentralLocation"]));
+            }
+            set {
+                this["CentralLocation"] = value;
+            }
+        }
     }
 }

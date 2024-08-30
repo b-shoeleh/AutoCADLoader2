@@ -164,5 +164,52 @@ namespace AutoCADLoader.Utils
                 return false;
             }
         }
+
+        public static int? GetIntFromDword(string regName, string? regPath = null)
+        {
+            regPath = ValidPathOrDefault(regPath);
+
+            int? regValue;
+            try
+            {
+                regValue = Registry.GetValue(regPath, regName, null) as int?;
+                if (regValue is not null)
+                    try
+                    {
+                        return regValue;
+                    }
+                    catch
+                    {
+                        EventLogger.Log($"Undefined - could not parse {regName} value to Boolean. Default value will be used.", System.Diagnostics.EventLogEntryType.Error);
+                        return null;
+                    }
+
+                EventLogger.Log($"Registry entry for {regName} not found. Default value will be used.", System.Diagnostics.EventLogEntryType.Warning);
+                return null;
+            }
+            catch
+            {
+                EventLogger.Log($"Undefined - could not get bool from registry value {regName}.", System.Diagnostics.EventLogEntryType.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Checks a passed registry path for validity.
+        /// </summary>
+        /// <param name="regPath">Registry path to be checked</param>
+        /// <returns>The passed registry path if it passes checks, else the default registry path.</returns>
+        private static string ValidPathOrDefault(string? regPath)
+        {
+            if (!string.IsNullOrWhiteSpace(regPath))
+                return regPath;
+
+            if (string.IsNullOrWhiteSpace(_registryPath))
+            {
+                EventLogger.Log("A valid default registry path for settings has not been set.", System.Diagnostics.EventLogEntryType.Error);
+            }
+
+            return _registryPath;
+        }
     }
 }

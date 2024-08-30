@@ -33,7 +33,7 @@ namespace AutoCADLoader.Utils
             }
             else
             {
-                sourceDirectoryPath = LoaderSettings.GetCentralFolderPath();
+                sourceDirectoryPath = LoaderSettings.GetCentralDirectoryPath();
             }
 
             if (!Directory.Exists(sourceDirectoryPath))

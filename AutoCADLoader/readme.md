@@ -12,10 +12,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Arcadis\AutoCAD Loader
 
 #### Registry keys:
 
-| Key Name      | Type   | Default Data                                   | Description                          |
-| ------------- | ------ | ---------------------------------------------- | ------------------------------------ |
-| UrlApiOffices | REG_SZ | https://dt.arcadis.com/Api/officeapi/DriveInfo | URL for the offices data API.        |
-| Version       | REG_SZ | [Populated by installer]                       | Version number of the AutoCAD Loader |
+| Key Name               | Type   | Default Data                                                                                                        | Description                                                                  |
+| ---------------------- | ------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| DirectoryAccessTimeout | DWORD  | 20                                                                                                                  | Number of seconds to try accessing a directory before timing out.            |
+| LocationsCentral       | REG_SZ | I:\_TechSTND_Arcadis\AutoCAD;\\anf-scus-03ce.arcadis-nl.local\proddata501\AIBI_TECHSTND_NA_TechSTND_Arcadis\AutoCAD | Semicolon delimited list of central directory paths, in order of preference. |
+| UrlApiOffices          | REG_SZ | https://dt.arcadis.com/Api/officeapi/DriveInfo                                                                      | URL for the offices data API.                                                |
+| Version                | REG_SZ | [Populated by installer]                                                                                            | Version number of the AutoCAD Loader                                         |
 
 ### External files
 

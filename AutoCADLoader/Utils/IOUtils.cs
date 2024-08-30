@@ -1,9 +1,49 @@
-﻿using System.IO;
+﻿using AutoCADLoader.Properties;
+using System.IO;
 
 namespace AutoCADLoader.Utils
 {
     public static class IOUtils
     {
+        public static int DirectoryTimeoutSeconds => LoaderSettings.DirectoryAccessTimeout;
+
+
+        public static bool IsDirectoryAccessible(string path, int? directoryAccessTimeout = null)
+        {
+            bool isAccessible = false;
+
+            try
+            {
+                Task<bool> task = Task.Run(() => // Task is used for a custom timeout value (Directory methods are often blocking, with a long timeout)
+                {
+                    DirectoryInfo di = new(path);
+                    if (di.Exists)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                });
+
+                Task.WhenAny(
+                    Task.Delay(TimeSpan.FromSeconds(directoryAccessTimeout ?? DirectoryTimeoutSeconds)),
+                    task).Wait();
+
+                if (task.Status == TaskStatus.RanToCompletion)
+                {
+                    isAccessible = task.Result;
+                }
+            }
+            catch
+            {
+                isAccessible = false;
+            }
+
+            return isAccessible;
+        }
+
         /// <summary>
         /// Check if any files within the source folder are different from the target folder as quickly as possible.
         /// </summary>

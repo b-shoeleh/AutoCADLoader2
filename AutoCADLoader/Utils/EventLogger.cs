@@ -32,7 +32,7 @@ namespace AutoCADLoader.Utils
             }
             catch
             {
-                using (EventLog eventLog = new EventLog("Application")) // Just log to the default place
+                using (EventLog eventLog = new("Application")) // Just log to the default place
                 {
                     eventLog.Source = ".NET Runtime";
                     eventLog.WriteEntry(message, entryType, 1000);

@@ -11,5 +11,8 @@
     <Setting Name="RegistryKeyInstallPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Path</Value>
     </Setting>
+    <Setting Name="CentralLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">I:</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

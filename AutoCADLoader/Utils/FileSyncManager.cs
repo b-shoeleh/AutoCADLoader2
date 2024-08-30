@@ -63,7 +63,7 @@ namespace AutoCADLoader.Utils
         /// <param name="office">The office for which the standards should be synchronized.</param>
         public static void SynchronizeFromAzure(Office office)
         {
-            string source = LoaderSettings.GetCentralFolderPath();
+            string source = LoaderSettings.GetCentralDirectoryPath();
             string target = LoaderSettings.GetLocalUserFolderPath("Cache");
 
             CacheOfficeStandards(office, source, target);
