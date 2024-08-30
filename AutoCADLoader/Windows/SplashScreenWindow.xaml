@@ -7,17 +7,15 @@
         mc:Ignorable="d"
         Title="AutoCAD Loader" Height="450" Width="300"
         AllowsTransparency="True" WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
-    <Window.Background>
-        <SolidColorBrush Opacity="0.5" Color="White"/>
-    </Window.Background>
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Background}">
     <Window.Resources>
         <Style TargetType="Image">
             <Setter Property="Opacity" Value="0.7" />
         </Style>
     </Window.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.075*"/>
             <RowDefinition Height="0.25*"/>

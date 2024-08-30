@@ -8,134 +8,51 @@
         xmlns:converters="clr-namespace:AutoCADLoader.ViewModels.Converters"
         xmlns:ie="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="AutoCAD/Civil 3D Loader" Height="600" Width="450"
+        Title="Arcadis AutoCAD Loader" MinHeight="600" MinWidth="450"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Icon="/Resources/Images/IconAutoCADLoader.ico">
+        Icon="/Resources/Images/IconAutoCADLoader.ico"
+        Background="{StaticResource Background}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
         <converters:PercentToProgressBarColor x:Key="PercentToProgressBarColor"/>
     </Window.Resources>
 
-    <Grid Margin="10, 0, 10, 10">
-        <Grid.RowDefinitions>
-            <!--Menu-->
-            <RowDefinition Height="auto" />
-            <!--Version info, system health, available packages, available updates-->
-            <RowDefinition Height="auto" />
-            <!--User information-->
-            <RowDefinition Height="auto" />
-            <!--Start button-->
-            <RowDefinition Height="auto" />
-            <!--Design Technology notices-->
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-        </Grid.ColumnDefinitions>
-
+    <StackPanel Orientation="Vertical">
         <!-- Menu -->
-        <DockPanel Grid.Row="0">
-            <ToggleButton x:Name="VisibilityToggle">
+        <DockPanel 
+            Background="{StaticResource AccentTransparent}"
+            Grid.Row="0"
+            HorizontalAlignment="Stretch">
+            <ToggleButton 
+                x:Name="VisibilityToggle"
+                Margin="5"
+                Padding="5"
+                MaxWidth="80"
+                HorizontalAlignment="Left"
+                Background="{StaticResource AccentTransparent}">
                 Advanced
             </ToggleButton>
-            <Menu DockPanel.Dock="Top">
-                <!--<MenuItem Header="_Drive Cleaner"/>
-                <MenuItem Header="_Help"/>-->
-            </Menu>
+
         </DockPanel>
-        <StackPanel Grid.Row="1" Orientation="Vertical">
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <!--Menu-->
+                <RowDefinition Height="auto" />
+                <!--Version info, system health, available packages, available updates-->
+                <RowDefinition Height="auto" />
+                <!--User information-->
+                <RowDefinition Height="auto" />
+                <!--Start button-->
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
 
-                <GroupBox Grid.Row="0" Grid.Column="0">
-                    <GroupBox.Header>
-                        <Label>Version Info</Label>
-                    </GroupBox.Header>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock>Application</TextBlock>
-                        <ComboBox x:Name="cbApplications" MinWidth="150"
-                                  ItemsSource="{Binding Path=ApplicationsInstalled}"
-                                  SelectedItem="{Binding ApplicationInstalledSelected, Mode=TwoWay}"
-                                  Text="--Select application--" IsReadOnly="True" IsEditable="True" SelectionChanged="cbApplications_SelectionChanged"/>
-                    </StackPanel>
-                </GroupBox>
-
-                <GroupBox Grid.Row="0" Grid.Column="1">
-                    <GroupBox.Header>
-                        <Label>System Health</Label>
-                    </GroupBox.Header>
-                    <ListView ItemsSource="{Binding SystemHealth}"
-                              HorizontalContentAlignment="Stretch">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Item1}"/>
-                                    <ProgressBar Minimum="0" 
-                                             Maximum="100"
-                                             Value="{Binding Item2, Mode=OneWay}"
-                                             Height="15"
-                                             HorizontalAlignment="Stretch"
-                                                Foreground="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value, Converter={StaticResource PercentToProgressBarColor}}">
-                                    </ProgressBar>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListView>
-                </GroupBox>
-
-                <GroupBox Grid.Row="1" Grid.Column="0">
-                    <GroupBox.Header>
-                        <Label>Available Packages</Label>
-                    </GroupBox.Header>
-                    <ListBox Name="lstPackages"
-                        ItemsSource="{Binding BundlesAvailable}"
-                        HorizontalContentAlignment="Stretch"
-                        MinWidth="200"
-                        MinHeight="120"
-                        MaxHeight="150" Initialized="lstPackages_Initialized">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox 
-                                    Content="{Binding Path=Name}" 
-                                    IsChecked="{Binding Path=Active, Mode=TwoWay}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </GroupBox>
-
-                <GroupBox Grid.Row="1" Grid.Column="1">
-                    <GroupBox.Header>
-                        <Label>Available Updates</Label>
-                    </GroupBox.Header>
-                    <ListView ItemsSource="{Binding UpdatesAvailable.GetAll}"
-                              MinWidth="150">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding Path=Title}"/>
-                                <GridViewColumn Header="Status" 
-                                                DisplayMemberBinding="{Binding Path=FileStatus}"
-                                                Width="100"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
-            </Grid>
-
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>User information</Label>
-                </GroupBox.Header>
+            <StackPanel Grid.Row="1" Orientation="Vertical">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -144,58 +61,167 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto" MinWidth="200"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Margin="0,0,30,5">
-                        <TextBlock Grid.Row="0" Grid.Column="0">User account</TextBlock>
-                    </Border>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding UserName}"/>
+                    <GroupBox Grid.Row="0" Grid.Column="0">
+                        <GroupBox.Header>
+                            <Label>Applications</Label>
+                        </GroupBox.Header>
+                        <StackPanel Orientation="Vertical">
+                            <ComboBox x:Name="cbApplications" MinWidth="150"
+                                  ItemsSource="{Binding Path=ApplicationsInstalled}"
+                                  SelectedItem="{Binding ApplicationInstalledSelected, Mode=TwoWay}"
+                                  Text="--Select application--" IsReadOnly="True" IsEditable="True" SelectionChanged="cbApplications_SelectionChanged">
+                            </ComboBox>
+                        </StackPanel>
+                    </GroupBox>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0">Working office</TextBlock>
-                    <ComboBox x:Name="cbOffices" Grid.Row="1" Grid.Column="1" 
+                    <GroupBox Grid.Row="0" Grid.Column="1">
+                        <GroupBox.Header>
+                            <Label>System Health</Label>
+                        </GroupBox.Header>
+                        <ListView ItemsSource="{Binding SystemHealth}"
+                              HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel 
+                                    Orientation="Vertical"
+                                    Margin="5">
+                                        <TextBlock Text="{Binding Item1}"/>
+                                        <ProgressBar 
+                                        Minimum="0" 
+                                        Maximum="100"
+                                        Value="{Binding Item2, Mode=OneWay}"
+                                             Height="15"
+                                             HorizontalAlignment="Stretch"
+                                                Foreground="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Value, Converter={StaticResource PercentToProgressBarColor}}">
+                                        </ProgressBar>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListView>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Grid.Column="0">
+                        <GroupBox.Header>
+                            <Label>Available Packages</Label>
+                        </GroupBox.Header>
+                        <ListBox Name="lstPackages"
+                        ItemsSource="{Binding BundlesAvailable}"
+                        HorizontalContentAlignment="Stretch"
+                        MinWidth="200"
+                        MinHeight="120"
+                        MaxHeight="150" Initialized="lstPackages_Initialized">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox 
+                                    Content="{Binding Path=Name}" 
+                                    IsChecked="{Binding Path=Active, Mode=TwoWay}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Grid.Column="1">
+                        <GroupBox.Header>
+                            <Label>Available Updates</Label>
+                        </GroupBox.Header>
+                        <ListView ItemsSource="{Binding UpdatesAvailable.GetAll}"
+                              MinWidth="150">
+                            <ListView.View>
+                                <GridView 
+                                    AllowsColumnReorder="False">
+                                    <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding Path=Title}"/>
+                                    <GridViewColumn 
+                                        Header="Status" 
+                                        DisplayMemberBinding="{Binding Path=FileStatus}"
+                                        Width="100"/>
+                                    <GridView.ColumnHeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </GridView.ColumnHeaderContainerStyle>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+                </Grid>
+
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>User information</Label>
+                    </GroupBox.Header>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition 
+                            Width="auto" MinWidth="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                        Grid.Row="0" 
+                        Grid.Column="0"
+                        Margin="0,0,20,10"
+                        VerticalAlignment="Center">
+                            User account:
+                        </TextBlock>
+
+                        <TextBlock 
+                        Grid.Row="0" 
+                        Grid.Column="1" 
+                        Text="{Binding UserName}"/>
+
+                        <TextBlock Grid.Row="1" 
+                               Grid.Column="0" 
+                               VerticalAlignment="Center">
+                        Working office:
+                        </TextBlock>
+                        <ComboBox x:Name="cbOffices" Grid.Row="1" Grid.Column="1"
                               ItemsSource="{Binding Path=Offices}"
                               SelectedItem="{Binding OfficeSelected, Mode=TwoWay}"
                               Text="--Select office--" IsEditable="True" IsReadOnly="True"
                               SelectedValuePath="IsSavedOffice"
                               SelectedValue="true">
-                        <!--<ie:Interaction.Triggers>
+                            <!--<ie:Interaction.Triggers>
                             <ie:EventTrigger EventName="SelectionChanged">
                                 <ie:InvokeCommandAction Command="{Binding SyncOfficeStandardsCommand}"  CommandParameter="{Binding ElementName=cbOffices, Path=SelectedItem}"/>
                             </ie:EventTrigger>
                         </ie:Interaction.Triggers>-->
-                    </ComboBox>
-                </Grid>
-            </GroupBox>
+                        </ComboBox>
+                    </Grid>
+                </GroupBox>
 
-            <GroupBox Visibility="{Binding IsChecked, ElementName=VisibilityToggle, Converter={StaticResource BoolToVisibility}}">
-                <GroupBox.Header>
-                    <Label>Options</Label>
-                </GroupBox.Header>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="5,5,20,5"
-                              IsChecked="{Binding ResetAllSettingsIsChecked}">
-                        Reset all settings
-                    </CheckBox>
-                    <CheckBox Margin="20,5,5,5"
-                              IsChecked="{Binding HardwareAccelerationIsChecked}">
-                        Hardware acceleration
-                    </CheckBox>
-                </StackPanel>
-            </GroupBox>
-
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label></Label>
-                </GroupBox.Header>
-                <Button MinHeight="50" 
-                        Command="{Binding LaunchApplicationCommand}">
+                <GroupBox Visibility="{Binding IsChecked, ElementName=VisibilityToggle, Converter={StaticResource BoolToVisibility}}">
+                    <GroupBox.Header>
+                        <Label>Options</Label>
+                    </GroupBox.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Start "/>
-                        <TextBlock Text="{Binding ApplicationInstalledSelected}"/>
+                        <CheckBox Margin="5,5,20,5"
+                              IsChecked="{Binding ResetAllSettingsIsChecked}">
+                            Reset all settings
+                        </CheckBox>
+                        <CheckBox Margin="20,5,5,5"
+                              IsChecked="{Binding HardwareAccelerationIsChecked}">
+                            Hardware acceleration
+                        </CheckBox>
+                    </StackPanel>
+                </GroupBox>
+
+                <Button 
+                Margin="15"
+                MinHeight="50" 
+                Command="{Binding LaunchApplicationCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Start"/>
                     </StackPanel>
                 </Button>
-            </GroupBox>
-        </StackPanel>
-    </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 </Window>

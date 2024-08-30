@@ -182,7 +182,7 @@ namespace AutoCADLoader.Utils
                 }
                 catch
                 {
-                    EventLogger.Log($"Attempt to delete directory failed: {directoryPath}", System.Diagnostics.EventLogEntryType.Error);
+                    EventLogger.Log($"Attempt to delete directory failed: {directoryPath}", System.Diagnostics.EventLogEntryType.Warning);
                 }
             }
         }
