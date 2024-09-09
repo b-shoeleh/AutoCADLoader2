@@ -179,7 +179,18 @@ namespace AutoCADLoader.Utils
                     bool different = AnyFileDifference(sourceFile, targetFilePath);
                     if (different)
                     {
-                        sourceFile.CopyTo(targetFilePath, true);
+                        try
+                        {
+                            File.SetAttributes(targetFilePath, FileAttributes.Normal); // Cannot overwrite read only files
+                            sourceFile.CopyTo(targetFilePath, true);
+                        }
+                        catch
+                        {
+                            EventLogger.Log($@"Cannot copy file: 
+                            Source: {sourceFile.FullName}
+                            Target: {targetFilePath}", 
+                            System.Diagnostics.EventLogEntryType.Warning);
+                        }
                     }
                 }
             }

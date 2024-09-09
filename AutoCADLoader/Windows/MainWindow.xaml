@@ -15,7 +15,7 @@
         Icon="/Resources/Images/IconAutoCADLoader.ico"
         Background="{StaticResource Background}">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:PercentToProgressBarColor x:Key="PercentToProgressBarColor"/>
     </Window.Resources>
 
@@ -197,7 +197,7 @@
                     </Grid>
                 </GroupBox>
 
-                <GroupBox Visibility="{Binding IsChecked, ElementName=VisibilityToggle, Converter={StaticResource BoolToVisibility}}">
+                <GroupBox Visibility="{Binding IsChecked, ElementName=VisibilityToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <GroupBox.Header>
                         <Label>Options</Label>
                     </GroupBox.Header>

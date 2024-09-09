@@ -12,6 +12,7 @@ namespace AutoCADLoader
     {
         public MainWindow(MainWindowViewModel viewModel)
         {
+            viewModel.CloseAction ??= new(Close);
             DataContext = viewModel;
             InitializeComponent();
         }

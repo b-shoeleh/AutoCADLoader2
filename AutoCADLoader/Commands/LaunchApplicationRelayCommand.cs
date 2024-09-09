@@ -18,11 +18,18 @@ namespace AutoCADLoader.Commands
                 && selectedOffice is not null;
         }
 
-        public void Execute(InstalledAutodeskApplication selectedApplication,
+        public void Execute(
+            InstalledAutodeskApplication selectedApplication,
             IEnumerable<BundleViewModel> bundleViewModels,
             Office selectedOffice,
-            bool resetAllSettings, bool hardwareAcceleration)
+            bool resetAllSettings, bool hardwareAcceleration,
+            Action? closeAction = null)
         {
+            if (closeAction is not null)
+            {
+                closeAction();
+            }
+
             // Update bundles from viewmodels
             IEnumerable<Bundle> bundles = InfoCollector.BundleCollection.Packages;
             foreach (BundleViewModel bundleViewModel in bundleViewModels)

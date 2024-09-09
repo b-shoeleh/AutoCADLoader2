@@ -85,18 +85,21 @@ namespace AutoCADLoader.ViewModels
 
         public bool Clear { get; set; }
 
+        public Action? CloseAction { get; set; }
+
+
         // Commands
         private readonly ICommand _syncOfficeStandardsCommand = new SyncOfficeStandardsCommand();
         public ICommand SyncOfficeStandardsCommand => _syncOfficeStandardsCommand;
 
-        private readonly LaunchApplicationRelayCommand _lauchApplicationCommand;
-        public LaunchApplicationRelayCommand LaunchApplicationCommand => _lauchApplicationCommand;
+        private readonly LaunchApplicationRelayCommand _launchApplicationCommand;
+        public LaunchApplicationRelayCommand LaunchApplicationCommand => _launchApplicationCommand;
 
 
         public MainWindowViewModel(IEnumerable<Tuple<string, int>> systemHealth)
         {
-            _lauchApplicationCommand = new(
-                param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected!, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked),
+            _launchApplicationCommand = new(
+                param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected!, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked, CloseAction),
                 param => LaunchApplicationCommand.CanExecute(ApplicationInstalledSelected, OfficeSelected)
             );
 
