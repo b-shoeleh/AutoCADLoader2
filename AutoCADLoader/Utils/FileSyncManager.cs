@@ -49,7 +49,7 @@ namespace AutoCADLoader.Utils
         /// Cache standards for the specified office from the local standards snapshot to the user's local appdata cache (fast).
         /// </summary>
         /// <param name="office">The office for which the standards should be retrieved.</param>
-        public static void CacheFromProgramData(Office office)
+        public static void CacheOfficeFromProgramData(Office office)
         {
             string source = LoaderSettings.GetLocalCommonFolderPath("Cache");
             string target = LoaderSettings.GetLocalUserFolderPath("Cache");
