@@ -1,0 +1,21 @@
+;;	Fichier de lignes définissant la symbologie linéaire du MTQ - dessin de structures 
+;;
+;;		S.Groleau 		fevrier 2011
+;;modifié	S.Groleau 		aout 2011     
+
+
+
+;;  distribution 2012
+;;  Ministère des Transports Direction des Structures
+
+
+
+
+*CACHEE,Lignes cachées MTQ-STR
+A,2,-2
+*CACHEEX3,Lignes cachées long MTQ-STR
+A,6,-2
+*CENTERPETIT,Lignes de centre court MTQ-STR
+A,10,-2,2,-2
+*CENTER,Lignes de centre long MTQ-STR
+A,15.5,-3.0,3.0,-3.0

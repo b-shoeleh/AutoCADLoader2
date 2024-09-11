@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+
+<AppCollection>
+<Apps>
+	
+<!-- AUTOCAD -->
+	
+	<App>
+		<Title>AutoCAD</Title>
+		<AnalysisId>10</AnalysisId>
+
+		<!-- AutoCAD-2016 -->
+		<AppVersions>
+			<AppVersion>
+				<Number>2016</Number>	
+				<Id>R20.1</Id>
+				<Code>ACAD-F001:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2016</AcadPath>
+				<RegKey>Autodesk\AutoCAD\R20.1\ACAD-F001:409</RegKey>
+				<AnalysisId>10</AnalysisId>
+				
+			</AppVersion>
+	
+			<!-- AutoCAD-2018 -->
+			
+			<AppVersion>
+				<Number>2018</Number>	
+				<Id>R22.0</Id>
+				<Code>ACAD-1001:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2018</AcadPath>	
+				<RegKey>Autodesk\AutoCAD\R22.0\ACAD-1001:409</RegKey>
+				<AnalysisId>10</AnalysisId>
+
+				<Plugins>
+					
+					<Plugin>
+						<Title>AutoTurn</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2018x64.ARX</Ld>
+					</Plugin>
+			
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+					</Plugin>
+				</Plugins>
+			</AppVersion>
+			
+		<!-- AutoCAD-2020 -->
+			
+			<AppVersion>
+				<Number>2020</Number>	
+				<Id>R23.1</Id>
+				<Code>ACAD-3001:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2020</AcadPath>
+				<RegKey>Autodesk\AutoCAD\R23.1\ACAD-3001:409</RegKey>
+				<Plugins>
+					
+
+					<Plugin>
+						<Title>WaterCAD</Title>
+							<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+							<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+							<Ld></Ld>	
+					</Plugin>
+
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+
+					<Plugin>
+						<Title>AutoTurn</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+				
+			</AppVersion>
+
+	<AppVersion>
+				<Number>2022</Number>	
+				<Id>R24.1</Id>
+				<Code>ACAD-5101:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2022</AcadPath>
+				<RegKey>Autodesk\AutoCAD\R24.1\ACAD-5101:409</RegKey>
+				<Plugins>
+					
+
+					<Plugin>
+						<Title>WaterCAD</Title>
+							<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+							<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+							<Ld></Ld>	
+					</Plugin>
+
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld></Ld>
+					</Plugin>
+
+					<Plugin>
+						<Title>AutoTurn</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+				
+			</AppVersion>
+
+		</AppVersions>
+	</App>
+	
+	
+<!-- Civil 3d -->
+	<App>
+		<Title>Civil3d</Title>
+		<AnalysisId>14</AnalysisId>
+
+		<!-- Civil 3d -2016 -->
+		<AppVersions>
+			<AppVersion>
+				<Number>2016</Number>	
+				<Id>R20.1</Id>
+				<Code>ACAD-F000:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2016</AcadPath>
+				<RegKey>Autodesk\AutoCAD\R20.1\ACAD-F000:409</RegKey>
+
+	
+			</AppVersion>
+		
+		<!-- Civil 3d -2018 -->
+
+			<AppVersion>
+				<Number>2018</Number>	
+				<Id>R22.0</Id>
+				<Code>ACAD-1000:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2018</AcadPath>	
+				<RegKey>Autodesk\AutoCAD\R22.0\ACAD-1000:409</RegKey>
+				
+				<Plugins>
+
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2018\AecBase.dbx</Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2018\AecBase.dbx</Ld>		
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2018\AecBase.dbx</Ld>
+					</Plugin>	
+				
+					<Plugin>
+						<Title>AutoTurn</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2018x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+
+			</AppVersion>
+		<!-- Civil 3d -2019 -->
+
+			<AppVersion>
+				<Number>2019</Number>	
+				<Id>R23.0</Id>
+				<Code>ACAD-2000:409</Code>
+				<AcadPath>C:\Program Files\Autodesk\AutoCAD 2019</AcadPath>	
+				<RegKey>Autodesk\AutoCAD\R23.0\ACAD-2000:409</RegKey>
+			
+				<Plugins>
+						<Plugin>
+							<Title>Base</Title>
+							<Pluginkey></Pluginkey>
+							<Scr></Scr>
+							<Ld></Ld>
+						</Plugin>
+					</Plugins>
+				</AppVersion>
+		<!-- Civil 3d -2020 -->
+
+			<AppVersion>
+				<Number>2020</Number>	
+				<Id>r23.1</Id>
+				<Code>acad-3000:409</Code>
+				<AcadPath>c:\program files\autodesk\autocad 2020</AcadPath>
+				<RegKey>autodesk\autocad\r23.1\acad-3000:409</RegKey>
+				
+				<Plugins>
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>AutoTURN</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+			</AppVersion>	
+			
+			<AppVersion>
+				<Number>2022</Number>	
+				<Id>R24.1</Id>
+				<Code>ACAD-5100:409</Code>
+				<AcadPath>c:\program files\autodesk\autocad 2022</AcadPath>
+				<RegKey>autodesk\autocad\R24.1\ACAD-5100:409</RegKey>
+				
+				<Plugins>
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>AutoTURN</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+			</AppVersion>	
+
+			<AppVersion>
+				<Number>2023</Number>
+				<PlotterVersion>2022</PlotterVersion>
+				<Id>R24.2</Id>
+				<Code>ACAD-6100:409</Code>
+				<AcadPath>c:\program files\autodesk\autocad 2023</AcadPath>
+				<RegKey>autodesk\autocad\R24.2\ACAD-6100:409</RegKey>
+				
+				<Plugins>
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>AutoTURN</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+			</AppVersion>
+
+			<AppVersion>
+				<Number>2024</Number>
+				<PlotterVersion>2022</PlotterVersion>
+				<Id>R24.3</Id>
+				<Code>ACAD-7100:409</Code>
+				<AcadPath>c:\program files\autodesk\autocad 2024</AcadPath>
+				<RegKey>autodesk\autocad\R24.3\ACAD-7100:409</RegKey>
+				
+				<Plugins>
+					<Plugin>
+						<Title>WaterCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\WaterCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\WaterCAD\x64\WTRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					
+					<Plugin>
+						<Title>StormCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\StormCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\StormCAD\x64\STMC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>SewerCAD</Title>
+						<Pluginkey>WOW6432Node\Bentley\SewerCAD</Pluginkey>
+						<Scr>C:\Program Files (x86)\Bentley\SewerCAD\x64\SWRC.scr</Scr>
+						<Ld>C:\Program Files\Autodesk\AutoCAD 2020\AecBase.dbx</Ld>
+					</Plugin>
+					<Plugin>
+						<Title>AutoTURN</Title>
+						<Pluginkey>Transoft Solutions\AutoTURN</Pluginkey>
+						<Scr></Scr>
+						<Ld>C:\Program Files\Transoft Solutions\AutoTURN 11\AT2019x64.ARX</Ld>
+					</Plugin>
+				</Plugins>
+			</AppVersion>			
+		</AppVersions>
+
+	</App>
+</Apps>
+ 
+</AppCollection>

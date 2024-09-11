@@ -1,0 +1,93 @@
+*DASHED,__ __ __ __ __ __ __ __ __ __ __ __ __ __ __
+A,.5,-.25
+*HIDDEN,_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+A,.25,-.125
+*CENTER,____ _ ____ _ ____ _ ____ _ ____ _ ____ _ ____
+A,15,-1.5,2.5,-1.5
+*PHANTOM,_____ _ _ _____ _ _ _____ _ _ _____ _ _ ____
+A,1.25,-.25,.25,-.25,.25,-.25
+*DASHDOT,__ . __ . __ . __ . __ . __ . __ . __ . __ . __
+A,1.0,-0.50,0,-1.00
+*BORDER,__ __ . __ __ . __ __ . __ __ . __ __ . __ __
+A,.5,-.25,.5,-.25,0,-.25
+*DIVIDE,__ . . __ . . __ . . __ . . __ . . __ . . __
+A,1.0,-0.5,0,-0.50,0,-0.50
+*GAS_LINE,Gas line ----G----G----G----G----G----G--
+A,25,-1.25,["G",80-500,S=1.0,U=0.0,X=-0.5,Y=-.493],-1.25
+*POWER_LINE,Power line ----P----P----P----P----P----P--
+A,25,-1.25,["P",80-500,S=1.0,U=0.0,X=-0.5,Y=-.493],-1.25
+*GAS_LINE_EX,Gas line ----EX G----EX G----EX G----EX G----EX G----EX G--
+A,25,-1.50,["EX G",60-500,S=1.0,U=0.0,X=-0.6,Y=-.400],-3.00
+*POWER_LINE_EX,Power line ----EX P----EX P----EX P----EX P----EX P----EX P--
+A,25,-1.50,["EX P",60-500,S=1.0,U=0.0,X=-0.6,Y=-.400],-3.00
+*POWER_LINE_OVERHEAD_EX,Power line ----O/H P----O/H P----O/H P----O/H P----O/H P----O/H P--
+A,25,-1.50,["O/H P",60-500,S=1.0,U=0.0,X=-0.6,Y=-.400],-3.00
+*HIDE,.-   .-   .-   .-   .-
+A,0,0.5,-2
+*PL,__________ __ __ __ __________
+A,14,-1,2,-1,2,-1,2,-1
+*PLE,__________ __ __ __________
+A,14,-1,2,-1,2,-1
+*PLF,____  ____  ____  ____  ____
+A,4,-2
+*STM,_______ __ _______ __ _______
+A,10,-2,2,-2
+*SAN,_____ _____ _____ _____ _____
+A,8,-2
+*EASE,___  ___  ___  ___  ___  ___
+A,3,-2
+*CBL,_ _ _ _ _ _ _ _ _ _ _ _ _0 _ _
+A,2,-1
+*DOTS,.  .  .  .  .  .  .  .  .  .
+A,0,-2
+*DOTTB,..............................
+A,0,-.0625
+*CL,-------------- - --------------
+A,15,-1.5,2.5,-1.5
+*SWALE
+A,2.5,-.5,.5,-.5,.5,-.5
+*SCRFENCE
+A,9,-1
+*FUTURE,-- -- -- -- -- -- -- -- --
+A,1.00,-0.50
+;LINEDOT,LINEDOT
+A,10,-3,0,-3
+*LINEDOT,LINEDOT
+A,15,-3,0,-3
+*BASELINE,STREET BASE LINE
+A,14,-2,3.5,-2
+*CHAIN,Chain
+A,0.0,[CHAIN,WN.SHX,S=2],-8
+*CURBLINE,PROFILE CURBLINE
+A,12,-1,1.5,-1
+*BOD,Boundary of Development
+A,0,-1.875,[BOD,BOD,s=1],-1.875
+*LOC,Limit of Construction
+A,0,-1.125,[LOC,loc,s=1],-1.125
+*FENCELINE1,Fenceline circle ----0-----0----0-----0----0-----0--
+A,6.35,-2.54,[CIRC1,ltypeshp.shx,x=-2.54,s=2.54],-2.54,25.4
+*FENCE_POST_CABLE,Post and Cable Fence
+A,10.1,[CIRC1,WN.SHX,s=1.0],0
+*FENCE_POST_CABEX,Ex Post and Cable Fence
+A,10.1,[CIRC1EX,WN.SHX,s=0.25],0
+*FENCE_CHAIN_LINK,Chain Link Fence
+A,10.1,[FENCE,WN.SHX,S=1.0],0
+*FENCE_SOUND,Sound Attn Fence
+A,10.05,[BOX,WN.SHX,s=1.0],0
+*FENCE_SOUNDEX,Ex Sound Attn Fence
+A,10.1,[FENCE2EX,WN.SHX,s=0.25],.0
+*DENSE-BROKEN,DENSE-BROKEN
+A,0.5,-0.5
+*2WIDE-BROKEN,2WIDE-BROKEN
+A,2,-2
+*3WIDE-BROKEN,3WIDE-BROKEN
+A,3,-3
+*EX_3_WIDE_BROKEN,EX_3_WIDE_BROKEN
+A,0,[EX3WIDE,EX3WIDE,s=1],-6
+*3x6,3x6
+A,3,-6
+*3X3
+A,3,-3
+
+
+

@@ -1,0 +1,5 @@
+*HRPN70OT,165W  100 70 DEG Free patterns from www.AUTOCADhatch.com
+0,0,0,0,93.969
+90,0,0,93.969,82.5,93.9691,-93.969
+
+

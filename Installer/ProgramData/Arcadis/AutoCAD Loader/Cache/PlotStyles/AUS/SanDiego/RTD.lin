@@ -1,0 +1,459 @@
+*EX-GDRL-T3,EX GUARDRAIL TYPE 3
+A,.8,[GRD-RAIL-T3,EX_GAURDRL_TYP3,s=1,r=.000023],.05
+*EX-GDRL-T7,EX GAURDRAIL TYP7
+A,.8,[EX-GDRL-T7,EX_GAURDRL_TYP7,s=1,r=.000023],-.2
+*EX-CHAIN-LINK,EXISTING CHAIN LINK FENCE
+A,2.5,[EX-CHAIN-LINK,EX-CHAINLINK,s=1,r=.000023],-.42426
+*BARB-WIRE-FENCE,BARB WIRE FENCE
+A,2.5,[BARB-WIRE,BWIRE-X,s=1,r=.000023],-.5
+*COMBO-WIRE,COMBO WIRE FENCE
+A,2.5,[COMBO-WIRE,combo wire,s=1,r=.000023],-.5
+*EX-WOOD-FENCE,EXISTING WD FENCE
+A,2.5,[EX-WD-FENCE,EX-WOOD-FENCE,s=1,r=.000023],-.3
+*TEMP-FENCE,TEMPORARY FENCE
+A,.7,-.25,.7,[TBWIRE,TBWIRE-X,s=1,r=.000016],-.499939,.7,-.25,.7,-.25
+
+*PR-GDRL-T3,PROP GAURDRAIL T3
+A,.575,[PR-GDRL-T3,PR_GAURDRL_TYP3,s=1],.05
+*PR-GDRL-T7,PR GUARDRAIL TYP7
+A,.8,[PR-GDRL-T7,PR_GAURDRL_TYP7,s=1,r=.000023],.2
+*PR-CHAIN-LINK,PR CHAIN LINK FENCE
+A,2.5,[PR-CHAIN-LINK,PR-CHAINLINK,s=1,r=.000023],-.42426
+*PR-WOOD-FENCE,PROPOSED WD FENCE
+A,2.5,[PR-WOOD-FENCE,PR-WOOD-FENCE,s=1,r=.000023],-.30
+
+*TOE-OF-FIL,TOE OF FILL
+A,1.2,-.4,.2,-.4
+*TOP-OF-CUT,TOP OF CUT
+A,1.6,-.4
+*DITCH-NOFLOW,Ditch No Flow Direction
+A,3.333,-.375,[D-SQUARE,Ditch-square,y=-.050001,s=1],-1.378269
+*DITCH-FLOW,Ditch with Flow Direction
+A,2.5,[AR-SQUARE,arrow-square,s=1,r=.000015],-2.63766
+
+*FENCE-PLASTIC,Plastic Fence - Erosion Control
+A,.5,-.1875,[FENC-PLAS,Fenc-Plas,s=1,r=.000023],-.1875
+*FENCE-SILT,Silt Fence - Erosion Control
+A,.5,-.1875,[FENC-SILT,Fenc-Silt,s=1,r=.000023],-.1875
+*DIAMOND,Diamond
+A,.4,-.4,[DIAMOND,Diamond,s=1,r=.000023],-.4
+
+*RAILRD,EXISTING RAIL ROAD TRACKS
+A,.00000001,[RAILRD,RR,s=1],-.4
+
+*COMBO-WALL,Combo Wall Grnd Nail with MSE Block fcing
+A,2.5,[COMBOWALL,Combo-Wall,y=-.000001,s=1],-1.004072
+*GROUND-NAIL-WALL,ground nail wall
+A,2.5,[GRNDNAIL,Wall-grndnail,y=-.000001,s=1],-.500674
+*RETAINING-WALL,Retaining-Wall
+A,2,[RETAINING-WALL,Wall-Retain,s=1],-1.005284
+
+*4IN-SKIP,4 Inch Skip (10-30)
+A,0,[STRIPE4-SKIP,Stripe4-Skip,s=1,r=.000023],-4
+*4IN-SKIP2,4 Inch Skip (2-4)
+A,0,[STRIPE4-SKIP2,Stripe4-Skip2,s=1,r=.000023],-.6
+*8IN-SKIP,8 Inch Skip (3-12)
+A,0,[STRIPE8-SKIP,Stripe8-Skip,s=1,r=.000023],-1.5
+
+*EXGAS,Existing Gas Line Unknown Size
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.3
+*EXGAS3-4,Existing Gas Line 3/4 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[3-4IN,3-4IN,s=1,r=.000032],-.15
+*EXGAS1,Existing Gas Line 1 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[1IN,1IN,s=1,r=.000032],-.15
+*EXGAS1.5,Existing Gas Line 1.5 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[1-1-2IN,1-1-2IN,s=1,r=.000032],-.15
+*EXGAS2,Existing Gas Line 2 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[2IN,2IN,s=1,r=.000032],-.15
+*EXGAS4,Existing Gas Line 4 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[4IN,4IN,s=1,r=.000032],-.15
+*EXGAS6,Existing Gas Line 6 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[6IN,6IN,s=1,r=.000032],-.15
+*EXGAS8,Existing Gas Line 8 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[8IN,8IN,s=1,r=.000032],-.15
+*EXGAS10,Existing Gas Line 10 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000032],-.125,.5,-.1,.5,-.15,[10IN,10IN,s=1,r=.000032],-.15
+*EXGAS20,Existing Gas Line 20 Inch
+A,.5,-.1,.5,-.125,[UT-G,Ut-G,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[20IN,20IN,s=1,r=.000023],-.15
+
+*EXCTVUG,Existing Underground Cable Television Line
+A,.5,-.1,.5,-.125,[UT-TV,Ut-Tv,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[UG,UG,s=1,r=.000023],-.15
+*EXCTVOH,Existing Overhead Cable Television Line
+A,.5,-.1,.5,-.125,[UT-TV,Ut-Tv,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[OH,OH,s=1,r=.000023],-.15
+
+*EXTELEUG,Existing Telephone Underground Line
+A,.5,-.1,.5,-.125,[UT-T,Ut-T,s=1,r=.000041],-.125,.5,-.1,.5,-.15,[UG,UG,s=1,r=.000041],-.15
+*EXTELEOH,Existing Telephone Overhead Line
+A,.5,-.1,.5,-.125,[UT-T,Ut-T,s=1,r=.000041],-.125,.5,-.1,.5,-.15,[OH,OH,s=1,r=.000041],-.15
+
+*EFOUG,Existing Underground Fiber Optic Line
+A,.5,-.1,.5,-.125,[UT-FO,Ut-FO,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[UG,UG,s=1,r=.000023],-.15
+*EFOOH,Existing Overhead Fiber Optic Line
+A,.5,-.1,.5,-.125,[UT-FO,Ut-FO,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[OH,OH,s=1,r=.000023],-.15
+
+*ELEUG,Existing Underground Electric Line
+A,.5,-.1,.5,-.125,[UT-E,Ut-E,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[UG,UG,s=1,r=.000023],-.15
+*ELEOH,Existing Overhead Electric Line
+A,.5,-.1,.5,-.125,[UT-E,Ut-E,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[OH,OH,s=1,r=.000023],-.15
+
+*EXWTR,Existing Water Line Unknown Size
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.3
+*EXWTR1,Existing Water Line 1 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[1IN,1IN,s=1,r=.000023],-.15
+*EXWTR2,Existing Water Line 2 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[2IN,2IN,s=1,r=.000023],-.15
+*EXWTR4,Existing Water Line 4 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[4IN,4IN,s=1,r=.000023],-.15
+*EXWTR6,Existing Water Line 6 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[6IN,6IN,s=1,r=.000023],-.15
+*EXWTR8,Existing Water Line 8 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[8IN,8IN,s=1,r=.000023],-.15
+*EXWTR10,Existing Water Line 10 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[10IN,10IN,s=1,r=.000023],-.15
+*EXWTR12,Existing Water Line 12 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[12IN,12IN,s=1,r=.000023],-.15
+*EXWTR16,Existing Water Line 16 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[16IN,16IN,s=1,r=.000023],-.15
+*EXWTR18,Existing Water Line 18 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[18IN,18IN,s=1,r=.000023],-.15
+*EXWTR20,Existing Water Line 20 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[20IN,20IN,s=1,r=.000023],-.15
+*EXWTR30,Existing Water Line 30 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[30IN,30IN,s=1,r=.000023],-.15
+*EXWTR36,Existing Water Line 36 Inch
+A,.5,-.1,.5,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,.5,-.1,.5,-.15,[36IN,36IN,s=1,r=.000023],-.15
+
+*EXSAN,Existing Sanitary Sewer Line Unknown Size
+A,.5,-.3,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSANL,Existing Sanitary Sewer Line Unknown Size
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.3,.5,-.25
+*EXSAN8,Existing Sanitary Sewer Line 8 Inch
+A,.5,-.15,[8IN,8IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EX-GAURDRAIL-T3,EXISTING GAURDRAIL TYPE 3
+A,0,[GRD-RAIL-T3,EX_GAURDRL_TYP3,s=1,r=.000023],.625
+*EXSAN8L,Existing Sanitary Sewer Line 8 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[8IN,8IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN10,Existing Sanitary Line 10 Inch
+A,.5,-.15,[10IN,10IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN10L,Existing Sanitary Sewer Line 10 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[10IN,10IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN12,Existing Sanitary Sewer Line 12 Inch
+A,.5,-.15,[12IN,12IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN12L,Existing Sanitary Sewer Line 12 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[12IN,12IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN15,Existing Sanitary Sewer Line 15 Inch
+A,.5,-.15,[15IN,15IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN15L,Existing Sanitary Sewer Line 15 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[15IN,15IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN18,Existing Sanitary Sewer Line 18 Inch
+A,.5,-.15,[18IN,18IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN18L,Existing Sanitary Sewer Line 18 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[18IN,18IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN24,Existing Sanitary Sewer Line 24 Inch
+A,.5,-.15,[24IN,24IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN24L,Existing Sanitary Sewer Line 24 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[24IN,24IN,s=1,r=.000023],-.15,.5,-.25
+*EXSAN36,Existing Sanitary Sewer Line 36 Inch
+A,.5,-.15,[36IN,36IN,s=1,r=.000023],-.15,.5,[ARWRT,ARWRT,s=1,r=.000023],-.25
+*EXSAN36L,Existing Sanitary Sewer Line 36 Inch
+A,.0001,[ARWLT,ARWLT,s=1,r=.000023],.4999,-.15,[36IN,36IN,s=1,r=.000023],-.15,.5,-.25
+
+*EXSTM,Existing Storm Sewer Line Unknown Size
+A,.5,-.3,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTML,Existing Storm Sewer Line Unknown Size
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.3,.5,-.25
+*EXSTM6,Existing Storm Sewer Line 6 Inch
+A,.5,-.15,[6IN,6IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM6L,Existing Storm Sewer Line 6 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[6IN,6IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM8,Existing Storm Sewer Line 8 Inch
+A,.5,-.15,[8IN,8IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM8L,Existing Storm Sewer Line 8 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[8IN,8IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM12,Existing Storm Sewer 12 Inch
+A,.5,-.15,[12IN,12IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM12L,Existing Storm Sewer Line 12 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[12IN,12IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM15,Existing Storm Sewer 15 Inch
+A,.5,-.15,[15IN,15IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM15L,Existing Storm Sewer Line 15 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[15IN,15IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM18,Existing Storm Sewer 18 Inch
+A,.5,-.15,[18IN,18IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM18L,Existing Storm Sewer Line 18 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[18IN,18IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM21,Existing Storm Sewer 21 Inch
+A,.5,-.15,[21IN,21IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM21L,Existing Storm Sewer Line 21 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[21IN,21IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM24,Existing Storm Sewer 24 Inch
+A,.5,-.15,[24IN,24IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM24L,Existing Storm Sewer Line 24 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[24IN,24IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM27,Existing Storm Sewer 27 Inch
+A,.5,-.15,[27IN,27IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM27L,Existing Storm Sewer Line 27 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[27IN,27IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM30,Existing Storm Sewer 30 Inch
+A,.5,-.15,[30IN,30IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM30L,Existing Storm Sewer Line 30 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[30IN,30IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM33,Existing Storm Sewer 33 Inch
+A,.5,-.15,[33IN,33IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM33L,Existing Storm Sewer Line 33 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[33IN,33IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM36,Existing Storm Sewer 36 Inch
+A,.5,-.15,[36IN,36IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM36L,Existing Storm Sewer Line 36 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[36IN,36IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM42,Existing Storm Sewer 42 Inch
+A,.5,-.15,[42IN,42IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM42L,Existing Storm Sewer Line 42 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[42IN,42IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM48,Existing Storm Sewer 48 Inch
+A,.5,-.15,[48IN,48IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM48L,Existing Storm Sewer Line 48 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[48IN,48IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM54,Existing Storm Sewer 54 Inch
+A,.5,-.15,[54IN,54IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM54L,Existing Storm Sewer Line 54 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[54IN,54IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM60,Existing Storm Sewer 60 Inch
+A,.5,-.15,[60IN,60IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM60L,Existing Storm Sewer Line 60 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[60IN,60IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM66,Existing Storm Sewer 66 Inch
+A,.5,-.15,[66IN,66IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM66L,Existing Storm Sewer Line 66 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[66IN,66IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM72,Existing Storm Sewer 72 Inch
+A,.5,-.15,[72IN,72IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM72L,Existing Storm Sewer Line 72 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[72IN,72IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM78,Existing Storm Sewer Line 78 Inch
+A,.5,-.15,[78IN,78IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM78L,Existing Storm Sewer Line 78 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[78IN,78IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM84,Existing Storm Sewer Line 84 Inch
+A,.5,-.15,[84IN,84IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM84L,Existing Storm Sewer Line 84 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[84IN,84IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM90,Existing Storm Sewer Line 90 Inch
+A,.5,-.15,[90IN,90IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM90L,Existing Storm Sewer Line 90 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[90IN,90IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM96,Existing Storm Sewer Line 96 Inch
+A,.5,-.15,[96IN,96IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM96L,Existing Storm Sewer Line 96 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[96IN,96IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM102,Existing Storm Sewer Line 102 Inch
+A,.5,-.15,[102IN,102IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM102L,Existing Storm Sewer Line 102 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[102IN,102IN,s=1,r=.000023],-.15,.5,-.25
+*EXSTM108,Existing Storm Sewer Line 108 Inch
+A,.5,-.15,[108IN,108IN,s=1,r=.000023],-.15,.5,[FLOW1,Flow1,s=1,r=.000023],-.25
+*EXSTM108L,Existing Storm Sewer Line 108 Inch
+A,.0001,[FLOW1,Flow1,s=1,r=180.000023],.4999,-.15,[108IN,108IN,s=1,r=.000023],-.15,.5,-.25
+
+*PRGAS,Proposed Gas Line Unknown Size
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.3
+*PRGAS3-4,Proposed Gas Line 3/4 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[3-4IN,3-4IN,s=1,r=.000012],-.15
+*PRGAS1,Proposed Gas Line 1 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[1IN,1IN,s=1,r=.000012],-.15
+*PRGAS1.5,Proposed Gas Line 1 1/2 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000023],-.125,1.1,-.15,[1-1-2IN,1-1-2IN,s=1,r=.000023],-.15
+*PRGAS2,Proposed Gas Line 2 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[2IN,2IN,s=1,r=.000012],-.15
+*PRGAS4,Proposed Gas Line 4 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[4IN,4IN,s=1,r=.000012],-.15
+*PRGAS6,Proposed Gas Line 6 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[6IN,6IN,s=1,r=.000012],-.15
+*PRGAS8,Proposed Gas Line 8 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000023],-.125,1.1,-.15,[8IN,8IN,s=1,r=.000023],-.15
+*PRGAS10,Proposed Gas Line 10 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000012],-.125,1.1,-.15,[10IN,10IN,s=1,r=.000012],-.15
+*PRGAS20,Proposed Gas Line 20 Inch
+A,1.1,-.125,[UT-G,Ut-G,s=1,r=.000023],-.125,1.1,-.15,[20IN,20IN,s=1,r=.000023],-.15
+
+
+*PRCTVUG,Proposed Underground Cable Television Line
+A,1.1,-.125,[UT-TV,Ut-Tv,s=1,r=.000041],-.125,1.1,-.15,[UG,UG,s=1,r=.000041],-.15
+*PRCTVOH,Proposed Overhead Cable Television Line
+A,1.1,-.125,[UT-TV,Ut-Tv,s=1,r=.000041],-.125,1.1,-.15,[OH,OH,s=1,r=.000041],-.15
+
+
+*PRTELEUG,Proposed Underground Telephone Line
+A,1.1,-.125,[UT-T,Ut-T,s=1,r=.000041],-.125,1.1,-.15,[UG,UG,s=1,r=.000041],-.15
+*PRTELEOH,Proposed Telephone Overhead Line
+A,1.1,-.125,[UT-T,Ut-T,s=1,r=.00006],-.125,1.1,-.15,[OH,OH,s=1,r=.00006],-.15
+
+*PRFOUG,Proposed Underground Fiber Optic Line
+A,1.1,-.125,[UT-FO,Ut-FO,s=1,r=.000041],-.125,1.1,-.15,[UG,UG,s=1,r=.000041],-.15
+*PRFOOH,Proposed Overhead Fiber Optic Line
+A,1.1,-.125,[UT-FO,Ut-FO,s=1,r=.000041],-.125,1.1,-.15,[OH,OH,s=1,r=.000041],-.15
+*PRELEUG,Proposed Underground Electric Line
+A,1.1,-.125,[UT-E,Ut-E,s=1,r=.000041],-.125,1.1,-.15,[UG,UG,s=1,r=.000041],-.15
+*PRELEOH,Proposed Overhead Electric Line
+A,1.1,-.125,[UT-E,Ut-E,s=1,r=.000041],-.125,1.1,-.15,[OH,OH,s=1,r=.000041],-.15
+
+*PRWTR,Proposed Water Line Unknown Size
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,-.15
+*PRWTR1,Proposed Water Line 1 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[1IN,1IN,s=1,r=.000023],-.15
+*PRWTR2,Proposed Water Line 2 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[2IN,2IN,s=1,r=.000023],-.15
+*PRWTR4,Proposed Water Line 4 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[4IN,4IN,s=1,r=.000023],-.15
+*PRWTR6,Proposed Water Line 6 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[6IN,6IN,s=1,r=.000023],-.15
+*PRWTR8,Proposed Water Line 8 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[8IN,8IN,s=1,r=.000023],-.15
+*PRWTR10,Proposed Water Line 10 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[10IN,10IN,s=1,r=.000023],-.15
+*PRWTR12,Proposed Water Line 12 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[12IN,12IN,s=1,r=.000023],-.15
+*PRWTR16,Proposed Water Line 16 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[16IN,16IN,s=1,r=.000023],-.15
+*PRWTR18,Proposed Water Line 18 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[18IN,18IN,s=1,r=.000023],-.15
+*PRWTR20,Proposed Water Line 20 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[20IN,20IN,s=1,r=.000023],-.15
+*PRWTR30,Proposed Water Line 30 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[30IN,30IN,s=1,r=.000023],-.15
+*PRWTR36,Proposed Water Line 36 Inch
+A,1.1,-.125,[UT-W,Ut-W,s=1,r=.000023],-.125,1.1,-.15,[36IN,36IN,s=1,r=.000023],-.15
+
+*PRSAN,Proposed Sanitary Sewer Line Unknown Size
+A,1.55,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN8,Proposed Sanitary Sewer Line 8 Inch
+A,.775,[8IN,8IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN8L,Proposed Sanitary Sewer Line 8 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[8IN,8IN,y=.100859,s=1],1.075348
+*PRSAN10,Proposed Sanitary Sewer Line 10 Inch
+A,.775,[10IN,10IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN10L,Proposed Sanitary Sewer Line 10 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[10IN,10IN,y=.100859,s=1],1.075348
+*PRSAN12,Proposed Sanitary Sewer Line 12 Inch
+A,.775,[12IN,12IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN12L,Proposed Sanitary Sewer Line 12 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[12IN,12IN,y=.100859,s=1],1.075348
+*PRSAN15,Proposed Sanitary Sewer Line 15 Inch
+A,.775,[15IN,15IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN15L,Proposed Sanitary Sewer Line 15 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[15IN,15IN,y=.100859,s=1],1.075348
+*PRSAN18,Proposed Sanitary Sewer Line 18 Inch
+A,.775,[18IN,18IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN18L,Proposed Sanitary Sewer Line 18 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[18IN,18IN,y=.100859,s=1],1.075348
+*PRSAN24,Proposed Sanitary Sewer Line 24 Inch
+A,.775,[24IN,24IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN24L,Proposed Sanitary Sewer Line 24 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[24IN,24IN,y=.100859,s=1],1.075348
+*PRSAN36,Proposed Sanitary Sewer Line 36 Inch
+A,.775,[36IN,36IN,y=.100859,s=1,r=.000023],.775,[ARWRT,ARWRT,s=1,r=.000023],.0001
+*PRSAN36L,Proposed Sanitary Sewer Line 36 Inch
+A,.0001,[ARWLT,ARWLT,s=1],.474652,[36IN,36IN,y=.100859,s=1],1.075348
+
+*PRSTM,Proposed Storm Sewer Line Unknown Size
+A,1.333034,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTML,Proposed Storm Sewer Line Unknown Size
+A,1.333023,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM6,Proposed Storm Sewer Line 6 Inch
+A,.750109,[6IN,6IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM6L,Proposed Storm Sewer Line 6 Inch
+A,.750109,[6IN,6IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM8,Proposed Storm Sewer Line 8 Inch
+A,.750109,[8IN,8IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM8L,Proposed Storm Sewer Line 8 Inch
+A,.750109,[8IN,8IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM12,Proposed Storm Sewer Line 12 Inch
+A,.750109,[12IN,12IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM12L,Proposed Storm Sewer Line 12 Inch
+A,.750109,[12IN,12IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM15,Proposed Storm Sewer Line 15 Inch
+A,.750109,[15IN,15IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM15L,Proposed Storm Sewer Line 15 Inch
+A,.750109,[15IN,15IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM18,Proposed Storm Sewer Line 18 Inch
+A,.750109,[18IN,18IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM18L,Proposed Storm Sewer Line 18 Inch
+A,.750109,[18IN,18IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM21,Proposed Storm Sewer Line 21 Inch
+A,.750109,[21IN,21IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM21L,Proposed Storm Sewer Line 21 Inch
+A,.750109,[21IN,21IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM24,Proposed Storm Sewer Line 24 Inch
+A,.750109,[24IN,24IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM24L,Proposed Storm Sewer Line 24 Inch
+A,.750109,[24IN,24IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM27,Proposed Storm Sewer Line 27 Inch
+A,.750109,[27IN,27IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM27L,Proposed Storm Sewer Line 27 Inch
+A,.750109,[27IN,27IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM30,Proposed Storm Sewer Line 30 Inch
+A,.750109,[30IN,30IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM30L,Proposed Storm Sewer Line 30 Inch
+A,.750109,[30IN,30IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM33,Proposed Storm Sewer Line 33 Inch
+A,.750109,[33IN,33IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM33L,Proposed Storm Sewer Line 33 Inch
+A,.750109,[33IN,33IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM36,Proposed Storm Sewer Line 36 Inch
+A,.750109,[36IN,36IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM36L,Proposed Storm Sewer Line 36 Inch
+A,.750109,[36IN,36IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM42,Proposed Storm Sewer Line 42 Inch
+A,.750109,[42IN,42IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM42L,Proposed Storm Sewer Line 42 Inch
+A,.750109,[42IN,42IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM48,Proposed Storm Sewer Line 48 Inch
+A,.750109,[48IN,48IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM48L,Proposed Storm Sewer Line 48 Inch
+A,.750109,[48IN,48IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM54,Proposed Storm Sewer Line 54 Inch
+A,.750109,[54IN,54IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM54L,Proposed Storm Sewer Line 54 Inch
+A,.750109,[54IN,54IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM60,Proposed Storm Sewer Line 60 Inch
+A,.750109,[60IN,60IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM60L,Proposed Storm Sewer Line 60 Inch
+A,.750109,[60IN,60IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM66,Proposed Storm Sewer Line 66 Inch
+A,.750109,[66IN,66IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM66L,Proposed Storm Sewer Line 66 Inch
+A,.750109,[66IN,66IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM72,Proposed Storm Sewer Line 72 Inch
+A,.750109,[72IN,72IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM72L,Proposed Storm Sewer Line 72 Inch
+A,.750109,[72IN,72IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM78,Proposed Storm Sewer Line 78 Inch
+A,.750109,[78IN,78IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM78L,Proposed Storm Sewer Line 78 Inch
+A,.750109,[78IN,78IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM84,Proposed Storm Sewer Line 84 Inch
+A,.750109,[84IN,84IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM84L,Proposed Storm Sewer Line 84 Inch
+A,.750109,[84IN,84IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM90,Proposed Storm Sewer Line 90 Inch
+A,.750109,[90IN,90IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM90L,Proposed Storm Sewer Line 90 Inch
+A,.750109,[90IN,90IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM96,Proposed Storm Sewer Line 96 Inch
+A,.750109,[96IN,96IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM96L,Proposed Storm Sewer Line 96 Inch
+A,.750109,[96IN,96IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM102,Proposed Storm Sewer Line 102 Inch
+A,.750109,[102IN,102IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM102L,Proposed Storm Sewer Line 102 Inch
+A,.750109,[102IN,102IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+*PRSTM108,Proposed Storm Sewer Line 108 Inch
+A,.750109,[108IN,108IN,y=.104196,s=1,r=.000499],.582925,-.167076,[FLOW1,Flow1,s=1,r=.000499]
+*PRSTM108L,Proposed Storm Sewer Line 108 Inch
+A,.750109,[108IN,108IN,y=.104196,s=1,r=.000496],.582914,[FLOW2,Flow2,y=-.000001,s=1,r=.000496],-.16708
+
+
+
+
+
+

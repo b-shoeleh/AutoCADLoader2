@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="10">
+<config class_id="0" tracking_level="0" version="0">
+	<m_customPageSizeList class_id="1" tracking_level="0" version="0">
+		<count>42</count>
+		<item_version>0</item_version>
+		<item class_id="2" tracking_level="0" version="0">
+			<first>610mmx1000mm</first>
+			<second class_id="3" tracking_level="1" version="0" object_id="_0">
+				<m_name>610mmx1000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>1000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx1250mm</first>
+			<second class_id_reference="3" object_id="_1">
+				<m_name>610mmx1250mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>1250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx1500mm</first>
+			<second class_id_reference="3" object_id="_2">
+				<m_name>610mmx1500mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>1500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx1750mm</first>
+			<second class_id_reference="3" object_id="_3">
+				<m_name>610mmx1750mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>1750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx2000mm</first>
+			<second class_id_reference="3" object_id="_4">
+				<m_name>610mmx2000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>2000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx2250mm</first>
+			<second class_id_reference="3" object_id="_5">
+				<m_name>610mmx2250mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>2250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx2500mm</first>
+			<second class_id_reference="3" object_id="_6">
+				<m_name>610mmx2500mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>2500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx2750mm</first>
+			<second class_id_reference="3" object_id="_7">
+				<m_name>610mmx2750mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>2750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx3000mm</first>
+			<second class_id_reference="3" object_id="_8">
+				<m_name>610mmx3000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>3000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx3250mm</first>
+			<second class_id_reference="3" object_id="_9">
+				<m_name>610mmx3250mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>3250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx3500mm</first>
+			<second class_id_reference="3" object_id="_10">
+				<m_name>610mmx3500mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>3500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx3750mm</first>
+			<second class_id_reference="3" object_id="_11">
+				<m_name>610mmx3750mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>3750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx4000mm</first>
+			<second class_id_reference="3" object_id="_12">
+				<m_name>610mmx4000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>4000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx4250mm</first>
+			<second class_id_reference="3" object_id="_13">
+				<m_name>610mmx4250mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>4250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx4500mm</first>
+			<second class_id_reference="3" object_id="_14">
+				<m_name>610mmx4500mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>4500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx4750mm</first>
+			<second class_id_reference="3" object_id="_15">
+				<m_name>610mmx4750mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>4750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx5000mm</first>
+			<second class_id_reference="3" object_id="_16">
+				<m_name>610mmx5000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>5000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx5250mm</first>
+			<second class_id_reference="3" object_id="_17">
+				<m_name>610mmx5250mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>5250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx5500mm</first>
+			<second class_id_reference="3" object_id="_18">
+				<m_name>610mmx5500mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>5500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx5750mm</first>
+			<second class_id_reference="3" object_id="_19">
+				<m_name>610mmx5750mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>5750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>610mmx6000mm</first>
+			<second class_id_reference="3" object_id="_20">
+				<m_name>610mmx6000mm</m_name>
+				<m_width>610000</m_width>
+				<m_length>6000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx1000mm</first>
+			<second class_id_reference="3" object_id="_21">
+				<m_name>914mmx1000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>1000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx1250mm</first>
+			<second class_id_reference="3" object_id="_22">
+				<m_name>914mmx1250mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>1250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx1500mm</first>
+			<second class_id_reference="3" object_id="_23">
+				<m_name>914mmx1500mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>1500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx1750mm</first>
+			<second class_id_reference="3" object_id="_24">
+				<m_name>914mmx1750mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>1750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx2000mm</first>
+			<second class_id_reference="3" object_id="_25">
+				<m_name>914mmx2000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>2000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx2250mm</first>
+			<second class_id_reference="3" object_id="_26">
+				<m_name>914mmx2250mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>2250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx2500mm</first>
+			<second class_id_reference="3" object_id="_27">
+				<m_name>914mmx2500mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>2500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx2750mm</first>
+			<second class_id_reference="3" object_id="_28">
+				<m_name>914mmx2750mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>2750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx3000mm</first>
+			<second class_id_reference="3" object_id="_29">
+				<m_name>914mmx3000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>3000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx3250mm</first>
+			<second class_id_reference="3" object_id="_30">
+				<m_name>914mmx3250mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>3250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx3500mm</first>
+			<second class_id_reference="3" object_id="_31">
+				<m_name>914mmx3500mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>3500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx3750mm</first>
+			<second class_id_reference="3" object_id="_32">
+				<m_name>914mmx3750mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>3750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx4000mm</first>
+			<second class_id_reference="3" object_id="_33">
+				<m_name>914mmx4000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>4000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx4250mm</first>
+			<second class_id_reference="3" object_id="_34">
+				<m_name>914mmx4250mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>4250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx4500mm</first>
+			<second class_id_reference="3" object_id="_35">
+				<m_name>914mmx4500mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>4500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx4750mm</first>
+			<second class_id_reference="3" object_id="_36">
+				<m_name>914mmx4750mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>4750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx5000mm</first>
+			<second class_id_reference="3" object_id="_37">
+				<m_name>914mmx5000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>5000000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx5250mm</first>
+			<second class_id_reference="3" object_id="_38">
+				<m_name>914mmx5250mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>5250000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx5500mm</first>
+			<second class_id_reference="3" object_id="_39">
+				<m_name>914mmx5500mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>5500000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx5750mm</first>
+			<second class_id_reference="3" object_id="_40">
+				<m_name>914mmx5750mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>5750000</m_length>
+			</second>
+		</item>
+		<item>
+			<first>914mmx6000mm</first>
+			<second class_id_reference="3" object_id="_41">
+				<m_name>914mmx6000mm</m_name>
+				<m_width>914000</m_width>
+				<m_length>6000000</m_length>
+			</second>
+		</item>
+	</m_customPageSizeList>
+</config>
+</boost_serialization>
+
