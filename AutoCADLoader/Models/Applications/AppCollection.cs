@@ -80,30 +80,36 @@ namespace AutoCADLoader.Models.Applications
             //detect what is installed
             if (_autodeskApplicationsCollection.Apps.Any())
             {
-                foreach (AutodeskApplication item in _autodeskApplicationsCollection.Apps)
+                List<AutodeskApplication> autodeskApplicationsInstalled = [];
+
+                foreach (AutodeskApplicationPoco autodeskApplicationPoco in _autodeskApplicationsCollection.Apps)
                 {
-                    foreach (AppVersion appVersion in item.AppVersions)
+                    foreach (AppVersionPoco appVersionPoco in autodeskApplicationPoco.AppVersions)
                     {
-                        appVersion.Installed = RegistryInfo.KeyExists(appVersion.RegKey);
+                        appVersionPoco.Installed = RegistryInfo.KeyExists(appVersionPoco.RegKey);
 
-                        if (appVersion.Installed)
+                        if (appVersionPoco.Installed)
                         {
-                            EventLogger.Log($"Application detected - {item.Title} {appVersion.Number}", EventLogEntryType.Information);
+                            EventLogger.Log($"Application detected - {autodeskApplicationPoco.Title} {appVersionPoco.Number}", EventLogEntryType.Information);
+                            autodeskApplicationsInstalled.Add(new(autodeskApplicationPoco, appVersionPoco));
 
-                            if (appVersion.Plugins.Any())
+                            if (appVersionPoco.Plugins.Any())
                             {
-                                foreach (var plugin in appVersion.Plugins)
+                                foreach (Plugin? plugin in appVersionPoco.Plugins)
                                 {
                                     plugin.Installed = RegistryInfo.KeyExists(plugin.Pluginkey);
                                     if (plugin.Installed)
                                     {
-                                        EventLogger.Log($"Plugin detected - {item.Title} {appVersion.Number} {plugin.Title}", EventLogEntryType.Information);
+                                        EventLogger.Log($"Plugin detected - {autodeskApplicationPoco.Title} {appVersionPoco.Number} {plugin.Title}", EventLogEntryType.Information);
+                                        autodeskApplicationsInstalled.Add(new(autodeskApplicationPoco, appVersionPoco, plugin));
                                     }
                                 }
                             }
                         }
                     }
                 }
+
+                AutodeskApplicationsInstalled.Initialize(autodeskApplicationsInstalled);
             }
             else
             {
@@ -139,7 +145,7 @@ namespace AutoCADLoader.Models.Applications
                 }
             }
 
-            if(_bundlesCollection.Packages.Any())
+            if (_bundlesCollection.Packages.Any())
             {
                 //check to see if the package is already active
                 foreach (var bundle in _bundlesCollection.Packages)
@@ -169,12 +175,12 @@ namespace AutoCADLoader.Models.Applications
     public class AppCollection
     {
         [XmlArray("Apps")]
-        [XmlArrayItem("App", typeof(AutodeskApplication))]
-        public AutodeskApplication[] Apps { get; set; }
+        [XmlArrayItem("App", typeof(AutodeskApplicationPoco))]
+        public AutodeskApplicationPoco[] Apps { get; set; }
     }
 
     [Serializable()]
-    public class AutodeskApplication
+    public class AutodeskApplicationPoco
     {
         [System.Xml.Serialization.XmlElementAttribute("Title")]
         public string Title { get; set; }
@@ -183,8 +189,8 @@ namespace AutoCADLoader.Models.Applications
         public string AnalysisId { get; set; }
 
         [XmlArray("AppVersions")]
-        [XmlArrayItem("AppVersion", typeof(AppVersion))]
-        public AppVersion[] AppVersions { get; set; }
+        [XmlArrayItem("AppVersion", typeof(AppVersionPoco))]
+        public AppVersionPoco[] AppVersions { get; set; }
 
 
         public string GetArguments()
@@ -209,7 +215,7 @@ namespace AutoCADLoader.Models.Applications
 
 
     [Serializable()]
-    public class AppVersion
+    public class AppVersionPoco
     {
         [System.Xml.Serialization.XmlElement("Number")]
         public int Number { get; set; }
@@ -231,7 +237,6 @@ namespace AutoCADLoader.Models.Applications
 
         [XmlArray("Plugins")]
         [XmlArrayItem("Plugin", typeof(Plugin))]
-
         public Plugin[] Plugins { get; set; }
 
         public bool Installed { get; set; }
@@ -271,6 +276,7 @@ namespace AutoCADLoader.Models.Applications
 
     public class Plugin
     {
+        public string Id { get; set; }
         public string Title { get; set; }
         public string Pluginkey { get; set; }
         public string Scr { get; set; }
@@ -288,6 +294,11 @@ namespace AutoCADLoader.Models.Applications
                 arguments += " /ld \"" + Ld + "\"";
 
             return arguments + " ";
+        }
+
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

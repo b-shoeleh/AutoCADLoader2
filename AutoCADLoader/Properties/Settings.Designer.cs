@@ -25,7 +25,7 @@ namespace AutoCADLoader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("HKEY_LOCAL_MACHINE\\SOFTWARE\\Arcadis\\AutoCAD Loader")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SOFTWARE\\Arcadis\\AutoCAD Loader")]
         public string RegistryPath {
             get {
                 return ((string)(this["RegistryPath"]));

@@ -49,7 +49,7 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="1" Orientation="Vertical">
@@ -69,10 +69,12 @@
                             <Label>Applications</Label>
                         </GroupBox.Header>
                         <StackPanel Orientation="Vertical">
-                            <ComboBox x:Name="cbApplications" MinWidth="150"
-                                  ItemsSource="{Binding Path=ApplicationsInstalled}"
-                                  SelectedItem="{Binding ApplicationInstalledSelected, Mode=TwoWay}"
-                                  Text="--Select application--" IsReadOnly="True" IsEditable="True" SelectionChanged="cbApplications_SelectionChanged">
+                            <ComboBox x:Name="cbApplications" MinWidth="175"
+                                      ItemsSource="{Binding Path=ApplicationsInstalled}"
+                                      SelectedItem="{Binding ApplicationInstalledSelected, Mode=TwoWay}"
+                                      SelectedValuePath="IsSelected"
+                                      SelectedValue="true"
+                                      SelectionChanged="cbApplications_SelectionChanged">
                             </ComboBox>
                         </StackPanel>
                     </GroupBox>
@@ -160,8 +162,7 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition 
-                            Width="auto" MinWidth="200"/>
+                            <ColumnDefinition Width="auto" MinWidth="200"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock 
@@ -185,8 +186,7 @@
                         <ComboBox x:Name="cbOffices" Grid.Row="1" Grid.Column="1"
                               ItemsSource="{Binding Path=Offices}"
                               SelectedItem="{Binding OfficeSelected, Mode=TwoWay}"
-                              Text="--Select office--" IsEditable="True" IsReadOnly="True"
-                              SelectedValuePath="IsSavedOffice"
+                              SelectedValuePath="IsSelected"
                               SelectedValue="true">
                             <!--<ie:Interaction.Triggers>
                             <ie:EventTrigger EventName="SelectionChanged">

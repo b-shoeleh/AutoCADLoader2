@@ -25,7 +25,7 @@ namespace AutoCADLoader.Models.Offices
         public string DisplayName { get; }
 
 
-        public Office(OfficeData data)
+        public Office(OfficePoco data)
         {
             if (string.IsNullOrWhiteSpace(data.OfficeDir))
             {
@@ -37,7 +37,7 @@ namespace AutoCADLoader.Models.Offices
                 throw new ArgumentNullException(nameof(data.RegionDir));
             }
 
-            Id = $"{data.RegionDir}-{data.OfficeDir}";
+            Id = $"{data.RegionDir}_{data.OfficeDir}";
             DirectoryName = data.OfficeDir;
             DisplayName = data.DisplayName ?? DirectoryName;
             Region = new Region(data.RegionDir);

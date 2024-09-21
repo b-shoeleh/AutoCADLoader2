@@ -28,25 +28,25 @@ namespace AutoCADLoader
             SplashScreenWindow splashScreenWindow = new(splashScreenViewModel);
             splashScreenWindow.Show();
 
+            EventLogger.Log("Checking for AutoCAD Loader first run...", EventLogEntryType.Information);
             splashScreenViewModel.LoadingStatus = "Checking for AutoCAD Loader first run...";
             FileSyncManager.HandleFirstRun();
 
+            EventLogger.Log("Validating critical files...", EventLogEntryType.Information);
             splashScreenViewModel.LoadingStatus = "Validating critical files...";
             FileSyncManager.ValidateCriticalFiles();
 
+            EventLogger.Log("Setting up offices...", EventLogEntryType.Information);
             splashScreenViewModel.LoadingStatus = "Setting up offices...";
             SetUpOffices();
 
             fileUpdater = new(Offices.GetSavedOfficeOrDefault());
 
+            EventLogger.Log("Setting up user info...", EventLogEntryType.Information);
             splashScreenViewModel.LoadingStatus = "Setting up user info...";
             UserInfo.Initialize();
 
-            splashScreenViewModel.LoadingStatus = "Setting up registry info...";
-            RegistryInfo.Initialize();
-            Office usersOffice = Offices.GetOfficeByIdOrDefault(RegistryInfo.ActiveOffice);
-            Offices.SetRememberedOffice(usersOffice);
-
+            EventLogger.Log("Detecting Autodesk applications...", EventLogEntryType.Information);
             splashScreenViewModel.LoadingStatus = "Detecting Autodesk applications...";
             bool applicationsPopulated = InfoCollector.PopulateApplicationData();
             if (!applicationsPopulated)
@@ -60,6 +60,21 @@ namespace AutoCADLoader
                 Environment.Exit(1);
             }
 
+            EventLogger.Log("Setting up registry info...", EventLogEntryType.Information);
+            splashScreenViewModel.LoadingStatus = "Setting up registry info...";
+            RegistryInfo.Initialize();
+            // Set saved office from registry data
+            if (!string.IsNullOrWhiteSpace(RegistryInfo.SavedOfficeId))
+            {
+                Office savedOffice = Offices.GetOfficeByIdOrDefault(RegistryInfo.SavedOfficeId);
+                Offices.SetSavedOffice(savedOffice);
+            }
+            // Set saved application from registry data
+            if(!string.IsNullOrWhiteSpace(RegistryInfo.Title) && !string.IsNullOrWhiteSpace(RegistryInfo.Version))
+            {
+                AutodeskApplicationsInstalled.SetSavedApplication(RegistryInfo.Title, RegistryInfo.Version, RegistryInfo.Plugin);
+            }
+
             splashScreenViewModel.LoadingStatus = "Detecting packages...";
             InfoCollector.PopulateBundlesData();
 
@@ -68,22 +83,31 @@ namespace AutoCADLoader
             var systemHealthValues = systemHealth.Get();
 
             splashScreenViewModel.LoadingStatus = "Checking for updates...";
+            var lastUpdated = DateTime.Now - RegistryInfo.LastUpdated;
             bool update = true;
+            MainWindowViewModel mainWindowViewModel = new(AutodeskApplicationsInstalled.Data, systemHealthValues);
+            // TODO: Improve
+            if (lastUpdated < TimeSpan.FromDays(1))
+            {
+                update = false;
+                FileSyncManager.Enabled = false;
+                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Up to date";
+                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Up to date";
+            }
 #if DEBUG
-            update = true; //TODO:!
+            //update = true; //TODO:!
 #endif
-            MainWindowViewModel mainWindowViewModel = new(systemHealthValues);
             MainWindow mainWindow = new(mainWindowViewModel);
             mainWindow.Show();
             splashScreenWindow.Close();
 
             if (update)
             {
-                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Loading...";
-                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Loading...";
+                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Checking...";
+                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Checking...";
                 fileUpdater = await Task.Run(() => CheckForUpdates(mainWindowViewModel));
-                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Up to date";
-                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Up to date";
+                mainWindowViewModel.UpdatesAvailable.Packages.FileStatus = "Updated";
+                mainWindowViewModel.UpdatesAvailable.Settings.FileStatus = "Updated";
             }
         }
 

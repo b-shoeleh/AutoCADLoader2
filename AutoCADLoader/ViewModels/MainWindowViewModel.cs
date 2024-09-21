@@ -10,10 +10,10 @@ namespace AutoCADLoader.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<InstalledAutodeskApplication> ApplicationsInstalled { get; set; } = [];
+        public ObservableCollection<AutodeskApplicationViewModel> ApplicationsInstalled { get; set; } = [];
 
-        private InstalledAutodeskApplication? _applicationInstalledSelected;
-        public InstalledAutodeskApplication? ApplicationInstalledSelected
+        private AutodeskApplicationViewModel _applicationInstalledSelected = new(true);
+        public AutodeskApplicationViewModel ApplicationInstalledSelected
         {
             get
             {
@@ -23,6 +23,11 @@ namespace AutoCADLoader.ViewModels
             {
                 if (value != _applicationInstalledSelected)
                 {
+                    _applicationInstalledSelected.IsSelected = false;
+                    if (_applicationInstalledSelected.IsPlaceholder)
+                    {
+                        ApplicationsInstalled.Remove(_applicationInstalledSelected);
+                    }
                     _applicationInstalledSelected = value;
                     OnPropertyChanged();
                 }
@@ -60,10 +65,10 @@ namespace AutoCADLoader.ViewModels
 
         public string UserName { get; } = UserInfo.UserName();
 
-        public ObservableCollection<Office> Offices { get; set; } = new ObservableCollection<Office>(Models.Offices.Offices.Data);
+        public ObservableCollection<OfficeViewModel> Offices { get; set; } = [];
 
-        private Office? _officeSelected;
-        public Office? OfficeSelected
+        private OfficeViewModel _officeSelected = new(true);
+        public OfficeViewModel OfficeSelected
         {
             get
             {
@@ -73,6 +78,13 @@ namespace AutoCADLoader.ViewModels
             {
                 if (value != _officeSelected)
                 {
+                    _officeSelected.IsSelected = false;
+
+                    if (_officeSelected.IsPlaceholder)
+                    {
+                        Offices.Remove(_officeSelected);
+                    }
+
                     _officeSelected = value;
                     OnPropertyChanged();
                 }
@@ -96,68 +108,66 @@ namespace AutoCADLoader.ViewModels
         public LaunchApplicationRelayCommand LaunchApplicationCommand => _launchApplicationCommand;
 
 
-        public MainWindowViewModel(IEnumerable<Tuple<string, int>> systemHealth)
+        public MainWindowViewModel(
+            List<AutodeskApplication> installedApplications,
+            IEnumerable<Tuple<string, int>> systemHealth)
         {
+            // Set up commands
             _launchApplicationCommand = new(
-                param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected!, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked, CloseAction),
+                param => LaunchApplicationCommand.Execute(ApplicationInstalledSelected!, BundlesAvailable, OfficeSelected, ResetAllSettingsIsChecked, HardwareAccelerationIsChecked, CloseAction),
                 param => LaunchApplicationCommand.CanExecute(ApplicationInstalledSelected, OfficeSelected)
             );
 
-            // TODO: Improve
-            SetUpInstalledApplications();
-            foreach(var item in systemHealth)
+            SetUpInstalledApplications(installedApplications);
+
+            // Set up system health
+            foreach (var item in systemHealth)
             {
                 SystemHealth.Add(item);
             }
+
             SetUpAvailableBundles();
-            var rememberedOffice = Models.Offices.Offices.GetSavedOfficeOrDefault();
+            SetUpOffices();
         }
 
 
-        private void SetUpInstalledApplications()
+        private void SetUpInstalledApplications(List<AutodeskApplication> installedApplications)
         {
-            var allApplications = InfoCollector.AutodeskApplicationsCollection.Apps;
-            foreach (var app in allApplications)
+            foreach (var installedApplication in installedApplications)
             {
-                foreach (var appVersion in app.AppVersions)
-                {
-                    if (appVersion.Installed)
-                    {
-                        ApplicationsInstalled.Add(new()
-                        {
-                            AutodeskApplication = app,
-                            AppVersion = appVersion
-                        });
+                ApplicationsInstalled.Add(new(installedApplication));
+            }
 
-                        if (appVersion.Plugins != null && appVersion.Plugins.Count() > 0)
-                        {
-                            foreach (var plugin in appVersion.Plugins)
-                            {
-                                if (plugin.Installed == true)
-                                {
-                                    ApplicationsInstalled.Add(new()
-                                    {
-                                        AutodeskApplication = app,
-                                        AppVersion = appVersion,
-                                        Plugin = plugin
-                                    });
-                                }
-                            }
-                        }
-                    }
-                }
+            var firstApplicationSelected = ApplicationsInstalled.FirstOrDefault(a => a.IsSelected);
+            if(firstApplicationSelected is null)
+            {
+                ApplicationsInstalled.Insert(0, ApplicationInstalledSelected);
             }
         }
 
         private void SetUpAvailableBundles()
         {
             ObservableCollection<BundleViewModel> bundlesAvailable = [];
-            foreach(Bundle bundle in InfoCollector.BundleCollection.Packages)
+            foreach (Bundle bundle in InfoCollector.BundleCollection.Packages)
             {
                 bundlesAvailable.Add(new(bundle));
             }
 
             BundlesAvailable = bundlesAvailable;
+        }
+
+        private void SetUpOffices()
+        {
+            foreach(Office office in Models.Offices.Offices.Data)
+            {
+                Offices.Add(new(office));
+            }
+
+            var firstOfficeSelected = Offices.FirstOrDefault(a => a.IsSelected);
+            if(firstOfficeSelected is null)
+            {
+                Offices.Insert(0, OfficeSelected);
+            }
         }
     }
 }

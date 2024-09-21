@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RegistryPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">HKEY_LOCAL_MACHINE\SOFTWARE\Arcadis\AutoCAD Loader</Value>
+      <Value Profile="(Default)">SOFTWARE\Arcadis\AutoCAD Loader</Value>
     </Setting>
     <Setting Name="RegistryKeyOfficesApi" Type="System.String" Scope="User">
       <Value Profile="(Default)">UrlApiOffices</Value>

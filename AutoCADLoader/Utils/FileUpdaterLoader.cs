@@ -196,7 +196,7 @@ namespace AutoCADLoader.Utils
 
         public IEnumerable<FileItem> GetFilesToUpdate(ResourceType? resourceType = null)
         {
-            if(resourceType is null)
+            if (resourceType is null)
             {
                 var test = AllFiles.Where(f => f.Status != Status.Matches && f.Status != Status.Newer).ToList();
                 return test;
@@ -314,24 +314,24 @@ namespace AutoCADLoader.Utils
         /// Update the plotter registry file with the values specified through the Loader, then import it into the application profile registry entries.
         /// </summary>
         /// <param name="selectedOffice">Office that is currently selected in the working office combobox.</param>
-        /// <param name="runVersion"></param>
-        /// <param name="app"></param>
-        /// <returns>Civil 3D units selected by the user (if the software has never previously been run). Otherwise, empty string.</returns>
-        public static string? UpdateRegistryFile(Office selectedOffice, AppVersion runVersion, string app)
+        /// <param name="selectedApplication">Application that is currently selected in the applications combobox.</param>
+        /// <returns>Civil 3D units selected by the user (if the software has never previously been run). Otherwise, empty string.</returns> // TODO: Rework this
+        public static string? UpdateRegistryFile(Office selectedOffice, AutodeskApplication selectedApplication)
         {
             //get registry template file
             string srcPath = Path.Combine(UserInfo.LocalAppDataFolder("Settings"), "Plotter.txt");
 
-            //get destination path   
+            //get destination path
             string dstPath = Path.Combine(UserInfo.LocalAppDataFolder("Settings"), "Plotter.reg");
 
             File.Copy(srcPath, dstPath, true);
 
             //get the active profile
-            var CurrentProfileName = RegistryInfo.CurrentProfileName(runVersion.Id, runVersion.Code);
+            //string? CurrentProfileName = RegistryInfo.CurrentProfileName(runVersion.Id, runVersion.Code);
+            string? CurrentProfileName = RegistryInfo.CurrentProfileName(selectedApplication.Version);
 
             // TODO: Review/improve this
-            if (string.IsNullOrWhiteSpace(CurrentProfileName) && string.Equals(app, "Civil3d", StringComparison.InvariantCultureIgnoreCase))
+            if (string.IsNullOrWhiteSpace(CurrentProfileName) && string.Equals(selectedApplication.Title, "Civil3d", StringComparison.InvariantCultureIgnoreCase))
             {
                 // First time launch for the selected Civil 3D product - deal with unit selection here
                 bool? isImperial = new UnitSelectionWindow().ShowDialog();
@@ -358,8 +358,8 @@ namespace AutoCADLoader.Utils
                 string roamingAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 content = content.Replace("[appdata]", roamingAppData);
 
-                content = content.Replace("[version]", "acad" + runVersion.GetPlotterVersionOrDefault());
-                content = content.Replace("[RegKey]", runVersion.RegKey);
+                content = content.Replace("[version]", "acad" + selectedApplication.Version.GetPlotterVersionOrDefault());
+                content = content.Replace("[RegKey]", selectedApplication.Version.RegKey);
                 content = content.Replace("[profile]", CurrentProfileName);
 
                 using (StreamWriter writer = new(dstPath))
@@ -371,10 +371,14 @@ namespace AutoCADLoader.Utils
                 //import the registry into the profile
                 RegistryInfo.ImportRegistry(dstPath);
 
-                // Handle the Fonts/Pats directories
-                if(!string.IsNullOrWhiteSpace(CurrentProfileName))
+                if (string.IsNullOrWhiteSpace(CurrentProfileName))
                 {
-                    RegistryInfo.InjectSupportPaths(runVersion.RegKey, CurrentProfileName);
+                    EventLogger.Log($"Autodesk profile could not be found: {CurrentProfileName}", System.Diagnostics.EventLogEntryType.Warning);
+                }
+                else
+                {
+                    // Handle the Fonts/Pats directories
+                    RegistryInfo.InjectSupportPaths(selectedApplication.Version.RegKey, CurrentProfileName);
                 }
             }
 
@@ -384,7 +388,6 @@ namespace AutoCADLoader.Utils
         public static string ValidateLocalAppData()
         {
             //check to see if local data folders exists and if not, copy the files from programdata (installation folder) to the local appdata
-
 
             var userLocalAppData = UserInfo.LocalAppDataFolder();
             var srcProgramData = Utils.ProgramDataLocation();

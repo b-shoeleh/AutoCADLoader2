@@ -16,9 +16,8 @@ namespace AutoCADLoader.Properties
 
         static LoaderSettings()
         {
-            DirectoryAccessTimeout = RegistryFunctions.GetIntFromDword("DirectoryAccessTimeout") ?? DirectoryAccessTimeout;
-            
-            string centralDirectoryLocationsStr = RegistryFunctions.GetString("LocationsCentral") ?? _centralDirectoryLocationFallback;
+            DirectoryAccessTimeout = RegistryFunctions.GetApplicationValue("DirectoryAccessTimeout") as int? ?? DirectoryAccessTimeout;
+            string centralDirectoryLocationsStr = RegistryFunctions.GetApplicationValue("LocationsCentral") as string ?? _centralDirectoryLocationFallback;
             string[] centralDirectoryLocations = centralDirectoryLocationsStr.Split(';');
             foreach(string centralDirectoryLocation in centralDirectoryLocations)
             {

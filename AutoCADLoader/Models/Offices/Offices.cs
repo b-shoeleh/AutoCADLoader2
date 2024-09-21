@@ -131,17 +131,18 @@ namespace AutoCADLoader.Models.Offices
             return false;
         }
 
-        public static void SetRememberedOffice(Office office)
+        public static void SetSavedOffice(Office office)
         {
-            List<Office> rememberedOffices = [.. Data.Where(o => o.IsSavedOffice)];
+            List<Office> savedOffices = [.. Data.Where(o => o.IsSavedOffice)];
 
-            foreach (Office rememberedOffice in rememberedOffices)
+            foreach (Office savedOffice in savedOffices)
             {
-                rememberedOffice.IsSavedOffice = false;
+                savedOffice.IsSavedOffice = false;
             }
 
             office.IsSavedOffice = true;
             UserInfo.SavedOffice = office;
+            EventLogger.Log($"Set saved office to: {office.Id}", EventLogEntryType.Information);
         }
 
         public static Office GetOfficeByName(string officeName, string? officeRegion = null)
@@ -211,7 +212,7 @@ namespace AutoCADLoader.Models.Offices
 
             try
             {
-                var serializedData = JsonSerializer.Deserialize<List<OfficeData>>(json, jsonOptions);
+                var serializedData = JsonSerializer.Deserialize<List<OfficePoco>>(json, jsonOptions);
                 if (serializedData is not null)
                 {
                     Data.Clear();
@@ -252,7 +253,7 @@ namespace AutoCADLoader.Models.Offices
         public static Office GetFallbackOffice()
         {
             Office? fallbackOffice = GetOfficeById("ACA-Toronto55");
-            fallbackOffice ??= new(new OfficeData { RegionDir = "ACA", OfficeDir = "Toronto55", DisplayName = "Toronto" });
+            fallbackOffice ??= new(new OfficePoco { RegionDir = "ACA", OfficeDir = "Toronto55", DisplayName = "Toronto" });
 
             return fallbackOffice;
         }

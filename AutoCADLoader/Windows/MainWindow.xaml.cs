@@ -21,7 +21,7 @@ namespace AutoCADLoader
 
         private void lstPackages_Initialized(object sender, EventArgs e)
         {
-            FilterPackagesView(sender);
+            FilterPackagesView(cbApplications);
         }
 
         private void cbApplications_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -32,31 +32,38 @@ namespace AutoCADLoader
         private void FilterPackagesView(object sender)
         {
             ComboBox? cb = sender as ComboBox;
-            InstalledAutodeskApplication? selectedApplication = cb?.SelectedItem as InstalledAutodeskApplication;
+            AutodeskApplicationViewModel? selectedApplication = cb?.SelectedItem as AutodeskApplicationViewModel;
+
+            if (lstPackages is null)
+            {
+                return;
+            }
             var collectionView = CollectionViewSource.GetDefaultView(lstPackages.ItemsSource);
 
+            // TODO: Improve - not ideal to filter on display names
             if (selectedApplication is null)
             {
                 collectionView.Filter = p => { return false; };
             }
+            else if (selectedApplication.DisplayName.Contains("AutoCAD", StringComparison.InvariantCultureIgnoreCase))
+            {
+                collectionView.Filter = p =>
+                {
+                    var Package = p as BundleViewModel;
+                    return Package?.CompatibleAutocad == true;
+                };
+            }
+            else if (selectedApplication.DisplayName.Contains("Civil3d", StringComparison.InvariantCultureIgnoreCase))
+            {
+                collectionView.Filter = p =>
+                {
+                    var Package = p as BundleViewModel;
+                    return Package?.CompatibleCivil3d == true;
+                };
+            }
             else
             {
-                if (selectedApplication.AutodeskApplication.Title.Contains("AutoCAD", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    collectionView.Filter = p =>
-                    {
-                        var Package = p as BundleViewModel;
-                        return Package?.CompatibleAutocad == true;
-                    };
-                }
-                else
-                {
-                    collectionView.Filter = p =>
-                    {
-                        var Package = p as BundleViewModel;
-                        return Package?.CompatibleCivil3d == true;
-                    };
-                }
+                collectionView.Filter = p => { return false; };
             }
 
             collectionView.Refresh();

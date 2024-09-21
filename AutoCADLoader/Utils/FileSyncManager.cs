@@ -7,6 +7,21 @@ namespace AutoCADLoader.Utils
 {
     public static class FileSyncManager
     {
+        private static bool _enabled = true;
+        public static bool Enabled
+        {
+            get
+            {
+                return _enabled;
+            }
+            set
+            {
+                EventLogger.Log($"File synchronisation: {value}", System.Diagnostics.EventLogEntryType.Information);
+                _enabled = value;
+            }
+        }
+
+
         /// <summary>
         /// Checks to see if any local user data has been created, and if not, create this by copying from local common data.
         /// </summary>
@@ -63,6 +78,11 @@ namespace AutoCADLoader.Utils
         /// <param name="office">The office for which the standards should be synchronized.</param>
         public static void SynchronizeFromAzure(Office office)
         {
+            if(!Enabled)
+            {
+                return;
+            }
+
             string source = LoaderSettings.GetCentralDirectoryPath();
             string target = LoaderSettings.GetLocalUserFolderPath("Cache");
 

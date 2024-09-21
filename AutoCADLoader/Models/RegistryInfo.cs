@@ -1,8 +1,10 @@
-﻿using AutoCADLoader.Models.Offices;
+﻿using AutoCADLoader.Models.Applications;
+using AutoCADLoader.Models.Offices;
 using AutoCADLoader.Models.Packages;
 using AutoCADLoader.Utils;
 using AutoCADLoader.ViewModels;
 using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.Windows;
 
@@ -11,39 +13,30 @@ namespace AutoCADLoader.Models
     // TODO: Might be better if this was DI instead of static, but this class may be removed eventually anyway
     public static class RegistryInfo
     {
-        static RegistryKey ProfileRegistryKey { get; set; }
-        static string KeyLocation { get; set; }
-        public static bool IsLoaded { get; set; }
-        //public string ProductVersion { get; set; }
+        private readonly static RegistryHive _hive = RegistryHive.CurrentUser;
 
-        public static string Title { get; set; }
-        public static string Version { get; set; }
-        public static string Plugin { get; set; }
+        static string AutoCADLoaderKeyLocation { get; } = @"Software\Arcadis\AutoCAD Loader";
 
+        public static string? Title { get; set; }
+        public static string? Version { get; set; }
+        public static string? Plugin { get; set; }
 
-
-
-        //App specific registry
-        // Computer\HKEY_CURRENT_USER\SOFTWARE\IBI Group\AcadLoader\Title_Version_Plugin
         public static List<string> Bundles { get; set; }
 
         /// <summary>
-        /// Office code for the working office saved to registry when the user last started an application
+        /// Office code for the working office saved to registry when the user last started an application.
         /// </summary>
-        public static string ActiveOffice { get; set; }
+        public static string? SavedOfficeId { get; set; }
 
-        public static string ActiveRegion { get; set; }
-        public static string Hardware { get; set; }
+        public static string? Hardware { get; set; }
+
+        public static DateTime? LastUpdated { get; set; }
 
 
         static RegistryInfo()
         {
-            ProfileRegistryKey = Registry.CurrentUser;
-            KeyLocation = "Arcadis\\AutoCAD Loader";
             Bundles = [];
-            IsLoaded = false;
-            ActiveOffice = UserInfo.SavedOffice.OfficeCode;
-            LoadBaseRegistry();
+            LoadPreviousSettings();
         }
 
         /// <summary>
@@ -59,20 +52,13 @@ namespace AutoCADLoader.Models
         {
             string regPath = $"{Title}_{Version}";
 
-            if(!string.IsNullOrWhiteSpace(Plugin))
+            if (!string.IsNullOrWhiteSpace(Plugin))
             {
                 regPath = $"{regPath}_{Plugin}";
             }
 
             return regPath;
         }
-
-
-        //public void DeleteKey(string regkey)
-        //{
-
-        //    DeleteSubKeys(ProfileRegistryKey, regkey);
-        //}
 
         /// <summary>
         /// delete the registry sub key from windows registry
@@ -127,14 +113,6 @@ namespace AutoCADLoader.Models
             }
         }
 
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
         public static void DeleteProfile(string path, string regkey)
         {
             RegistryKey key = Registry.CurrentUser;
@@ -181,27 +159,10 @@ namespace AutoCADLoader.Models
 
         /// <param name="versionNo">Autodesk product version number (ACADVER), e.g. "R24.1"</param>
         /// <param name="versionCode">Autodesk product version code, e.g. "ACAD-5101:409"</param>
-        /// <returns>The registry subkey location of the Autodesk profile for the Autodesk application specified - e.g. "Software\Autodesk\AutoCAD\R24.1\ACAD-5101:409\Profiles".</returns>
-        public static string GetProfileKeyLocation(string versionNo, string versionCode)
+        /// <returns>The registry key path of the Autodesk profile for the Autodesk application specified - e.g. "Software\Autodesk\AutoCAD\R24.1\ACAD-5101:409\Profiles".</returns>
+        public static string GetAutodeskProfileKeyLocation(string versionNo, string versionCode)
         {
-            return "Software\\Autodesk\\AutoCAD\\" + versionNo + "\\" + versionCode + "\\Profiles";
-
-            //RegistryKey RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
-
-            //foreach (string Keyname in RKCU.GetSubKeyNames())
-            //{
-            //    if (Keyname.Substring(0, 4).ToUpper() == "ACAD")
-            //    {
-            //        regPath += "\\" + Keyname + "\\Profiles";
-            //    }
-            //}
-
-            //found the key, now look for profile and check what is the default
-            //RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
-
-            // return RKCU.Name;
-            //return regPath;
-
+            return $@"Software\Autodesk\AutoCAD\{versionNo}\{versionCode}\Profiles";
         }
 
 
@@ -211,9 +172,9 @@ namespace AutoCADLoader.Models
         /// <param name="versionNo">Autodesk product version number (ACADVER), e.g. "R24.1"</param>
         /// <param name="versionCode">Autodesk product version code, e.g. "ACAD-5101:409"</param>
         /// <returns>Name of the profile most recently used within the specified Autodesk product, otherwise null.</returns>
-        public static string? CurrentProfileName(string versionNo, string versionCode)
+        public static string? CurrentProfileName(VersionYear versionYear)
         {
-            string regPath = GetProfileKeyLocation(versionNo, versionCode);
+            string regPath = GetAutodeskProfileKeyLocation(versionYear.Id, versionYear.Code);
             try
             {
                 RegistryKey? RKCU = Registry.CurrentUser.OpenSubKey(regPath, false);
@@ -226,181 +187,101 @@ namespace AutoCADLoader.Models
                 return null;
             }
         }
-        //public void UpdateToolbarFile(string filePath, string versionNo, string versionCode)
-        //{
-        //    //get the path of registry for version specified
-        //    string regPath = GetProfileKeyLocation(versionNo, versionCode);
-        //    string sourceFile = filePath + "\\Toolbars." + versionNo + ".reg";
-        //    string destinFile = filePath + "\\ToolbarsImport.reg";
 
-        //    try
-        //    {
-        //        RegistryKey RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
+        public static void LoadPreviousSettings()
+        {
+            EventLogger.Log("Loading previous settings...", EventLogEntryType.Information);
 
-        //        if (File.Exists(sourceFile))
-        //        {
+            try
+            {
+                EventLogger.Log($"Previous settings registry path: {_hive}, {AutoCADLoaderKeyLocation}", EventLogEntryType.Information);
 
-        //            int line_to_edit = 3; // Warning: 1-based indexing!
+                Title = RegistryFunctions.Get("Title", AutoCADLoaderKeyLocation, _hive) as string;
+                EventLogger.Log($"Previously saved title: {Title}", EventLogEntryType.Information);
 
+                Version = RegistryFunctions.Get("Version", AutoCADLoaderKeyLocation, _hive) as string;
+                EventLogger.Log($"Previously saved version: {Version}", EventLogEntryType.Information);
 
-        //            System.IO.StreamReader file = new System.IO.StreamReader(sourceFile);
+                Plugin = RegistryFunctions.Get("Plugin", AutoCADLoaderKeyLocation, _hive) as string;
+                EventLogger.Log($"Previously saved plugin: {Plugin}", EventLogEntryType.Information);
 
-        //            StreamWriter writer = new StreamWriter(destinFile);
+                string? lastUpdated = RegistryFunctions.Get("LastUpdated", AutoCADLoaderKeyLocation, _hive) as string;
+                if (!string.IsNullOrWhiteSpace(lastUpdated))
+                {
+                    DateTime intervalVal;
+                    if (DateTime.TryParse(lastUpdated, out intervalVal))
+                    {
+                        LastUpdated = intervalVal;
+                    }
+                    else
+                    {
+                        EventLogger.Log($"Could not parse last updated: {lastUpdated}", EventLogEntryType.Warning);
+                    }
+                }
 
+                EventLogger.Log($"Last updated: {LastUpdated}", EventLogEntryType.Information);
+            }
+            catch
+            {
+                EventLogger.Log("Error retrieving previous user settings from registry.", EventLogEntryType.Error);
+            }
 
-        //            string line;
-        //            int counter = 0;
-        //            while ((line = file.ReadLine()) != null)
-        //            {
-        //                counter++;
-        //                if (counter == line_to_edit)
-        //                {
-        //                    //edit the line
-        //                    line = "[" + RKCU.Name + "\\" + Profile + "\\Toolbars]";
+            LoadPreviousVersionSettings(Title, Version, Plugin);
+        }
 
-        //                }
+        private static void LoadPreviousVersionSettings(string? title, string? version, string? plugin)
+        {
+            string VersionKeyLocation = $@"{AutoCADLoaderKeyLocation}\{title}_{version}";
+            if (!string.IsNullOrWhiteSpace(plugin))
+            {
+                VersionKeyLocation += $"_{plugin}";
+            }
+            EventLogger.Log($"Loading previously selected version settings from: {VersionKeyLocation}", EventLogEntryType.Information);
 
-        //                writer.WriteLine(line);
+            SavedOfficeId = RegistryFunctions.Get("ActiveOffice", VersionKeyLocation, RegistryHive.CurrentUser) as string;
 
+            string? _packages = RegistryFunctions.Get("Packages", VersionKeyLocation, RegistryHive.CurrentUser) as string;
+            Bundles.Clear();
+            if (!string.IsNullOrWhiteSpace(_packages))
+            {
+                Bundles = [.. _packages.Split(',')];
+            }
 
-        //            }
+            Hardware = RegistryFunctions.Get("Hardware", VersionKeyLocation, RegistryHive.CurrentUser) as string ?? "true";
+        }
 
-        //            writer.Close();
+        public static void SaveSettings(
+            string title,
+            string version,
+            string? plugin,
+            IEnumerable<Bundle>? bundles,
+            string activeOffice,
+            bool hardwareAccelerationEnabled)
+        {
+            // TODO: Check whether this assignment is really still needed
+            Title = title;
+            Version = version;
+            Plugin = plugin ?? string.Empty;
 
-        //            //import the key
-        //            ImportRegistry(destinFile);
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        //could not save user profile
-        //    }
+            Bundles = [.. bundles?.Select(b => b.Title)];
+            SavedOfficeId = activeOffice;
+            Hardware = hardwareAccelerationEnabled ? "true" : "false";
 
-
-
-        //}
-
-        //public void SaveUserToolBars(string versionNo, string versionCode, string filePath)
-        //{
-        //    //get the path of registry for version specified
-        //    string regPath = GetProfileKeyLocation(versionNo, versionCode);
-
-        //    try
-        //    {
-        //        //found the key, now look for profile and check what is the default
-        //        RegistryKey RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
-
-        //        if (RKCU != null)
-        //        {
-        //            string defaultProfile = RKCU.GetValue(null).ToString();
-
-        //            regPath += "\\" + defaultProfile + "\\Toolbars";
-        //            //now get the toolbars of the default profile
-        //            RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
-
-        //            //export the profile to user's profile
-        //            string fileName = filePath + "\\Toolbars." + versionNo + ".reg";
-        //            if (File.Exists(fileName))
-        //            {
-
-        //                string buFileName = filePath + "\\Toolbars." + versionNo + "old" + ".reg";
-        //                //rename the file
-        //                File.Move(fileName, buFileName);
-        //            }
-
-        //            if (!File.Exists(fileName))
-        //            {
-        //                exportRegistry(RKCU.Name, fileName);
-        //            }
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        //could not find registry
-        //    }
-        //}
-
-        //public string GetUserWorkspace(string versionNo, string versionCode)
-        //{
-        //    string wspace = "";
-        //    //get the path of registry for version specified
-        //    string regPath = GetProfileKeyLocation(versionNo, versionCode);
-
-        //    try
-        //    {
-        //        //found the key, now look for profile and check what is the default
-        //        RegistryKey RKCU = Registry.CurrentUser.OpenSubKey(regPath, true);
-
-        //        if (RKCU != null)
-        //        {
-        //            string defaultProfile = RKCU.GetValue(null).ToString();
-
-        //            regPath += "\\" + defaultProfile + "\\General";
-        //            //now get the toolbars of the default profile
-        //            RKCU = Registry.CurrentUser.OpenSubKey(regPath, false);
-        //            if (RKCU != null)
-        //            {
-        //                wspace = RKCU.GetValue("WSCURRENT").ToString();
-        //            }
-
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        //could not find registry
-        //    }
-
-        //    return wspace;
-        //}
-
-        //void exportRegistry(string strKey, string filepath)
-        //{
-        //    try
-        //    {
-        //        using (Process proc = new Process())
-        //        {
-        //            proc.StartInfo.FileName = "reg.exe";
-        //            proc.StartInfo.UseShellExecute = false;
-        //            proc.StartInfo.RedirectStandardOutput = true;
-        //            proc.StartInfo.RedirectStandardError = true;
-        //            proc.StartInfo.CreateNoWindow = true;
-        //            proc.StartInfo.Arguments = "export \"" + strKey + "\" \"" + filepath + "\" /y";
-        //            proc.Start();
-        //            string stdout = proc.StandardOutput.ReadToEnd();
-        //            string stderr = proc.StandardError.ReadToEnd();
-        //            proc.WaitForExit();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // handle exception
-        //    }
-
-
-        //}
+            SaveUserRegistry(Title, Version, Plugin);
+        }
 
         /// <summary>
         /// Update the registry values for AutoCAD Loader (to remember settings on next time the Loader is launched).
         /// </summary>
-        public static void SaveUserRegistry()
+        public static void SaveUserRegistry(string title, string version, string plugin)
         {
-            RegistryKey? RKCU = Registry.CurrentUser.OpenSubKey("Software", true);
-
-            if (RKCU is null)
-            {
-                EventLogger.Log("Error saving user registry settings - HCKU Software key does not exist.", EventLogEntryType.Error);
-                MessageBox.Show("Error saving user settings.");
-                return;
-            }
-
-            RegistryKey? SubRKCU = RKCU.OpenSubKey(KeyLocation, true);
-            SubRKCU ??= RKCU.CreateSubKey(KeyLocation);
+            EventLogger.Log($"Saving user settings to: {_hive}, {AutoCADLoaderKeyLocation}", EventLogEntryType.Information);
 
             try
             {
-                SubRKCU.SetValue("Title", Title);
-                SubRKCU.SetValue("Version", Version);
-                SubRKCU.SetValue("Plugin", Plugin);
+                RegistryFunctions.Set(title, RegistryValueKind.String, "Title", AutoCADLoaderKeyLocation, _hive);
+                RegistryFunctions.Set(version, RegistryValueKind.String, "Version", AutoCADLoaderKeyLocation, _hive);
+                RegistryFunctions.Set(plugin, RegistryValueKind.String, "Plugin", AutoCADLoaderKeyLocation, _hive);
             }
             catch
             {
@@ -409,19 +290,16 @@ namespace AutoCADLoader.Models
             }
 
             //update the version key info
-            string VersionKeyLocation = $@"{KeyLocation}\{GetAppEntryLocation()}";
-            SubRKCU = RKCU.OpenSubKey(VersionKeyLocation, true);
-            SubRKCU ??= RKCU.CreateSubKey(VersionKeyLocation);
+            string VersionKeyLocation = $@"{AutoCADLoaderKeyLocation}\{GetAppEntryLocation()}";
 
             try
             {
-                //update the key values or create them if needed
                 string packageList = string.Join(",", Bundles);
                 packageList ??= string.Empty;
 
-                SubRKCU.SetValue("Packages", packageList);
-                SubRKCU.SetValue("ActiveOffice", ActiveOffice);
-                SubRKCU.SetValue("Hardware", Hardware);
+                RegistryFunctions.Set(packageList, RegistryValueKind.String, "Packages", VersionKeyLocation, RegistryHive.CurrentUser);
+                RegistryFunctions.Set(SavedOfficeId, RegistryValueKind.String, "ActiveOffice", VersionKeyLocation, RegistryHive.CurrentUser);
+                RegistryFunctions.Set(Hardware, RegistryValueKind.String, "Hardware", VersionKeyLocation, RegistryHive.CurrentUser);
             }
             catch
             {
@@ -430,117 +308,16 @@ namespace AutoCADLoader.Models
             }
         }
 
-        public static void UpdateUserRegistry(
-            string title,
-            string version,
-            string? plugin,
-            IEnumerable<Bundle>? bundles,
-            string activeOffice,
-            bool hardwareAccelerationEnabled)
+        public static void SaveLastUpdated(DateTime lastUpdated)
         {
-            Title = title;
-            Version = version;
-            Plugin = plugin ?? string.Empty;
-            Bundles = [.. bundles?.Select(b => b.Title)];
-            ActiveOffice = activeOffice;
-            Hardware = hardwareAccelerationEnabled ? "true" : "false";
-
-            SaveUserRegistry();
-        }
-
-        public static void LoadBaseRegistry()
-        {
-            RegistryKey RKCU = Registry.CurrentUser.OpenSubKey("Software", true);
-
-            //get the last used autocad version
-            KeyLocation = "IBI Group\\AcadLoader\\";
-
             try
             {
-                RegistryKey SubRKCU = RKCU.OpenSubKey(KeyLocation, true);
-
-                if (SubRKCU != null)
-                {
-                    try
-                    {
-
-                        //ProductVersion = SubRKCU.GetValue("ProductVersion").ToString();
-                        Title = SubRKCU.GetValue("Title").ToString();
-                        Version = SubRKCU.GetValue("Version").ToString();
-                        Plugin = SubRKCU.GetValue("Plugin").ToString();
-                    }
-                    catch { }
-                }
-
-
-                //if (ProductVersion != Application.ProductVersion)
-                //{
-                //    DeleteKey("AcadLoader");
-                //}
-                //else
-                //{
-                LoadVersionRegistry(Title, Version, Plugin);
-                //}
+                RegistryFunctions.Set(lastUpdated, RegistryValueKind.String, "LastUpdated", AutoCADLoaderKeyLocation, _hive);
             }
             catch
             {
-
+                EventLogger.Log("Error saving last updated setting - cannot set values.", EventLogEntryType.Error);
             }
-        }
-
-        public static void LoadVersionRegistry(string title, string version, string plugin)
-        {
-            RegistryKey RKCU = Registry.CurrentUser.OpenSubKey("Software", true);
-
-            string VersionKeyLocation = $@"IBI Group\AcadLoader\{title}_{version}_{plugin}";
-            RegistryKey SubRKCU = RKCU.OpenSubKey(VersionKeyLocation, true);
-
-            IsLoaded = false;
-
-            // TODO: Review this, may need improvement
-            if (SubRKCU != null)
-            {
-                try
-                {
-
-                    ActiveOffice = SubRKCU.GetValue("ActiveOffice").ToString();
-                    var _packages = SubRKCU.GetValue("Packages").ToString();
-                    Bundles.Clear();
-                    if (!string.IsNullOrEmpty(_packages))
-                    {
-                        Bundles = SubRKCU.GetValue("Packages").ToString().Split(',').ToList();
-                    }
-
-
-                    try
-                    {
-                        Hardware = SubRKCU.GetValue("Hardware").ToString();
-                    }
-                    catch
-                    {
-                        Hardware = "False";
-                    }
-
-                    IsLoaded = true;
-
-                }
-                catch
-
-                {
-                    IsLoaded = false;
-                }
-            }
-
-
-            if (IsLoaded == false)
-            {
-
-                ActiveOffice = null;// ActiveOffice;// UserInfo.OfficeCode();
-                IsLoaded = false;
-                Hardware = "true";
-
-            }
-
         }
 
         public static bool KeyExists(string key)
@@ -574,25 +351,25 @@ namespace AutoCADLoader.Models
         /// Update the plotter file for registry import
         /// </summary>
         /// <returns>Civil 3D unit selection (if found)</returns>
-        public static string? UpdateProfilePlotters(InstalledAutodeskApplication selectedApplication, Office selectedOffice)
+        public static string? UpdateProfilePlotters(AutodeskApplication selectedApplication, Office selectedOffice)
         {
-            string units = FileUpdaterLoader.UpdateRegistryFile(selectedOffice, selectedApplication.AppVersion, selectedApplication.AutodeskApplication.Title);
+            string units = FileUpdaterLoader.UpdateRegistryFile(selectedOffice, selectedApplication);
             return units;
         }
 
         // TODO: Consider moving this out into an application class
         public static void InjectSupportPaths(string versionId, string profileName)
         {
-            string registryPath = @$"HKEY_CURRENT_USER\SOFTWARE\{versionId}\Profiles\{profileName}\General";
+            string registryPath = @$"SOFTWARE\{versionId}\Profiles\{profileName}\General";
             string registryValueName = "ACAD";
 
             // Support path types to add
             string[] pathTypesToAdd = ["Fonts", "Pats"];
 
             // Get the current support paths within the current AutoCAD profile
-            string? supportPaths = RegistryFunctions.GetStringWithOptions(registryValueName, registryPath, RegistryValueOptions.DoNotExpandEnvironmentNames);
+            string? supportPaths = RegistryFunctions.Get(registryValueName, registryPath, RegistryHive.CurrentUser, RegistryValueOptions.DoNotExpandEnvironmentNames) as string;
 
-            // Check if the support path already exists, and if not add it
+            // Check if the support paths have previously been added - if not, add them
             if (!string.IsNullOrWhiteSpace(supportPaths))
             {
                 foreach (string pathType in pathTypesToAdd)
@@ -607,6 +384,12 @@ namespace AutoCADLoader.Models
                         supportPaths = string.Concat(supportPaths, nonExpandedPath, ";");
                     }
                 }
+
+                RegistryFunctions.Set(supportPaths, RegistryValueKind.ExpandString, registryValueName, registryPath, RegistryHive.CurrentUser);
+                EventLogger.Log($"Setting support paths:" +
+                    $"{Environment.NewLine}{registryPath}" +
+                    $"{Environment.NewLine}{supportPaths}",
+                    EventLogEntryType.Information);
             }
         }
     }

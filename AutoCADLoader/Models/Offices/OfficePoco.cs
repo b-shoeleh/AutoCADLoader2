@@ -5,7 +5,7 @@ namespace AutoCADLoader.Models.Offices
     /// <summary>
     /// POCO to deserialize office data from.
     /// </summary>
-    public class OfficeData
+    public class OfficePoco
     {
         [JsonPropertyName("regionDir")]
         public string? RegionDir { get; set; }
