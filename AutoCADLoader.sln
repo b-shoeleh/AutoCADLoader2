@@ -17,16 +17,16 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|x64.Build.0 = Debug|Any CPU
+		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|x64.ActiveCfg = Debug|x64
+		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Debug|x64.Build.0 = Debug|x64
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Installer|Any CPU.ActiveCfg = Release|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Installer|Any CPU.Build.0 = Release|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Installer|x64.ActiveCfg = Release|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Installer|x64.Build.0 = Release|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|Any CPU.Build.0 = Release|Any CPU
-		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|x64.ActiveCfg = Release|Any CPU
-		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|x64.Build.0 = Release|Any CPU
+		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|x64.ActiveCfg = Release|x64
+		{179F0517-CEB3-483D-8DB0-B92D2C9E8360}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
