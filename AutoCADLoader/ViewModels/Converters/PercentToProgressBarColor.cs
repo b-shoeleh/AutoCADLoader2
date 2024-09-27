@@ -21,7 +21,7 @@ namespace AutoCADLoader.ViewModels.Converters
                 return Brushes.Orange;
             }
 
-            return Brushes.OrangeRed;
+            return Brushes.Red;
         }
 
         public object ConvertBack(object value, Type targetType,
