@@ -70,13 +70,9 @@ namespace AutoCADLoader.Commands
 
             AutodeskApplicationLauncher.Launch(selectedApplication, bundles, selectedOffice, resetAllSettings, hardwareAcceleration);
 
-            // TODO: Improve
-            if (FileSyncManager.Enabled)
-            {
-                FileSyncManager.SynchronizeFromAzure(selectedOffice);
-                FileSyncManager.SynchronizeFromUserData(selectedOffice);
-                RegistryInfo.SaveLastUpdated(DateTime.Now);
-            }
+            FileSyncManager.SynchronizeFromAzure(selectedOffice);
+
+            FileSyncManager.SynchronizeFromUserData(selectedOffice);
 
             // TODO: IBI analytics logging?
             Environment.Exit(0);

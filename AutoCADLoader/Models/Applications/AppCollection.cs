@@ -57,7 +57,7 @@ namespace AutoCADLoader.Models.Applications
 
             //read version info 
             var AppSerializer = new XmlSerializer(typeof(AppCollection));
-            using (Stream fStream = new FileStream(fileLocation, FileMode.Open))
+            using (Stream fStream = new FileStream(fileLocation, FileMode.Open, FileAccess.Read))
             {
                 object? applicationDefinitionsFromFile = AppSerializer.Deserialize(fStream);
                 if (applicationDefinitionsFromFile is null)
@@ -125,7 +125,7 @@ namespace AutoCADLoader.Models.Applications
             var fileLocation = Path.Combine(UserInfo.LocalAppDataFolder("Settings"), "Packages.xml");
 
             var packageSerializer = new XmlSerializer(typeof(BundleCollection));
-            using (Stream fStream = new FileStream(fileLocation, FileMode.Open))
+            using (Stream fStream = new FileStream(fileLocation, FileMode.Open, FileAccess.Read))
             {
                 object? packagesDefinitonsFromFile = packageSerializer.Deserialize(fStream);
                 if (packagesDefinitonsFromFile is null)

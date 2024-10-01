@@ -54,7 +54,6 @@ namespace AutoCADLoader.Utils
             try
             {
                 sourceFiles = sourceDirectory.GetFiles();
-
             }
             catch
             {
@@ -101,17 +100,23 @@ namespace AutoCADLoader.Utils
             return AnyFolderDifferenceQuick(sourceDirectory, targetDirectory, checkSubfolders, checkForDateDifference);
         }
 
+        // TODO: Genericise 
         /// <returns>True if the files specified in the parameters are different from each other, otherwise false.</returns>
         public static bool AnyFileDifference(FileInfo sourceFile, string targetFileName, bool checkForDateDifference = true)
         {
             if (sourceFile is null || !sourceFile.Exists)
             {
-                // Skip file because it does not exist/cannot be accessed
+                // Skip, because the source file cannot be accessed
                 return false;
             }
 
-            if (File.Exists(targetFileName) && checkForDateDifference)
+            if (File.Exists(targetFileName))
             {
+                if(checkForDateDifference)
+                {
+                    return false;
+                }
+
                 FileInfo targetFile = new(targetFileName);
                 DateTime targetLastModified = targetFile.LastWriteTime;
                 DateTime sourceLastModified = sourceFile.LastWriteTime;
@@ -170,28 +175,27 @@ namespace AutoCADLoader.Utils
             foreach (FileInfo sourceFile in sourceFiles)
             {
                 string targetFilePath = Path.Combine(targetPath, sourceFile.Name);
-                if (!File.Exists(targetFilePath))
-                {
-                    sourceFile.CopyTo(targetFilePath);
-                }
-                else
+
+                if (File.Exists(targetFilePath))
                 {
                     bool different = AnyFileDifference(sourceFile, targetFilePath);
-                    if (different)
+                    if (!different)
                     {
-                        try
-                        {
-                            File.SetAttributes(targetFilePath, FileAttributes.Normal); // Cannot overwrite read only files
-                            sourceFile.CopyTo(targetFilePath, true);
-                        }
-                        catch
-                        {
-                            EventLogger.Log($@"Cannot copy file: 
-                            Source: {sourceFile.FullName}
-                            Target: {targetFilePath}", 
-                            System.Diagnostics.EventLogEntryType.Warning);
-                        }
+                        return;
                     }
+                }
+
+                try
+                {
+                    sourceFile.CopyTo(targetFilePath, true);
+                    File.SetAttributes(targetFilePath, FileAttributes.Normal); // Cannot overwrite read only files
+                }
+                catch
+                {
+                    EventLogger.Log($@"Cannot copy file: 
+                            Source: {sourceFile.FullName}
+                            Target: {targetFilePath}",
+                    System.Diagnostics.EventLogEntryType.Warning);
                 }
             }
 

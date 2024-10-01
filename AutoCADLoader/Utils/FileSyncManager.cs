@@ -52,7 +52,7 @@ namespace AutoCADLoader.Utils
             string commonDataPath = LoaderSettings.GetLocalCommonFolderPath("Settings");
             string localAppDataPath = UserInfo.LocalAppDataFolder("Settings");
 
-            bool settingsFilesMissing = IOUtils.AnyFolderDifferenceQuick(commonDataPath, localAppDataPath, false);
+            bool settingsFilesMissing = IOUtils.AnyFolderDifferenceQuick(commonDataPath, localAppDataPath, false, false);
             if (settingsFilesMissing)
             {
                 IOUtils.DirectoryCopy(commonDataPath, localAppDataPath, true);

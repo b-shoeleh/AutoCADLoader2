@@ -242,6 +242,8 @@ namespace AutoCADLoader.Utils
                 item.Status = Status.Matches;
             }
 
+            RegistryInfo.SaveLastUpdated(DateTime.Now);
+
             isProcessRunning = false;
         }
 
@@ -347,7 +349,7 @@ namespace AutoCADLoader.Utils
 
                 return c3dUnits;
             }
-            else
+            else if (LoaderSettings.RegistryInjection)
             {
                 string content = File.ReadAllText(dstPath);
 

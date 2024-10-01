@@ -9,14 +9,25 @@ namespace AutoCADLoader.Properties
         public static string ApplicationName { get; } = "AutoCAD Loader";
 
         public static int DirectoryAccessTimeout { get; } = 20;
+
+        public static bool RegistryInjection { get; set; } = true;
+
         public static string LocationsCentralDirectory { get; }
-        
         private const string _centralDirectoryLocationFallback = @"I:\_TechSTND\_Arcadis\AutoCAD";
 
 
         static LoaderSettings()
         {
             DirectoryAccessTimeout = RegistryFunctions.GetApplicationValue("DirectoryAccessTimeout") as int? ?? DirectoryAccessTimeout;
+            EventLogger.Log($"[SETTING] Directory access timeout: {DirectoryAccessTimeout}", System.Diagnostics.EventLogEntryType.Information);
+
+            int? registryInjection = RegistryFunctions.GetApplicationValue("EnableRegistryInjection") as int?;
+            if(registryInjection is not null)
+            {
+                RegistryInjection = Convert.ToBoolean(registryInjection);
+            }
+            EventLogger.Log($"[SETTING] Registry injection pathing: {RegistryInjection}", System.Diagnostics.EventLogEntryType.Information);
+
             string centralDirectoryLocationsStr = RegistryFunctions.GetApplicationValue("LocationsCentral") as string ?? _centralDirectoryLocationFallback;
             string[] centralDirectoryLocations = centralDirectoryLocationsStr.Split(';');
             foreach(string centralDirectoryLocation in centralDirectoryLocations)
@@ -24,7 +35,7 @@ namespace AutoCADLoader.Properties
                 bool isAccessible = IOUtils.IsDirectoryAccessible(centralDirectoryLocation);
                 if (isAccessible)
                 {
-                    EventLogger.Log($"Setting central directory path to: {centralDirectoryLocation}", System.Diagnostics.EventLogEntryType.Information);
+                    EventLogger.Log($"[SETTING] Central directory path: {centralDirectoryLocation}", System.Diagnostics.EventLogEntryType.Information);
                     LocationsCentralDirectory = centralDirectoryLocation;
                     return;
                 }
@@ -34,7 +45,7 @@ namespace AutoCADLoader.Properties
                 }
             }
 
-            EventLogger.Log($"No central directory path found/accessible, defaulting to: {_centralDirectoryLocationFallback}", System.Diagnostics.EventLogEntryType.Warning);
+            EventLogger.Log($"[SETTING] No central directory path found/accessible, defaulting to: {_centralDirectoryLocationFallback}", System.Diagnostics.EventLogEntryType.Warning);
             LocationsCentralDirectory = _centralDirectoryLocationFallback;
         }
 

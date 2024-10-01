@@ -1,6 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
 
 namespace AutoCADLoader.Utils
 {
@@ -64,14 +62,12 @@ namespace AutoCADLoader.Utils
 
             try
             {
-                using (RegistryKey? baseKey = RegistryKey.OpenBaseKey((RegistryHive)hive, _defaultRegistryView))
+                using (RegistryKey? baseKey = RegistryKey.OpenBaseKey(hive, _defaultRegistryView))
                 {
-                    using(var subKey = baseKey.OpenSubKey(path))
+                    using (var subKey = baseKey.OpenSubKey(path))
                     {
                         object? keyValue = subKey?.GetValue(name, null, options);
-                        EventLogger.Log(
-                            $@"Retrieved from registry key in ({hive}): {path}\{name}
-                            {keyValue}",
+                        EventLogger.Log($@"Retrieved from registry key in ({hive}): {path}\{name}{Environment.NewLine}{keyValue}",
                             System.Diagnostics.EventLogEntryType.Information);
 
                         return keyValue;
@@ -88,8 +84,8 @@ namespace AutoCADLoader.Utils
         public static bool Set(
             object keyValue,
             RegistryValueKind registryValueType,
-            string keyName,  
-            string path, 
+            string keyName,
+            string path,
             RegistryHive hive)
         {
             path = ValidPathOrDefault(path);
@@ -108,7 +104,7 @@ namespace AutoCADLoader.Utils
                                 newKey.SetValue(keyName, keyValue, registryValueType);
                                 EventLogger.Log(
                                     $@"Created registry key in ({hive}): {path}\{keyName}
-                                    {keyValue}", 
+                                    {keyValue}",
                                 System.Diagnostics.EventLogEntryType.Information);
                             }
                         }
@@ -117,7 +113,7 @@ namespace AutoCADLoader.Utils
                             subKey.SetValue(keyName, keyValue, registryValueType);
                             EventLogger.Log(
                                 $@"Updated registry key in ({hive}): {path}\{keyName}
-                                {keyValue}", 
+                                {keyValue}",
                             System.Diagnostics.EventLogEntryType.Information);
                         }
                     }
